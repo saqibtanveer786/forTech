@@ -1,0 +1,45 @@
+/* Header */
+.topNavigationList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  height: fit-content;
+
+  margin-block-start: 50px;
+
+  padding-block: 20px;
+  padding-inline: 30px;
+
+  list-style: none;
+
+  /* position: relative; */
+
+  /* border: 2px solid red; */
+}
+
+.topNavigationList > li {
+  position: relative;
+}
+
+.topNavigationList > li ::before {
+  content: '';
+
+  position: absolute;
+  bottom: -5px;
+
+  background-color: black;
+
+  height: 5px;
+  width: 0px;
+
+  border-radius: 3px;
+
+  transition: all 500ms ease-in-out;
+}
+
+.topNavigationList > li :hover::before {
+  width: 100%;
+}
