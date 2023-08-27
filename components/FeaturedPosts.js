@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Importing components
-import Post from '../components/Post'
+import Post from './Post'
 
 export default function FeaturedPosts() {
     return (

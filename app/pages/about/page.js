@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 // import SocialIcon from '@/components/social-icons'
 import Image from 'next/image'
 
-export default function AuthorLayout({ children, content }) {
+export default function About({ children, content }) {
   // const { name, avatar, occupation, company, email, twitter, linkedin, github } = content
 
   return (

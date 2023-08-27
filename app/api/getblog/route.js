@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import * as fs from 'fs';
 
-export async function GET(req: NextRequest) {
+export async function GET(req) {
   try {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
-    const slug = searchParams.get('slug');
+    const title = searchParams.get('name');
 
-    const fileData = await fs.readFileSync(`blogs/${slug}.json`, 'utf-8');
+    const fileData = await fs.readFileSync(`blogs/${title}.json`, 'utf-8');
 
     if (!fileData) {
       return NextResponse.json(
