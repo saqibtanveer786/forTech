@@ -15,3 +15,16 @@ export async function pusblishBlog(data, content) {
     const jsonresponse = await response.json();
     console.log(jsonresponse);
 }
+
+// Get a single blog
+export async function getBlog(title) {
+    const response = await fetch(
+        `http://localhost:3000/api/getblog?name=${title}`,
+        {
+            cache: 'no-store',
+        }
+    );
+    const jsonResponse = await response.json();
+    return jsonResponse.data;
+}
+

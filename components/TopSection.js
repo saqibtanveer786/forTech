@@ -5,10 +5,10 @@ export default function TopSection() {
     <section className="bg-gray-900" style={{ background: 'url(/img/general.jpg)', backgroundPosition: 'center', backgroundSize: 'cover' }}>
       <div className="flex h-96 flex-col items-center justify-center md:flex-row p-4 gap:4">
         <div className="flex flex-col items-center justify-center ">
-          <h1 className="text-xl md:text-4xl text-white font-semibold ">Welcome To /forTech</h1>
+          {/* <h1 className="text-xl md:text-4xl text-white font-semibold ">Welcome To /forTech</h1>
           <p className="my-4 text-xl md:text-lg text-white">
             This blog is for the content related to Tech.
-          </p>
+          </p> */}
           {/* <div className="flex flex-col sm:flex-row justify-center gap-2 my-4 w-full">
             <button className=" text-lg flex gap-2 items-center justify-center w-full md:w-48 h-12 hover:bg-blue-700 bg-blue-600 rounded-full  text-gray-50 focus:outline-none" >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 " fill="none" viewBox="0 0 24 24" stroke="currentColor">

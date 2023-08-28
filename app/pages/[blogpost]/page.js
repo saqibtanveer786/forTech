@@ -1,26 +1,16 @@
+import React from 'react';
+
+// Importing server actions
+import { getBlog } from '../../../serverActions/serverAction';
+
+// nextjs imports
 import Image from 'next/image';
 
 // Importing components
 import Article from '../../../components/Article'
 
-async function fetchData(title) {
-  const response = await fetch(
-    `http://localhost:3000/api/getblog?name=${title}`,
-    {
-      cache: 'no-store',
-    }
-  );
-  const jsonResponse = await response.json();
-  return jsonResponse.data;
-}
-
-import React from 'react';
-
 export default async function page({ params }) {
-  // const { id } = router.query;
-  console.log(params.blogpost)
-  const blog = await fetchData(params.blogpost);
-  console.log(blog)
+  const blog = await getBlog(params.blogpost);
   return (
     <>
       <div class="container mx-auto px-12">

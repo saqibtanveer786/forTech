@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-// import SocialIcon from '@/components/social-icons'
+
+// nextjs imports
 import Image from 'next/image'
 
 export default function About({ children, content }) {

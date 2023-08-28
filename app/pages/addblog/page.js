@@ -12,16 +12,18 @@ export default function Addblog() {
   const [data, setData] = useState();
   const [content, setContent] = useState();
 
+  // Function for getting input fields data
   function getData(e) {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
   }
 
+  // Editor Options
   const modules = {
     toolbar: [
       [{ 'header': ['1', '2', '3', '4', '5', '6'] }, { 'font': [] }],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'align': 'left' }, { 'align': 'center' }, { 'align': 'right' }],
       ['bold', 'italic', 'underline'],
       ['blockquote', 'code-block'],
       ['link', 'image'], // Include the image button
@@ -32,7 +34,6 @@ export default function Addblog() {
 
   return (
     <>
-      {console.log(content)}
       <form action={(e) => { pusblishBlog(data, content) }} className='max-w-7xl mx-auto mt-24'>
         <input
           type="text"
@@ -80,7 +81,6 @@ export default function Addblog() {
           className="mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >Publish</button>
       </form>
-
     </>
   );
 }
