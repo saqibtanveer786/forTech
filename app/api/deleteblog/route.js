@@ -15,7 +15,7 @@ async function DELETE(request) {
     })
 
     return NextResponse.json(
-      { deletePost, message: "Post Deleted Successfully" } || { message: "Error while deleting" },
+      deletePost ? { deletePost, message: "Post Deleted Successfully" } : { message: "Error while deleting" },
       { status: deletePost ? 200 : 404 }
     );
 

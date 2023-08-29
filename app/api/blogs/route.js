@@ -1,18 +1,22 @@
 import { NextResponse } from 'next/server';
 
-import * as fs from 'fs';
 import prisma from '../../../lib/prisma';
 
 export async function GET() {
-  // let blogs = [];
+  try {
+    // Getting Posts
+    const posts = await prisma.post.findMany()
 
-  // const response = await fs.readdirSync('blogs');
-  // for (let index = 0; index < response.length; index++) {
-  //   const blog = await fs.readFileSync('blogs/' + response[index], 'utf-8');
-  //   blogs.push(JSON.parse(blog));
-  // }
-  const posts = await prisma.post.findMany()
+    return NextResponse.json(
+      posts ? { posts } : { message: "Error While Getting Posts" },
+      { status: 200 }
+    );
 
-
-  return NextResponse.json(posts, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: "An Unexpected Error Occured" },
+      { status: 500 }
+    );
+  }
 }
