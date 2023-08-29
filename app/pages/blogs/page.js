@@ -12,8 +12,8 @@ async function getBlogs() {
         }
     })
     const jsonResponse = await response.json()
-    console.log(jsonResponse)
-    return jsonResponse
+    console.log('response is', jsonResponse)
+    return jsonResponse.post
 }
 
 export default async function Page() {
@@ -21,7 +21,7 @@ export default async function Page() {
     return (
         <>
             {
-                blogs.map(blog => {
+                blogs && blogs.map(blog => {
                     return <Post key={blog?.title} blog={blog} />
                 })
             }

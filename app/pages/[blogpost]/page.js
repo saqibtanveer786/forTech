@@ -17,7 +17,7 @@ export default async function page({ params }) {
       <div class="container mx-auto px-12">
         <section class="grid md:grid-cols-1 mt-12">
           <main class="col-span-2 relative md:mr-2">
-            <h1 class="text-3xl font-bold text-gray-800">{blog.title}</h1>
+            <h1 class="text-3xl font-bold text-gray-800">{blog?.title}</h1>
             <div class="flex mt-2 my-2 items-center gap-4">
               <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
               <div class="text-gray-500">
