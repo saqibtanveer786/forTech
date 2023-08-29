@@ -1,9 +1,0 @@
-.blogBriefDescriptionBox {
-  width: 80vw;
-  height: fit-content;
-
-  padding-block: 50px;
-
-  display: flex;
-  flex-direction: column;
-}

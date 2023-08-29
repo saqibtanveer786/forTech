@@ -2,6 +2,8 @@
 import TopSection from '../components/TopSection';
 import FeaturedPosts from '../components/FeaturedPosts'
 
+import 'react-quill/dist/quill.snow.css'
+
 export default function Home() {
   return (
     <>

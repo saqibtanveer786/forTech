@@ -1,5 +1,6 @@
 //Importing  CSS File
 import './globals.css';
+import 'react-quill/dist/quill.snow.css'
 
 //Importing Components
 import Header from '../components/Header';

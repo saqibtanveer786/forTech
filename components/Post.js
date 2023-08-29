@@ -20,7 +20,7 @@ export default function Post({ blog }) {
   return (
     <>
       <Link href={`/pages/${blog?.title}`}>
-        <div className="grid place-items-start lg:place-items-start lg:grid-cols-2 border rounded-lg gap-4 h-auto p-4 w-fit my-6 lg:max-w-6xl sm:mx-auto mx-4">
+        <div className="grid place-items-start lg:place-items-start lg:grid-cols-2 border rounded-lg gap-4 h-auto p-4 w-fit my-6 lg:w-[55%] sm:mx-auto mx-4">
           <div className="max-w-2xl h-auto flex items-center relative ">
             <Image src={"/img/general.jpg"} alt='placeholder image' width={400} height={400} />
             <div className="bg-blue-400 w-24 pt-1 h-8 text-gray-50 font-semibold text-center absolute top-0">
@@ -28,7 +28,7 @@ export default function Post({ blog }) {
             </div>
           </div>
           <div className=''>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer ">How to create tailwind Template</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer ">{blog?.title}</h3>
             <div className="flex gap-2 mb-2 lg:justify-start">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
               <div className="text-sm text-gray-600">

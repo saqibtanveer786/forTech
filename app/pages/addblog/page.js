@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
-
+import React, { useState, useRef, useMemo } from 'react';
+import JoditEditor from 'jodit-react';
 // Importing editor
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import the styles
@@ -8,9 +8,10 @@ import 'react-quill/dist/quill.snow.css'; // Import the styles
 // Importing serverActions
 import { pusblishBlog } from '../../../serverActions/serverAction'
 
-export default function Addblog() {
-  const [data, setData] = useState();
-  const [content, setContent] = useState();
+export default function Addblog(pl) {
+  const [data, setData] = useState(); const editor = useRef(null);
+  const [content, setContent] = useState('');
+
 
   // Function for getting input fields data
   function getData(e) {
@@ -19,18 +20,18 @@ export default function Addblog() {
   }
 
   // Editor Options
-  const modules = {
-    toolbar: [
-      [{ 'header': ['1', '2', '3', '4', '5', '6'] }, { 'font': [] }],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      [{ 'align': 'left' }, { 'align': 'center' }, { 'align': 'right' }],
-      ['bold', 'italic', 'underline'],
-      ['blockquote', 'code-block'],
-      ['link', 'image'], // Include the image button
-      [{ 'color': [], 'background': [] }],
-      ['clean']
-    ],
-  };
+  // const modules = {
+  //   toolbar: [
+  //     [{ 'header': '1' }, { 'font': [] }],
+  //     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+  //     [{ 'align': 'left' }, { align: 'center' }, { 'align': 'right' }],
+  //     ['bold', 'italic', 'underline'],
+  //     ['blockquote', 'code-block'],
+  //     ['link', 'image'], // Include the image button
+  //     [{ 'color': [], 'background': [] }],
+  //     ['clean']
+  //   ],
+  // };
 
   return (
     <>
@@ -68,13 +69,18 @@ export default function Addblog() {
           onChange={getData}
         />
         <>
-          <ReactQuill
+          {/* <ReactQuill
             theme='snow'
             value={content}
             name='content'
             onChange={setContent}
             modules={modules}
+          /> */}<JoditEditor
+            value={content}
+            tabIndex={1}
+            onChange={setContent}
           />
+          <div dangerouslySetInnerHTML={{ __html: content || '<p>This blog does not have content</p>' }} ></div>
         </>
         <button
           type="submit"

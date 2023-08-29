@@ -1,35 +1,31 @@
 const { NextRequest, NextResponse } = require('next/server');
 const fs = require('fs');
 
+import { PrismaClient } from '@prisma/client';
+
 async function POST(request) {
   try {
-    const data = await request.json();
+    const { title, description, image, content } = await request.json();
+    const prisma = new PrismaClient();
 
-    // Reading the blog directory and checking either blog with same title already exists
-    const dir = await fs.readdirSync('blogs', 'utf-8');
-    if (dir.includes(`${data.title}.json`)) {
-      return NextResponse.json('this file had already included');
-    }
-
-    console.log(typeof data);
-    console.log(data);
-
-    const addFile = await fs.writeFileSync(
-      `blogs/${data.title}.json`,
-      JSON.stringify(data)
-    );
+    // Adding post
+    const addPost = await prisma.post.create({
+      data: {
+        title: 'title',
+        content: 'content',
+        image: 'https://images.freeimages.com/images/large-previews/4ca/maldives-unseen-beauty-1641934.jpg'
+      },
+    })
 
     return NextResponse.json(
-      data,
-      { status: 200 }
+      addPost || { message: "Error while adding" },
+      { status: addPost ? 200 : 404 }
     );
   } catch (error) {
-    console.log(error);
+    console.log('erroris', error);
     return NextResponse.json(error);
   }
 }
-
-
 
 module.exports = {
   POST,

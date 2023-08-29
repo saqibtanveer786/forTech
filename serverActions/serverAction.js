@@ -5,6 +5,7 @@ export async function pusblishBlog(data, content) {
     data.content = content
     const url = 'http://localhost:3000/api/addblog';
     const response = await fetch(url, {
+        cache: 'no-cache',
         method: 'post',
         headers: {
             'content-type': 'application/json',
@@ -13,7 +14,7 @@ export async function pusblishBlog(data, content) {
     });
 
     const jsonresponse = await response.json();
-    console.log(jsonresponse);
+    console.log('responseis', jsonresponse)
 }
 
 // Get a single blog
@@ -25,6 +26,7 @@ export async function getBlog(title) {
         }
     );
     const jsonResponse = await response.json();
+    console.log(jsonResponse)
     return jsonResponse.data;
 }
 

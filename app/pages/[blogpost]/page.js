@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-quill/dist/quill.snow.css'; // Import the styles
 
 // Importing server actions
 import { getBlog } from '../../../serverActions/serverAction';
