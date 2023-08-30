@@ -25,5 +25,8 @@
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3"
+  },
+  "prisma": {
+    "seed": "--compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

@@ -9,7 +9,7 @@ export async function GET() {
 
     return NextResponse.json(
       posts ? { posts } : { message: "Error While Getting Posts" },
-      { status: 200 }
+      { status: posts ? 200 : 404 }
     );
 
   } catch (error) {
