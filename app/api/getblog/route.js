@@ -1,29 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import * as fs from 'fs';
+import prisma from '../../../lib/prisma';
 
 export async function GET(req) {
   try {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
-    const title = searchParams.get('name');
-
-    const fileData = await fs.readFileSync(`blogs/${title}.json`, 'utf-8');
-
-    if (!fileData) {
-      return NextResponse.json(
-        { Error: 'No Such Blog', success: false },
-        { status: 404 }
-      );
-    }
+    const stringId = searchParams.get('id');
+    const id = parseInt(stringId)
+    console.log(id)
+    console.log(typeof id)
+    // Adding post
+    const addPost = await prisma.post.findUnique({
+      where: {
+        id: id
+      },
+    })
 
     return NextResponse.json(
-      { data: JSON.parse(fileData), success: true },
-      { status: 200 }
+      addPost ? { data: addPost } : { message: "Error while getting blog" },
+      { status: addPost ? 200 : 404 }
     );
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
-      { Error: 'Internal Server Error', success: false },
+      { message: 'Internal Server Error' },
       { status: 500 }
     );
   }

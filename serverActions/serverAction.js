@@ -18,11 +18,14 @@ export async function pusblishBlog(data, content) {
 }
 
 // Get a single blog
-export async function getBlog(title) {
+export async function getBlog(id) {
     const response = await fetch(
-        `http://localhost:3000/api/getblog?name=${title}`,
+        `http://localhost:3000/api/getblog?id=${id}`,
         {
             cache: 'no-store',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
     );
     const jsonResponse = await response.json();

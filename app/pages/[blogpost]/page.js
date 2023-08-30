@@ -11,7 +11,9 @@ import Image from 'next/image';
 import Article from '../../../components/Article'
 
 export default async function page({ params }) {
+  console.log(params.blogpost)
   const blog = await getBlog(params.blogpost);
+  console.log('blogis', blog.image)
   return (
     <>
       <div class="container mx-auto px-12">
@@ -26,7 +28,7 @@ export default async function page({ params }) {
             </div>
 
             <div class="flex justify-center">
-              <Image src="/img/general.jpg" class="cursor-pointer" alt="placeholder tag" height={600} width={600} />
+              <Image src={blog?.image || "/img/general.jpg"} class="cursor-pointer" alt="placeholder tag" height={600} width={600} />
             </div>
             <Article content={blog?.content} />
           </main>

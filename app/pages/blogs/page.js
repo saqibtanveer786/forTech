@@ -12,8 +12,7 @@ async function getBlogs() {
         }
     })
     const jsonResponse = await response.json()
-    console.log('response is', jsonResponse)
-    return jsonResponse.post
+    return jsonResponse.posts
 }
 
 export default async function Page() {
@@ -22,7 +21,7 @@ export default async function Page() {
         <>
             {
                 blogs && blogs.map(blog => {
-                    return <Post key={blog?.title} blog={blog} />
+                    return <Post key={blog?.id} blog={blog} />
                 })
             }
         </>
