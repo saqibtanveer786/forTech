@@ -19,15 +19,16 @@ export default function Post({ blog }) {
   // }
   return (
     <>
-      <Link href={`/pages/${blog?.id}`}>
-        <div className="grid place-items-start lg:place-items-start lg:grid-cols-2 border rounded-lg gap-4 h-auto p-4 w-fit my-6 lg:w-[55%] sm:mx-auto mx-4">
-          <div className="max-w-2xl h-auto flex items-center relative ">
-            <Image src={blog.image || "/img/general.jpg"} alt='placeholder image' height={300} width={300} />
+      <div className='mx-2'>
+
+        <Link href={`/pages/${blog?.id}`} className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto">
+          <div className="w-[300px] h-[200px] relative ">
+            <Image src={blog.image || "/img/general.jpg"} alt='placeholder image' fill={'cover'} />
             <div className="bg-blue-400 w-24 pt-1 h-8 text-gray-50 font-semibold text-center absolute top-0">
               Javascript
             </div>
           </div>
-          <div className=''>
+          <div className='w-[300px] lg:w-[450px]'>
             <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer ">{blog?.title}</h3>
             <div className="flex gap-2 mb-2 lg:justify-start">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
@@ -38,8 +39,8 @@ export default function Post({ blog }) {
             </div>
             <p className="text-gray-700">{blog?.briefdescription}</p>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div >
     </>
   );
 }
