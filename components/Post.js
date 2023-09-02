@@ -32,13 +32,13 @@ export default function Post({ blog }) {
           </div>
           <div className='w-[300px] lg:w-[450px]'>
             <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer ">{blog?.title}</h3>
-            <div className="flex gap-2 mb-2 lg:justify-start">
+            {/* <div className="flex gap-2 mb-2 lg:justify-start">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
               <div className="text-sm text-gray-600">
                 <h4>By Saqib Tanveer</h4>
                 <h4>Updated over 2 weeks ago</h4>
               </div>
-            </div>
+            </div> */}
             <p className="text-gray-700">{blog?.briefdescription}</p>
           </div>
         </Link>
