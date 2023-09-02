@@ -25,7 +25,7 @@ export default async function page({ params }) {
               </div>
             </div>
 
-            <Image src={blog?.image || "/img/general.jpg"} alt="placeholder tag" height={400} width={400} className='mx-auto' />
+            <Image src={`/images/${blog?.image}` || "/img/general.jpg"} alt="placeholder tag" height={400} width={400} className='mx-auto' />
             <Article content={blog?.content} />
           </main>
         </section>
