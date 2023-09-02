@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 // nextjs imports
 import Image from 'next/image'
 
-export default function About({ children, content }) {
+export default function About() {
   // const { name, avatar, occupation, company, email, twitter, linkedin, github } = content
 
   return (
