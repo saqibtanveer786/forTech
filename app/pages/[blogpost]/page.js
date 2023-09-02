@@ -11,25 +11,21 @@ import Image from 'next/image';
 import Article from '../../../components/Article'
 
 export default async function page({ params }) {
-  console.log(params.blogpost)
   const blog = await getBlog(params.blogpost);
-  console.log('blogis', blog.image)
   return (
     <>
-      <div class="container mx-auto px-12">
-        <section class="grid md:grid-cols-1 mt-12">
-          <main class="col-span-2 relative md:mr-2">
-            <h1 class="text-3xl font-bold text-gray-800">{blog?.title}</h1>
-            <div class="flex mt-2 my-2 items-center gap-4">
-              <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
-              <div class="text-gray-500">
-                By <span class="text-gray-800 cursor-pointer">Saqib Tanveer</span> on 14th April 2020
+      <div className="container mx-auto px-12">
+        <section className="grid md:grid-cols-1 mt-12">
+          <main className="col-span-2 relative md:mr-2">
+            <h1 className="text-3xl font-bold text-gray-800">{blog?.title}</h1>
+            <div className="flex mt-2 my-2 items-center gap-4">
+              <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+              <div className="text-gray-500">
+                By <span className="text-gray-800 cursor-pointer">Saqib Tanveer</span> on 14th April 2020
               </div>
             </div>
 
-            <div class="flex justify-center">
-              <Image src={blog?.image || "/img/general.jpg"} class="cursor-pointer" alt="placeholder tag" height={600} width={600} />
-            </div>
+            <Image src={blog?.image || "/img/general.jpg"} alt="placeholder tag" height={400} width={400} className='mx-auto' />
             <Article content={blog?.content} />
           </main>
         </section>
