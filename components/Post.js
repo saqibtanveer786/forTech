@@ -4,6 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import path from 'path';
+
 export default function Post({ blog }) {
   // async function deleting() {
   //   const url = `http://localhost:3000/api/deleteblog?slug=${blog.slug}`;
@@ -23,7 +25,7 @@ export default function Post({ blog }) {
 
         <Link href={`/pages/${blog?.id}`} className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto">
           <div className="w-[300px] h-[200px] relative ">
-            <Image src={blog.image || "/img/general.jpg"} alt='placeholder image' fill={'cover'} />
+            <Image src={`/images/${blog.image}` || "/img/general.jpg"} alt='placeholder image' fill={'cover'} />
             <div className="bg-blue-400 w-24 pt-1 h-8 text-gray-50 font-semibold text-center absolute top-0">
               Javascript
             </div>
