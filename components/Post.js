@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Importing from next
 import Image from 'next/image';
@@ -22,6 +23,8 @@ export default function Post({ blog }) {
   const [alertStatus, setAlertStatus] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const router = useRouter()
+
   return (
     <>
       <div className='mx-2 relative'>
@@ -42,6 +45,7 @@ export default function Post({ blog }) {
                   setShowAlert(true);
                   setAlertStatus("Success");
                   setAlertMessage(response.message);
+                  router.refresh()
                 }
                 if (!response.status) {      //Incase of error
                   setIsLoading(false);
