@@ -56,12 +56,12 @@ async function POST(request) {
     })
 
     return NextResponse.json(
-      { post: addPost, message: "Blog Added Successfully", status: true } || { message: "Error While Adding", status: false },
+      addPost ? { post: addPost, message: "Blog Added Successfully", status: true } : { message: "Error While Adding", status: false },
       { status: addPost ? 200 : 404 }
     );
   } catch (error) {
     console.log('erroris', error);
-    return NextResponse.json({ message: error.message, status: false });
+    return NextResponse.json({ message: "An Unexpected Error Occured", status: false });
   }
 }
 

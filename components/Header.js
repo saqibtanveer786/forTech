@@ -32,7 +32,7 @@ export default function Header() {
       <nav className={`md:mt-0 transition delay-300 ease-out md:px-4 text-center text-white sm:text-black bg-black sm:bg-white ${!showNavbar && 'hidden'} sm:block`}>
         <ul id="menu" className=" w-full py-4 md:py-0 md:mt-0 z-40 absolute   md:relative mt-3 pl-4 flex flex-col  md:flex   md:flex-row m-0 p-0  text-lg md:items-center gap-8">
           <li onClick={toggleNavbar}><Link href="/pages/blogs" className="hover:text-blue-400 ">Blog</Link></li>
-          <li onClick={toggleNavbar}><Link href="/pages/about" className="hover:text-blue-400 ">About Us</Link></li>
+          {/* <li onClick={toggleNavbar}><Link href="/pages/about" className="hover:text-blue-400 ">About Us</Link></li> */}
           <li onClick={toggleNavbar}><Link href="/pages/contact" className="hover:text-blue-400 font-bold">Contact Us</Link></li>
           <li onClick={toggleNavbar}><Link href="/pages/privacy-policy" className="hover:text-blue-400 ">Privacy policy</Link></li>
           <li onClick={toggleNavbar}><Link href="/pages/addblog" className="hover:text-blue-400 ">Add Blog</Link></li>

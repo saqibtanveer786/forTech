@@ -14,10 +14,9 @@ import { pusblishBlog } from '../../../lib/serverAction'
 export default function Addblog(pl) {
   const [data, setData] = useState();
   const [content, setContent] = useState('');
-  const [alertColor, setAlertColor] = useState('green')
   const [showAlert, setShowAlert] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('Successfully addedd')
-  const [alertStatus, setAlertStatus] = useState('Success')
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertStatus, setAlertStatus] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   // Function for getting input fields data
@@ -41,9 +40,14 @@ export default function Addblog(pl) {
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
+  function resetInputFields() {
+    setData({})
+    setContent('')
+  }
+
   return (
     <>
-      <Alert show={showAlert} color={alertColor} message={alertMessage} status={alertStatus} setShow={setShowAlert} />
+      <Alert show={showAlert} message={alertMessage} status={alertStatus} setShow={setShowAlert} />
       <Loader isLoading={isLoading} />
       <section className='w-[90%] mx-auto my-14'>
         <h1 className='text-2xl font-bold'>Add Blog</h1>
@@ -87,20 +91,19 @@ export default function Addblog(pl) {
           onClick={async (e) => {
             e.preventDefault()
             setIsLoading(true)
-            const res = await pusblishBlog(data, content)
-            if (res.status) {       //Incase of success
+            const response = await pusblishBlog(data, content)
+            if (response.status) {       //Incase of success
               setIsLoading(false);
               setShowAlert(true);
-              setAlertColor("green");
-              setAlertMessage(res.message);
               setAlertStatus("Success");
+              setAlertMessage(response.message);
+              resetInputFields()
             }
-            if (!res.status) {      //Incase of error
+            if (!response.status) {      //Incase of error
               setIsLoading(false);
               setShowAlert(true);
-              setAlertColor("red");
-              setAlertMessage(res.message);
               setAlertStatus("Error");
+              setAlertMessage(response.message);
             }
           }}
           type="submit"

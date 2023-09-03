@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 
 // Importing from next
 import Image from 'next/image';
@@ -12,20 +12,43 @@ import { RxUpdate } from 'react-icons/rx';
 // Import server action
 import { deletePost } from '../lib/serverAction';
 
+// Importing components
+import Alert from './Alert';
+import Loader from './Loader';
+
 export default function Post({ blog }) {
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertMessage, setAlertMessage] = useState('')
+  const [alertStatus, setAlertStatus] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <>
-      <div className='mx-2'>
+      <div className='mx-2 relative'>
+        <Loader isLoading={isLoading} className={'top-[-135px] left-0 bg-transparent z-40'} />
+        <Alert show={showAlert} message={alertMessage} status={alertStatus} setShow={setShowAlert} />
 
         <div className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative">
 
-          {/* update and delete icons */}
-          <div className='absolute bottom-2 right-2'>
+          <div className='absolute bottom-2 right-2'>   {/* update and delete icons */}
             <MdDeleteOutline
               size={25}
               style={{ marginBlock: '5px', cursor: 'pointer' }}
-              onClick={() => {
-                deletePost(blog.id)
+              onClick={async () => {
+                setIsLoading(true);
+                const response = await deletePost(blog.id)
+                if (response.status) {       //Incase of success
+                  setIsLoading(false);
+                  setShowAlert(true);
+                  setAlertStatus("Success");
+                  setAlertMessage(response.message);
+                }
+                if (!response.status) {      //Incase of error
+                  setIsLoading(false);
+                  setShowAlert(true);
+                  setAlertStatus("Error");
+                  setAlertMessage(response.message);
+                }
               }}
             />
             <RxUpdate
@@ -33,16 +56,16 @@ export default function Post({ blog }) {
               style={{ marginBlock: '5px', cursor: 'pointer' }} />
           </div>
 
-
-          <div className="w-[300px] h-[200px] relative ">
+          <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}
             <Image src={`/images/${blog.image}` || "/img/general.jpg"} alt='placeholder image' fill={'cover'} />
             <div className="bg-blue-400 w-24 pt-1 h-8 text-gray-50 font-semibold text-center absolute top-0">
               Javascript
             </div>
           </div>
-          <div className='w-[300px] lg:w-[450px]'>
+
+          <div className='w-[300px] lg:w-[450px]'>        {/* Title Col */}
             <Link href={`/pages/${blog.id}`}>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer ">{blog?.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer hover:underline">{blog?.title}</h3>
             </Link>
             {/* <div className="flex gap-2 mb-2 lg:justify-start">
               <div className="w-10 h-10 rounded-full bg-gray-300"></div>
