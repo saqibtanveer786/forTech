@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'
 export default function Header() {
   const [showNavbar, setShowNavbar] = useState(false)
 
@@ -16,7 +17,7 @@ export default function Header() {
         {/* name and logo */}
         <div className="flex text-3xl font-normal relative  items-center">
           <Link href="/">
-            forTech
+            <Image src={'/logo.png'} alt='forTech' width={150} height={150} />
           </Link>
         </div>
 

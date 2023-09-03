@@ -4,7 +4,7 @@ import React from 'react'
 import Post from '../../../components/Post'
 
 // Importing server actions
-import { getBlogs } from '../../../serverActions/serverAction'
+import { getBlogs } from '../../../lib/serverAction'
 
 export default async function Page() {
     const blogs = await getBlogs()

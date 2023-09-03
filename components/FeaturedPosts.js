@@ -2,7 +2,7 @@ import React from 'react'
 
 // Importing components
 import Post from './Post'
-import { getBlogs } from '../serverActions/serverAction'
+import { getBlogs } from '../lib/serverAction'
 
 export default async function FeaturedPosts() {
     const blogs = await getBlogs()
