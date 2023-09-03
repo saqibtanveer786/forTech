@@ -1,5 +1,5 @@
 "use client"
-import React, { useTransition } from 'react';
+import React from 'react';
 
 // Importing from next
 import Image from 'next/image';
@@ -13,7 +13,6 @@ import { RxUpdate } from 'react-icons/rx';
 import { deletePost } from '../lib/serverAction';
 
 export default function Post({ blog }) {
-  let [isPending, startTransition] = useTransition()
   return (
     <>
       <div className='mx-2'>
