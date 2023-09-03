@@ -38,14 +38,13 @@ async function POST(request) {
         return relativeImagePath = fileName;
       }
       catch (error) {
-        console.log('image store error', error)
         return false
       }
     }
 
     const imagePath = await storeImage()
     if (!imagePath)
-      return NextResponse.json({ message: 'Failed to Store Image' }, { status: 404 })
+      return NextResponse.json({ message: 'Failed to Store Image', status: false }, { status: 404 })
 
     // Adding post
     const addPost = await prisma.post.create({
@@ -57,13 +56,12 @@ async function POST(request) {
     })
 
     return NextResponse.json(
-      addPost || { message: "Error while adding" },
+      { post: addPost, message: "Blog Added Successfully", status: true } || { message: "Error While Adding", status: false },
       { status: addPost ? 200 : 404 }
     );
-    return NextResponse.json('ok')
   } catch (error) {
     console.log('erroris', error);
-    return NextResponse.json(error);
+    return NextResponse.json({ message: error.message, status: false });
   }
 }
 

@@ -15,7 +15,7 @@ export default async function page({ params }) {
   return (
     <>
       <div className="container mx-auto px-12">
-        <section className="grid md:grid-cols-1 mt-12">
+        <section className="grid md:grid-cols-1 mt-12 mb-12">
           <main className="col-span-2 relative md:mr-2">
             <h1 className="text-3xl font-bold text-gray-800">{blog?.title}</h1>
             {/* <div className="flex mt-2 my-2 items-center gap-4">

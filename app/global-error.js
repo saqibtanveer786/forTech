@@ -6,7 +6,7 @@ export default function GlobalError({
 }) {
     return (
         <html>
-            <body className="h-screen grid place-items-center mt-[-300px]">
+            <body className="h-screen grid place-items-center mt-[-300px] gap-3">
                 <h2>Something went wrong!</h2>
                 <button onClick={() => reset()}>Try again</button>
             </body>
