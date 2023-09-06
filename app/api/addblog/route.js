@@ -4,7 +4,7 @@ const { NextRequest, NextResponse } = require('next/server');
 import path from 'path';
 import fs from 'fs';
 
-import prisma from '../../../lib/prisma'
+import { PrismaClient } from '@prisma/client';
 
 import multer from 'multer';
 
@@ -14,6 +14,7 @@ import upload from '../../../lib/multerUploadImages'
 async function POST(request) {
   try {
     const { image, title, briefdescription, content } = await request.json();
+    const prisma = new PrismaClient()
 
     async function storeImage() {
       try {

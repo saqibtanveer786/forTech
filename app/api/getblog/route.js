@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import prisma from '../../../lib/prisma';
+import { PrismaClient } from '@prisma/client';
 
 export async function GET(req) {
   try {
@@ -8,8 +8,8 @@ export async function GET(req) {
     const searchParams = new URLSearchParams(url.search);
     const stringId = searchParams.get('id');
     const id = parseInt(stringId)
-    console.log(id)
-    console.log(typeof id)
+
+    const prisma = new PrismaClient()
     // Adding post
     const addPost = await prisma.post.findUnique({
       where: {
