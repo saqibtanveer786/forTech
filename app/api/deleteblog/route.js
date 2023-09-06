@@ -1,5 +1,5 @@
 const { NextRequest, NextResponse } = require('next/server');
-import prisma from '../../../lib/prisma';
+import { PrismaClient } from '@prisma/client';
 
 import fs from 'fs';
 import path from 'path';
@@ -9,6 +9,8 @@ async function DELETE(request) {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
     const id = parseInt(searchParams.get('id'))
+
+    const prisma = new PrismaClient()
 
     // deleting post
     const deletePost = await prisma.post.delete({
