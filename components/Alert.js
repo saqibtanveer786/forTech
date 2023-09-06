@@ -3,7 +3,7 @@ import React from 'react'
 export default function Alert({ show, message, status, setShow }) {
     setTimeout(() => {
         setShow(false)
-    }, 3000);
+    }, 8000);
     return (
         <>
             {show && status === 'Success' && (<div className={`bg-green-100 border border-green-400 text-green-700 px-6 py-3 rounded relative my-4`}>

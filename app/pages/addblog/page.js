@@ -11,7 +11,7 @@ import Loader from '../../../components/Loader'
 // Importing serverActions
 import { pusblishBlog } from '../../../lib/serverAction'
 
-export default function Addblog(pl) {
+export default function Addblog() {
   const [data, setData] = useState();
   const [content, setContent] = useState('');
   const [showAlert, setShowAlert] = useState(false)
