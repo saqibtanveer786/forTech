@@ -6,8 +6,6 @@ async function PUT(request) {
         const url = new URL(request.url);
         const searchParams = new URLSearchParams(url.search);
         const tag = searchParams.get('tag')
-        console.log('tagistag', tag)
-        console.log(typeof tag)
         // Revalidating
         revalidateTag(tag)
 

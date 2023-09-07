@@ -7,10 +7,10 @@ import { submitForm } from '../../../lib/serverAction'
 export default function Contact() {
   const [data, setData] = useState();
 
-  function inputChange(e) {
-    e.preventDefault();
-    setData({ ...data, [e.target.name]: e.target.value });
-  }
+  // function inputChange(e) {
+  //   e.preventDefault();
+  //   setData({ ...data, [e.target.name]: e.target.value });
+  // }
   return (
     <>
       <section className="">
@@ -40,24 +40,42 @@ export default function Contact() {
             </div>
             <div className="md:w-1/2 order-1">
               <h2 className="text-4xl font-bold mb-4 tracking-wider text-blue-600">Get In Touch</h2>
-              <form className="w-full">
+              <form action={submitForm} method='post' className="w-full" encType='multipart/form-data '>
                 <div className="w-full">
                   <label className="text-gray-600 font-medium md:my-2">Your Message</label>
-                  <textarea placeholder="your message" cols="5" rows="6" className="outline-none focus:outline-none border   text-xl   p-4 text-gray-800  w-full"></textarea>
+                  <textarea
+                    placeholder="your message"
+                    cols="5"
+                    rows="6"
+                    className="outline-none focus:outline-none border   text-xl   p-4 text-gray-800  w-full"
+                    name='message'
+                  ></textarea>
 
                 </div>
                 <div className="w-full">
                   <label className="text-gray-600 font-medium md:my-2">Your Email</label>
-                  <input type="email" className="w-full  p-2 my-2 px-4 border focus:border-b-4  text-xl text-gray-800  focus:outline-none" placeholder="your email" required="true " />
+                  <input
+                    type="email"
+                    className="w-full  p-2 my-2 px-4 border focus:border-b-4  text-xl text-gray-800  focus:outline-none" placeholder="your email"
+                    required="true"
+                    name='email'
+                  />
 
                 </div>
                 <div className="w-full mb-4 md:mb-0">
                   <label className="text-gray-600 font-medium md:my-2">Your Name</label>
-                  <input type="text" className="w-full  p-2 px-4 border  text-xl text-gray-800  focus:outline-none" placeholder="your name" required="true " />
-
-
+                  <input
+                    type="text"
+                    className="w-full  p-2 px-4 border  text-xl text-gray-800  focus:outline-none"
+                    placeholder="your name"
+                    required="true"
+                    name='name'
+                  />
                 </div>
-                <button className="my-2 py-3 delay-200 text-md uppercase  tracking-wider font-medium text-center w-full rounded-full bg-transparent text-blue-900 hover:text-white hover:bg-blue-700 border border-blue-900  focus:outline-none " type="submit">Send</button>
+                <button
+                  className="my-2 py-3 delay-200 text-md uppercase  tracking-wider font-medium text-center w-full rounded-full bg-transparent text-blue-900 hover:text-white hover:bg-blue-700 border border-blue-900  focus:outline-none "
+                  type="submit"
+                >Send</button>
               </form>
             </div>
           </section>
