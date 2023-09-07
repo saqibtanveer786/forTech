@@ -4,13 +4,13 @@ const { NextRequest, NextResponse } = require('next/server');
 import path from 'path';
 import fs from 'fs';
 
-// import { PrismaClient } from '@prisma/client';
-import prisma from '../../../lib/prisma'
+import { PrismaClient } from '@prisma/client';
+// import prisma from '../../../lib/prisma'
 
 async function POST(request) {
   try {
     const { image, title, briefdescription, content } = await request.json();
-    // const prisma = new PrismaClient()
+    const prisma = new PrismaClient()
 
     async function storeImage() {
       try {
