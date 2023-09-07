@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 // import prisma from '../../../lib/prisma';
 
-export async function GET() {
+export async function POST() {
   try {
-    const prisma = new PrismaClient()
+    const prisma = await new PrismaClient()
     // Getting Posts
     const posts = await prisma.post.findMany()
 
