@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // Importing server action
-import { submitForm } from '../../../lib/serverAction'
+// import { submitForm } from '../../../lib/serverAction'
 
 export default function Contact() {
   const [data, setData] = useState();
@@ -40,7 +40,7 @@ export default function Contact() {
             </div>
             <div className="md:w-1/2 order-1">
               <h2 className="text-4xl font-bold mb-4 tracking-wider text-blue-600">Get In Touch</h2>
-              <form action={submitForm} method='post' className="w-full" encType='multipart/form-data '>
+              <form className="w-full" >
                 <div className="w-full">
                   <label className="text-gray-600 font-medium md:my-2">Your Message</label>
                   <textarea
