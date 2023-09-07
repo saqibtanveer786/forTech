@@ -15,7 +15,6 @@ export async function POST() {
     );
 
   } catch (error) {
-    throw new Error(`Error on server at route blogs which is for getting all blogs. Error is: ${error}`)
     console.log(error);
     return NextResponse.json(
       { message: "An Unexpected Error Occured" },
