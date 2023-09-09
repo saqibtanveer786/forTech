@@ -4,7 +4,7 @@ const { NextRequest, NextResponse } = require('next/server');
 import path from 'path';
 import fs from 'fs';
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../../../prisma/generated/client';
 // import prisma from '../../../lib/prisma'
 
 async function POST(request) {
