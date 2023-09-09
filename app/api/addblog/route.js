@@ -58,7 +58,7 @@ async function POST(request) {
     );
   } catch (error) {
     console.log('erroris', error);
-    return NextResponse.json({ message: "An Unexpected Error Occured", status: false });
+    return NextResponse.json({ message: `An Unexpected Error Occured error is: ${error}`, status: false });
   }
 }
 

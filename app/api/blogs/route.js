@@ -18,7 +18,7 @@ export async function POST() {
     console.log(error);
     return NextResponse.json(
       {
-        message: "An Unexpected Error Occured",
+        message: `An Unexpected Error Occured error is: ${error}`,
         error: error.message
       },
       { status: 500 }
