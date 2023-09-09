@@ -17,7 +17,7 @@ async function PUT(request) {
     } catch (error) {
         console.log(error);
         return NextResponse.json(
-            { message: "An Unexpected Error Occured", status: false },
+            { message: `An Unexpected Error Occured error is: ${error}`, status: false },
             { status: 500 }
         );
     }
