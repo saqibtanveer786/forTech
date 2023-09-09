@@ -16,13 +16,12 @@ export async function POST() {
 
   } catch (error) {
     console.log(error);
-    throw new Error("error in getblogs route is: " + error.message)
-    // return NextResponse.json(
-    //   {
-    //     message: "An Unexpected Error Occured",
-    //     error: error.message
-    //   },
-    //   { status: 500 }
-    // )
+    return NextResponse.json(
+      {
+        message: "An Unexpected Error Occured",
+        error: error.message
+      },
+      { status: 500 }
+    )
   }
 }
