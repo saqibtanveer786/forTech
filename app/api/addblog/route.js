@@ -31,17 +31,18 @@ async function POST(request) {
         fs.writeFileSync(imagePathWithFilename, decodedImage);
 
         // Return the path to the saved image (relative to the "public" folder)
-        let relativeImagePath
-        return relativeImagePath = fileName;
+        let relativeImagePath = fileName;
+
+        return { imagepath: relativeImagePath }
       }
       catch (error) {
-        return false
+        return { imagepath: null, error }
       }
     }
 
-    const imagePath = await storeImage()
-    if (!imagePath)
-      return NextResponse.json({ message: 'Failed to Store Image', status: false }, { status: 404 })
+    const ress = await storeImage()
+    if (!ress.imagepath)
+      return NextResponse.json({ message: `Failed to Store Image Error is : ${error}`, status: false }, { status: 404 })
 
     // Adding post
     const addPost = await prisma.post.create({
