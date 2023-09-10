@@ -42,7 +42,7 @@ async function POST(request) {
 
     const ress = await storeImage()
     if (!ress.imagepath)
-      return NextResponse.json({ message: `Failed to Store Image Error is : ${error}`, status: false }, { status: 404 })
+      return NextResponse.json({ message: `Failed to Store Image Error is : ${ress.error}`, status: false }, { status: 404 })
 
     // Adding post
     const addPost = await prisma.post.create({
