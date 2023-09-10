@@ -20,8 +20,8 @@ async function POST(request) {
         const decodedImage = Buffer.from(image, 'base64');
 
         // Define the path where you want to save the image (inside the "public" folder)
-        // const imagePath = "../../../public/images"
-        const imagePath = path.join(process.cwd(), 'public', 'images')
+        const imagePath = "./public/images"
+        // const imagePath = path.join(process.cwd(), 'public', 'images')
 
         console.log("imagePath is: ", imagePath)
 
