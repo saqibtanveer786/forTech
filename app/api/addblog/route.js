@@ -5,6 +5,7 @@ import path from 'path';
 import fs from 'fs';
 
 import { PrismaClient } from '../../../prisma/generated/client';
+import { cwd } from 'process';
 // import prisma from '../../../lib/prisma'
 
 async function POST(request) {
@@ -19,7 +20,10 @@ async function POST(request) {
         const decodedImage = Buffer.from(image, 'base64');
 
         // Define the path where you want to save the image (inside the "public" folder)
-        const imagePath = path.join(process.cwd(), 'public', 'images');
+        // const imagePath = "../../../public/images"
+        const imagePath = path.join(process.cwd(), 'public', 'images')
+
+        console.log("imagePath is: ", imagePath)
 
         // Generate a unique filename (you may use a library like `uuid` for this)
         const fileName = `image_${Date.now()}.png`;
@@ -28,7 +32,10 @@ async function POST(request) {
         const imagePathWithFilename = path.join(imagePath, fileName);
 
         // Write the image to the specified path
+        const dirExists = fs.existsSync(imagePath)
+        if (!dirExists) fs.mkdirSync(imagePath)
         fs.writeFileSync(imagePathWithFilename, decodedImage);
+        console.log(imagePathWithFilename)
 
         // Return the path to the saved image (relative to the "public" folder)
         let relativeImagePath = fileName;
@@ -49,7 +56,7 @@ async function POST(request) {
       data: {
         title,
         content,
-        image: imagePath
+        image: ress.imagepath
       },
     })
 
