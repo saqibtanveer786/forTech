@@ -25,6 +25,8 @@ export default function Post({ blog }) {
 
   const router = useRouter()
 
+  const immage = Buffer.from(blog.image.data).toString('base64')
+
   return (
     <>
       <div className='mx-2 relative'>
@@ -61,10 +63,7 @@ export default function Post({ blog }) {
           </div>
 
           <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}
-            <Image src={`/images/${blog.image}` || "/img/general.jpg"} alt='placeholder image' fill={'cover'} />
-            <div className="bg-blue-400 w-24 pt-1 h-8 text-gray-50 font-semibold text-center absolute top-0">
-              Javascript
-            </div>
+            <Image src={`data:image/jpeg;base64,${immage}`} alt='placeholder image' fill={'cover'} />
           </div>
 
           <div className='w-[300px] lg:w-[450px]'>        {/* Title Col */}

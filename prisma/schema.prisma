@@ -24,7 +24,8 @@ model Post {
   id      Int       @id @default(autoincrement())
   title   String
   content String
-  image   String?
+  briefdescription String?
+  image Bytes
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

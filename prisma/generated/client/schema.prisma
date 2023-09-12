@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgres://adward797:Oe2GDd4uJMIq@ep-holy-flower-30221901.ap-southeast-1.aws.neon.tech/neondb"
 }
 
 model User {
@@ -24,7 +24,8 @@ model Post {
   id      Int       @id @default(autoincrement())
   title   String
   content String
-  image   String?
+  briefdescription String?
+  image Bytes
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

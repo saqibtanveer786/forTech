@@ -1859,7 +1859,8 @@ export namespace Prisma {
     id: number | null
     title: string | null
     content: string | null
-    image: string | null
+    briefdescription: string | null
+    image: Buffer | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1868,7 +1869,8 @@ export namespace Prisma {
     id: number | null
     title: string | null
     content: string | null
-    image: string | null
+    briefdescription: string | null
+    image: Buffer | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1877,6 +1879,7 @@ export namespace Prisma {
     id: number
     title: number
     content: number
+    briefdescription: number
     image: number
     createdAt: number
     updatedAt: number
@@ -1896,6 +1899,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    briefdescription?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -1905,6 +1909,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    briefdescription?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -1914,6 +1919,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    briefdescription?: true
     image?: true
     createdAt?: true
     updatedAt?: true
@@ -2010,7 +2016,8 @@ export namespace Prisma {
     id: number
     title: string
     content: string
-    image: string | null
+    briefdescription: string | null
+    image: Buffer
     createdAt: Date
     updatedAt: Date
     _count: PostCountAggregateOutputType | null
@@ -2038,6 +2045,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    briefdescription?: boolean
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2047,6 +2055,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    briefdescription?: boolean
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2060,7 +2069,8 @@ export namespace Prisma {
       id: number
       title: string
       content: string
-      image: string | null
+      briefdescription: string | null
+      image: Buffer
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["post"]>
@@ -2460,7 +2470,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Post", 'Int'>
     readonly title: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
-    readonly image: FieldRef<"Post", 'String'>
+    readonly briefdescription: FieldRef<"Post", 'String'>
+    readonly image: FieldRef<"Post", 'Bytes'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
   }
@@ -2778,6 +2789,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     content: 'content',
+    briefdescription: 'briefdescription',
     image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -2858,6 +2870,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Bytes'
+   */
+  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+  /**
+   * Reference to a field of type 'Bytes[]'
+   */
+  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2930,7 +2956,8 @@ export namespace Prisma {
     id?: IntFilter<"Post"> | number
     title?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
-    image?: StringNullableFilter<"Post"> | string | null
+    briefdescription?: StringNullableFilter<"Post"> | string | null
+    image?: BytesFilter<"Post"> | Buffer
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
   }
@@ -2939,7 +2966,8 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrderInput | SortOrder
+    briefdescription?: SortOrderInput | SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2951,7 +2979,8 @@ export namespace Prisma {
     NOT?: PostWhereInput | PostWhereInput[]
     title?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
-    image?: StringNullableFilter<"Post"> | string | null
+    briefdescription?: StringNullableFilter<"Post"> | string | null
+    image?: BytesFilter<"Post"> | Buffer
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
   }, "id">
@@ -2960,7 +2989,8 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrderInput | SortOrder
+    briefdescription?: SortOrderInput | SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PostCountOrderByAggregateInput
@@ -2977,7 +3007,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Post"> | number
     title?: StringWithAggregatesFilter<"Post"> | string
     content?: StringWithAggregatesFilter<"Post"> | string
-    image?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    briefdescription?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    image?: BytesWithAggregatesFilter<"Post"> | Buffer
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
@@ -3031,7 +3062,8 @@ export namespace Prisma {
   export type PostCreateInput = {
     title: string
     content: string
-    image?: string | null
+    briefdescription?: string | null
+    image: Buffer
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3040,7 +3072,8 @@ export namespace Prisma {
     id?: number
     title: string
     content: string
-    image?: string | null
+    briefdescription?: string | null
+    image: Buffer
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3048,7 +3081,8 @@ export namespace Prisma {
   export type PostUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: BytesFieldUpdateOperationsInput | Buffer
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3057,7 +3091,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: BytesFieldUpdateOperationsInput | Buffer
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3066,7 +3101,8 @@ export namespace Prisma {
     id?: number
     title: string
     content: string
-    image?: string | null
+    briefdescription?: string | null
+    image: Buffer
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3074,7 +3110,8 @@ export namespace Prisma {
   export type PostUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: BytesFieldUpdateOperationsInput | Buffer
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3083,7 +3120,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: BytesFieldUpdateOperationsInput | Buffer
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3240,10 +3278,18 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BytesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel>
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesFilter<$PrismaModel> | Buffer
+  }
+
   export type PostCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    briefdescription?: SortOrder
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3257,6 +3303,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    briefdescription?: SortOrder
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3266,6 +3313,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    briefdescription?: SortOrder
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -3273,6 +3321,16 @@ export namespace Prisma {
 
   export type PostSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type BytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel>
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Buffer
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -3293,6 +3351,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BytesFieldUpdateOperationsInput = {
+    set?: Buffer
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3429,6 +3491,23 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBytesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel>
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesFilter<$PrismaModel> | Buffer
+  }
+
+  export type NestedBytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Buffer | BytesFieldRefInput<$PrismaModel>
+    in?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    notIn?: Buffer[] | ListBytesFieldRefInput<$PrismaModel>
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Buffer
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
   }
 
 

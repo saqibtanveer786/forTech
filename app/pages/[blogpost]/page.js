@@ -12,6 +12,7 @@ import Article from '../../../components/Article'
 
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
+  const immage = Buffer.from(blog?.image.data).toString('base64')
   return (
     <>
       <div className="container mx-auto px-12">
@@ -24,7 +25,7 @@ export default async function page({ params }) {
                 By <span className="text-gray-800 cursor-pointer">Saqib Tanveer</span> on 14th April 2020
               </div>
             </div> */}
-            <Image src={`/images/${blog?.image}` || "/img/general.jpg"} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
+            <Image src={`data:image/jpeg;base64,${immage}`} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
             <Article content={blog?.content} />
           </main>
         </section>

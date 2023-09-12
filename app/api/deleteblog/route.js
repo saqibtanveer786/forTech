@@ -1,9 +1,5 @@
 const { NextRequest, NextResponse } = require('next/server');
-import { PrismaClient } from '@prisma/client';
-// import prisma from '../../../lib/prisma';
-
-import fs from 'fs';
-import path from 'path';
+import { PrismaClient } from '../../../prisma/generated/client';
 
 async function DELETE(request) {
   try {
@@ -19,17 +15,6 @@ async function DELETE(request) {
         id: id
       }
     })
-
-    // deleting the corresponding image
-    fs.unlink(path.join(process.cwd(), 'public', 'images', deletePost.image), (err) => {
-      if (err) {
-        console.error(err);
-        return NextResponse.json(
-          { message: "Post has deleted but Failed to delete corresponding image", status: false },
-          { status: 500 }
-        );
-      }
-    });
 
     return NextResponse.json(
       deletePost ? { post: deletePost, message: "Post Deleted Successfully", status: true } : { message: "Error while deleting", status: false },
