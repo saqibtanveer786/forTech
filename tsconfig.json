@@ -25,7 +25,7 @@
     "**/*.ts",
     "**/*.tsx",
     "app/api/getblog/route.js",
-    "app/api/contact/route.js"
+    "app/api/peoplemessage/route.js"
   ],
   "exclude": ["node_modules"]
 }
