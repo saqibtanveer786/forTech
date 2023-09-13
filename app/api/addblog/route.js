@@ -4,17 +4,15 @@ const { NextRequest, NextResponse } = require('next/server');
 import path from 'path';
 import fs from 'fs';
 
-import { PrismaClient } from '../../../prisma/generated/client';
-// import prisma from '../../../lib/prisma'
+// import { PrismaClient } from '../../../prisma/generated/client';
+import prisma from '../../../lib/prisma'
 
 async function POST(request) {
   try {
     const { image, title, briefdescription, content } = await request.json();
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
 
-    console.log('imageis: ', image)
     const imageInBytes = Buffer.from(image, 'base64');
-    console.log(imageInBytes)
 
     // Adding post
     const addPost = await prisma.post.create({

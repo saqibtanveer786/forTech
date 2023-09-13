@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { PrismaClient } from '../../../prisma/generated/client';
-// import prisma from '../../../lib/prisma'
+// import { PrismaClient } from '../../../prisma/generated/client';
+import prisma from '../../../lib/prisma'
 
 export async function GET(req) {
   try {
@@ -10,7 +10,7 @@ export async function GET(req) {
     const stringId = searchParams.get('id');
     const id = parseInt(stringId)
 
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     // Adding post
     const addPost = await prisma.post.findUnique({
       where: {
