@@ -23,6 +23,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
+/**
+ * Model PeopleMessages
+ * 
+ */
+export type PeopleMessages = $Result.DefaultSelection<Prisma.$PeopleMessagesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -165,6 +170,16 @@ export class PrismaClient<
     * ```
     */
   get post(): Prisma.PostDelegate<ExtArgs>;
+
+  /**
+   * `prisma.peopleMessages`: Exposes CRUD operations for the **PeopleMessages** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PeopleMessages
+    * const peopleMessages = await prisma.peopleMessages.findMany()
+    * ```
+    */
+  get peopleMessages(): Prisma.PeopleMessagesDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -636,7 +651,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Post: 'Post'
+    Post: 'Post',
+    PeopleMessages: 'PeopleMessages'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -653,7 +669,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'post'
+      modelProps: 'user' | 'post' | 'peopleMessages'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -786,6 +802,72 @@ export namespace Prisma {
           count: {
             args: Prisma.PostCountArgs<ExtArgs>,
             result: $Utils.Optional<PostCountAggregateOutputType> | number
+          }
+        }
+      }
+      PeopleMessages: {
+        payload: Prisma.$PeopleMessagesPayload<ExtArgs>
+        fields: Prisma.PeopleMessagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PeopleMessagesFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PeopleMessagesFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          findFirst: {
+            args: Prisma.PeopleMessagesFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PeopleMessagesFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          findMany: {
+            args: Prisma.PeopleMessagesFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>[]
+          }
+          create: {
+            args: Prisma.PeopleMessagesCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          createMany: {
+            args: Prisma.PeopleMessagesCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PeopleMessagesDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          update: {
+            args: Prisma.PeopleMessagesUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.PeopleMessagesDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PeopleMessagesUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PeopleMessagesUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PeopleMessagesPayload>
+          }
+          aggregate: {
+            args: Prisma.PeopleMessagesAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePeopleMessages>
+          }
+          groupBy: {
+            args: Prisma.PeopleMessagesGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PeopleMessagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PeopleMessagesCountArgs<ExtArgs>,
+            result: $Utils.Optional<PeopleMessagesCountAggregateOutputType> | number
           }
         }
       }
@@ -2762,6 +2844,921 @@ export namespace Prisma {
 
 
   /**
+   * Model PeopleMessages
+   */
+
+  export type AggregatePeopleMessages = {
+    _count: PeopleMessagesCountAggregateOutputType | null
+    _avg: PeopleMessagesAvgAggregateOutputType | null
+    _sum: PeopleMessagesSumAggregateOutputType | null
+    _min: PeopleMessagesMinAggregateOutputType | null
+    _max: PeopleMessagesMaxAggregateOutputType | null
+  }
+
+  export type PeopleMessagesAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type PeopleMessagesSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type PeopleMessagesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    message: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PeopleMessagesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    message: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PeopleMessagesCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    message: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PeopleMessagesAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type PeopleMessagesSumAggregateInputType = {
+    id?: true
+  }
+
+  export type PeopleMessagesMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PeopleMessagesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PeopleMessagesCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    message?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PeopleMessagesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PeopleMessages to aggregate.
+     */
+    where?: PeopleMessagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PeopleMessages to fetch.
+     */
+    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PeopleMessagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PeopleMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PeopleMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PeopleMessages
+    **/
+    _count?: true | PeopleMessagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PeopleMessagesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PeopleMessagesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PeopleMessagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PeopleMessagesMaxAggregateInputType
+  }
+
+  export type GetPeopleMessagesAggregateType<T extends PeopleMessagesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePeopleMessages]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePeopleMessages[P]>
+      : GetScalarType<T[P], AggregatePeopleMessages[P]>
+  }
+
+
+
+
+  export type PeopleMessagesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: PeopleMessagesWhereInput
+    orderBy?: PeopleMessagesOrderByWithAggregationInput | PeopleMessagesOrderByWithAggregationInput[]
+    by: PeopleMessagesScalarFieldEnum[] | PeopleMessagesScalarFieldEnum
+    having?: PeopleMessagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PeopleMessagesCountAggregateInputType | true
+    _avg?: PeopleMessagesAvgAggregateInputType
+    _sum?: PeopleMessagesSumAggregateInputType
+    _min?: PeopleMessagesMinAggregateInputType
+    _max?: PeopleMessagesMaxAggregateInputType
+  }
+
+  export type PeopleMessagesGroupByOutputType = {
+    id: number
+    name: string
+    email: string | null
+    message: string
+    createdAt: Date
+    updatedAt: Date
+    _count: PeopleMessagesCountAggregateOutputType | null
+    _avg: PeopleMessagesAvgAggregateOutputType | null
+    _sum: PeopleMessagesSumAggregateOutputType | null
+    _min: PeopleMessagesMinAggregateOutputType | null
+    _max: PeopleMessagesMaxAggregateOutputType | null
+  }
+
+  type GetPeopleMessagesGroupByPayload<T extends PeopleMessagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PeopleMessagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PeopleMessagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PeopleMessagesGroupByOutputType[P]>
+            : GetScalarType<T[P], PeopleMessagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PeopleMessagesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["peopleMessages"]>
+
+  export type PeopleMessagesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    message?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $PeopleMessagesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "PeopleMessages"
+    objects: {}
+    scalars: $Extensions.GetResult<{
+      id: number
+      name: string
+      email: string | null
+      message: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["peopleMessages"]>
+    composites: {}
+  }
+
+
+  type PeopleMessagesGetPayload<S extends boolean | null | undefined | PeopleMessagesDefaultArgs> = $Result.GetResult<Prisma.$PeopleMessagesPayload, S>
+
+  type PeopleMessagesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<PeopleMessagesFindManyArgs, 'select' | 'include'> & {
+      select?: PeopleMessagesCountAggregateInputType | true
+    }
+
+  export interface PeopleMessagesDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PeopleMessages'], meta: { name: 'PeopleMessages' } }
+    /**
+     * Find zero or one PeopleMessages that matches the filter.
+     * @param {PeopleMessagesFindUniqueArgs} args - Arguments to find a PeopleMessages
+     * @example
+     * // Get one PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PeopleMessagesFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesFindUniqueArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one PeopleMessages that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PeopleMessagesFindUniqueOrThrowArgs} args - Arguments to find a PeopleMessages
+     * @example
+     * // Get one PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PeopleMessagesFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first PeopleMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesFindFirstArgs} args - Arguments to find a PeopleMessages
+     * @example
+     * // Get one PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PeopleMessagesFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesFindFirstArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first PeopleMessages that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesFindFirstOrThrowArgs} args - Arguments to find a PeopleMessages
+     * @example
+     * // Get one PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PeopleMessagesFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more PeopleMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findMany()
+     * 
+     * // Get first 10 PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const peopleMessagesWithIdOnly = await prisma.peopleMessages.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PeopleMessagesFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a PeopleMessages.
+     * @param {PeopleMessagesCreateArgs} args - Arguments to create a PeopleMessages.
+     * @example
+     * // Create one PeopleMessages
+     * const PeopleMessages = await prisma.peopleMessages.create({
+     *   data: {
+     *     // ... data to create a PeopleMessages
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PeopleMessagesCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesCreateArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many PeopleMessages.
+     *     @param {PeopleMessagesCreateManyArgs} args - Arguments to create many PeopleMessages.
+     *     @example
+     *     // Create many PeopleMessages
+     *     const peopleMessages = await prisma.peopleMessages.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PeopleMessagesCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PeopleMessages.
+     * @param {PeopleMessagesDeleteArgs} args - Arguments to delete one PeopleMessages.
+     * @example
+     * // Delete one PeopleMessages
+     * const PeopleMessages = await prisma.peopleMessages.delete({
+     *   where: {
+     *     // ... filter to delete one PeopleMessages
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PeopleMessagesDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesDeleteArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one PeopleMessages.
+     * @param {PeopleMessagesUpdateArgs} args - Arguments to update one PeopleMessages.
+     * @example
+     * // Update one PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PeopleMessagesUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesUpdateArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more PeopleMessages.
+     * @param {PeopleMessagesDeleteManyArgs} args - Arguments to filter PeopleMessages to delete.
+     * @example
+     * // Delete a few PeopleMessages
+     * const { count } = await prisma.peopleMessages.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PeopleMessagesDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PeopleMessagesDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PeopleMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PeopleMessagesUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PeopleMessages.
+     * @param {PeopleMessagesUpsertArgs} args - Arguments to update or create a PeopleMessages.
+     * @example
+     * // Update or create a PeopleMessages
+     * const peopleMessages = await prisma.peopleMessages.upsert({
+     *   create: {
+     *     // ... data to create a PeopleMessages
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PeopleMessages we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PeopleMessagesUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PeopleMessagesUpsertArgs<ExtArgs>>
+    ): Prisma__PeopleMessagesClient<$Result.GetResult<Prisma.$PeopleMessagesPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of PeopleMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesCountArgs} args - Arguments to filter PeopleMessages to count.
+     * @example
+     * // Count the number of PeopleMessages
+     * const count = await prisma.peopleMessages.count({
+     *   where: {
+     *     // ... the filter for the PeopleMessages we want to count
+     *   }
+     * })
+    **/
+    count<T extends PeopleMessagesCountArgs>(
+      args?: Subset<T, PeopleMessagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PeopleMessagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PeopleMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PeopleMessagesAggregateArgs>(args: Subset<T, PeopleMessagesAggregateArgs>): Prisma.PrismaPromise<GetPeopleMessagesAggregateType<T>>
+
+    /**
+     * Group by PeopleMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PeopleMessagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PeopleMessagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PeopleMessagesGroupByArgs['orderBy'] }
+        : { orderBy?: PeopleMessagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PeopleMessagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPeopleMessagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PeopleMessages model
+   */
+  readonly fields: PeopleMessagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PeopleMessages.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PeopleMessagesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the PeopleMessages model
+   */ 
+  interface PeopleMessagesFieldRefs {
+    readonly id: FieldRef<"PeopleMessages", 'Int'>
+    readonly name: FieldRef<"PeopleMessages", 'String'>
+    readonly email: FieldRef<"PeopleMessages", 'String'>
+    readonly message: FieldRef<"PeopleMessages", 'String'>
+    readonly createdAt: FieldRef<"PeopleMessages", 'DateTime'>
+    readonly updatedAt: FieldRef<"PeopleMessages", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * PeopleMessages findUnique
+   */
+  export type PeopleMessagesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter, which PeopleMessages to fetch.
+     */
+    where: PeopleMessagesWhereUniqueInput
+  }
+
+
+  /**
+   * PeopleMessages findUniqueOrThrow
+   */
+  export type PeopleMessagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter, which PeopleMessages to fetch.
+     */
+    where: PeopleMessagesWhereUniqueInput
+  }
+
+
+  /**
+   * PeopleMessages findFirst
+   */
+  export type PeopleMessagesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter, which PeopleMessages to fetch.
+     */
+    where?: PeopleMessagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PeopleMessages to fetch.
+     */
+    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PeopleMessages.
+     */
+    cursor?: PeopleMessagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PeopleMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PeopleMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PeopleMessages.
+     */
+    distinct?: PeopleMessagesScalarFieldEnum | PeopleMessagesScalarFieldEnum[]
+  }
+
+
+  /**
+   * PeopleMessages findFirstOrThrow
+   */
+  export type PeopleMessagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter, which PeopleMessages to fetch.
+     */
+    where?: PeopleMessagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PeopleMessages to fetch.
+     */
+    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PeopleMessages.
+     */
+    cursor?: PeopleMessagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PeopleMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PeopleMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PeopleMessages.
+     */
+    distinct?: PeopleMessagesScalarFieldEnum | PeopleMessagesScalarFieldEnum[]
+  }
+
+
+  /**
+   * PeopleMessages findMany
+   */
+  export type PeopleMessagesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter, which PeopleMessages to fetch.
+     */
+    where?: PeopleMessagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PeopleMessages to fetch.
+     */
+    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PeopleMessages.
+     */
+    cursor?: PeopleMessagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PeopleMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PeopleMessages.
+     */
+    skip?: number
+    distinct?: PeopleMessagesScalarFieldEnum | PeopleMessagesScalarFieldEnum[]
+  }
+
+
+  /**
+   * PeopleMessages create
+   */
+  export type PeopleMessagesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * The data needed to create a PeopleMessages.
+     */
+    data: XOR<PeopleMessagesCreateInput, PeopleMessagesUncheckedCreateInput>
+  }
+
+
+  /**
+   * PeopleMessages createMany
+   */
+  export type PeopleMessagesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PeopleMessages.
+     */
+    data: PeopleMessagesCreateManyInput | PeopleMessagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * PeopleMessages update
+   */
+  export type PeopleMessagesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * The data needed to update a PeopleMessages.
+     */
+    data: XOR<PeopleMessagesUpdateInput, PeopleMessagesUncheckedUpdateInput>
+    /**
+     * Choose, which PeopleMessages to update.
+     */
+    where: PeopleMessagesWhereUniqueInput
+  }
+
+
+  /**
+   * PeopleMessages updateMany
+   */
+  export type PeopleMessagesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PeopleMessages.
+     */
+    data: XOR<PeopleMessagesUpdateManyMutationInput, PeopleMessagesUncheckedUpdateManyInput>
+    /**
+     * Filter which PeopleMessages to update
+     */
+    where?: PeopleMessagesWhereInput
+  }
+
+
+  /**
+   * PeopleMessages upsert
+   */
+  export type PeopleMessagesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * The filter to search for the PeopleMessages to update in case it exists.
+     */
+    where: PeopleMessagesWhereUniqueInput
+    /**
+     * In case the PeopleMessages found by the `where` argument doesn't exist, create a new PeopleMessages with this data.
+     */
+    create: XOR<PeopleMessagesCreateInput, PeopleMessagesUncheckedCreateInput>
+    /**
+     * In case the PeopleMessages was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PeopleMessagesUpdateInput, PeopleMessagesUncheckedUpdateInput>
+  }
+
+
+  /**
+   * PeopleMessages delete
+   */
+  export type PeopleMessagesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+    /**
+     * Filter which PeopleMessages to delete.
+     */
+    where: PeopleMessagesWhereUniqueInput
+  }
+
+
+  /**
+   * PeopleMessages deleteMany
+   */
+  export type PeopleMessagesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PeopleMessages to delete
+     */
+    where?: PeopleMessagesWhereInput
+  }
+
+
+  /**
+   * PeopleMessages without action
+   */
+  export type PeopleMessagesDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PeopleMessages
+     */
+    select?: PeopleMessagesSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -2796,6 +3793,18 @@ export namespace Prisma {
   };
 
   export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+  export const PeopleMessagesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    message: 'message',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PeopleMessagesScalarFieldEnum = (typeof PeopleMessagesScalarFieldEnum)[keyof typeof PeopleMessagesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3013,6 +4022,65 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
 
+  export type PeopleMessagesWhereInput = {
+    AND?: PeopleMessagesWhereInput | PeopleMessagesWhereInput[]
+    OR?: PeopleMessagesWhereInput[]
+    NOT?: PeopleMessagesWhereInput | PeopleMessagesWhereInput[]
+    id?: IntFilter<"PeopleMessages"> | number
+    name?: StringFilter<"PeopleMessages"> | string
+    email?: StringNullableFilter<"PeopleMessages"> | string | null
+    message?: StringFilter<"PeopleMessages"> | string
+    createdAt?: DateTimeFilter<"PeopleMessages"> | Date | string
+    updatedAt?: DateTimeFilter<"PeopleMessages"> | Date | string
+  }
+
+  export type PeopleMessagesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrderInput | SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PeopleMessagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PeopleMessagesWhereInput | PeopleMessagesWhereInput[]
+    OR?: PeopleMessagesWhereInput[]
+    NOT?: PeopleMessagesWhereInput | PeopleMessagesWhereInput[]
+    name?: StringFilter<"PeopleMessages"> | string
+    email?: StringNullableFilter<"PeopleMessages"> | string | null
+    message?: StringFilter<"PeopleMessages"> | string
+    createdAt?: DateTimeFilter<"PeopleMessages"> | Date | string
+    updatedAt?: DateTimeFilter<"PeopleMessages"> | Date | string
+  }, "id">
+
+  export type PeopleMessagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrderInput | SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PeopleMessagesCountOrderByAggregateInput
+    _avg?: PeopleMessagesAvgOrderByAggregateInput
+    _max?: PeopleMessagesMaxOrderByAggregateInput
+    _min?: PeopleMessagesMinOrderByAggregateInput
+    _sum?: PeopleMessagesSumOrderByAggregateInput
+  }
+
+  export type PeopleMessagesScalarWhereWithAggregatesInput = {
+    AND?: PeopleMessagesScalarWhereWithAggregatesInput | PeopleMessagesScalarWhereWithAggregatesInput[]
+    OR?: PeopleMessagesScalarWhereWithAggregatesInput[]
+    NOT?: PeopleMessagesScalarWhereWithAggregatesInput | PeopleMessagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PeopleMessages"> | number
+    name?: StringWithAggregatesFilter<"PeopleMessages"> | string
+    email?: StringNullableWithAggregatesFilter<"PeopleMessages"> | string | null
+    message?: StringWithAggregatesFilter<"PeopleMessages"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PeopleMessages"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PeopleMessages"> | Date | string
+  }
+
   export type UserCreateInput = {
     createdAt?: Date | string
     email: string
@@ -3122,6 +4190,66 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: BytesFieldUpdateOperationsInput | Buffer
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PeopleMessagesCreateInput = {
+    name: string
+    email?: string | null
+    message: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PeopleMessagesUncheckedCreateInput = {
+    id?: number
+    name: string
+    email?: string | null
+    message: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PeopleMessagesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PeopleMessagesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PeopleMessagesCreateManyInput = {
+    id?: number
+    name: string
+    email?: string | null
+    message: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PeopleMessagesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PeopleMessagesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    message?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3333,6 +4461,41 @@ export namespace Prisma {
     _max?: NestedBytesFilter<$PrismaModel>
   }
 
+  export type PeopleMessagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PeopleMessagesAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type PeopleMessagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PeopleMessagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PeopleMessagesSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -3523,6 +4686,10 @@ export namespace Prisma {
      * @deprecated Use PostDefaultArgs instead
      */
     export type PostArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PostDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PeopleMessagesDefaultArgs instead
+     */
+    export type PeopleMessagesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PeopleMessagesDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
