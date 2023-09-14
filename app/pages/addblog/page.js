@@ -49,7 +49,6 @@ export default function Addblog() {
 
   return (
     <>
-      <Loader isLoading={isLoading} />
       <section className='w-[90%] mx-auto my-14'>
         <h1 className='text-2xl font-bold'>Add Blog</h1>
         <input
