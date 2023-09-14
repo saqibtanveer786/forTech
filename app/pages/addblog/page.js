@@ -7,10 +7,6 @@ import { MyContext } from '../../../lib/MyContext'
 // Importing editor
 import JoditEditor from 'jodit-react';
 
-// Importing components
-import Alert from '../../../components/Alert'
-import Loader from '../../../components/Loader'
-
 // Importing serverActions
 import { pusblishBlog } from '../../../lib/serverAction'
 

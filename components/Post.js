@@ -16,14 +16,7 @@ import { RxUpdate } from 'react-icons/rx';
 // Import server action
 import { deletePost } from '../lib/serverAction';
 
-// Importing components
-import Loader from './Loader';
-
 export default function Post({ blog }) {
-  // const [showAlert, setShowAlert] = useState(false)
-  // const [alertMessage, setAlertMessage] = useState('')
-  // const [alertStatus, setAlertStatus] = useState('')
-  // const [isLoading, setIsLoading] = useState(false)
 
   // consuming context
   const { showAlert, setShowAlert, alertMessage, setAlertMessage, alertStatus, setAlertStatus, isLoading, setIsLoading } = useContext(MyContext)
