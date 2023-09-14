@@ -35,7 +35,6 @@ export default function Post({ blog }) {
   return (
     <>
       <div className='mx-2 relative'>
-        <Loader isLoading={isLoading} className={'top-[-135px] left-0 bg-transparent z-40'} />
 
         <div className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative">
 
