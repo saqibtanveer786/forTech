@@ -23,7 +23,7 @@ export default function Contact() {
     setIsLoading(true)
     const ress = await submitForm(data)
     setAlertMessage(ress.message)
-    if (ress.status) setAlertStatus("success")  // In case of success
+    if (ress.status) { setAlertStatus("success"); setData({}) }  // In case of success
     if (!ress.status) setAlertStatus("error")   // In case of error
     setShowAlert(true)
     setIsLoading(false)
@@ -74,6 +74,7 @@ export default function Contact() {
                   <label className="text-gray-600 font-medium md:my-2">Your Message</label>
                   <textarea
                     onChange={getData}
+                    value={data.message || ""}
                     placeholder="your message"
                     cols="5"
                     rows="6"
@@ -85,6 +86,7 @@ export default function Contact() {
                 <div className="w-full">
                   <label className="text-gray-600 font-medium md:my-2">Your Email</label>
                   <input
+                    value={data.email || ""}
                     onChange={getData}
                     type="email"
                     className="w-full  p-2 my-2 px-4 border focus:border-b-4  text-xl text-gray-800  focus:outline-none" placeholder="your email"
@@ -97,6 +99,7 @@ export default function Contact() {
                   <label className="text-gray-600 font-medium md:my-2">Your Name</label>
                   <input
                     onChange={getData}
+                    value={data.name || ""}
                     type="text"
                     className="w-full  p-2 px-4 border  text-xl text-gray-800  focus:outline-none"
                     placeholder="your name"
