@@ -21,7 +21,7 @@ export async function POST(request) {
     );
   } catch (error) {
     console.log(error)
-    return NextResponse.json({ message: `An Unexpected Error Occured error is: ${error}`, status: false });
+    return NextResponse.json({ message: `An Unexpected Error Occured On Server`, status: false });
   }
 
 }
