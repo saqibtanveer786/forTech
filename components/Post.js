@@ -1,6 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
+
+// Importing the context
+import { MyContext } from '../lib/MyContext';
 
 // Importing from next
 import Image from 'next/image';
@@ -14,14 +17,16 @@ import { RxUpdate } from 'react-icons/rx';
 import { deletePost } from '../lib/serverAction';
 
 // Importing components
-import Alert from './Alert';
 import Loader from './Loader';
 
 export default function Post({ blog }) {
-  const [showAlert, setShowAlert] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
-  const [alertStatus, setAlertStatus] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  // const [showAlert, setShowAlert] = useState(false)
+  // const [alertMessage, setAlertMessage] = useState('')
+  // const [alertStatus, setAlertStatus] = useState('')
+  // const [isLoading, setIsLoading] = useState(false)
+
+  // consuming context
+  const { showAlert, setShowAlert, alertMessage, setAlertMessage, alertStatus, setAlertStatus, isLoading, setIsLoading } = useContext(MyContext)
 
   const router = useRouter()
 
@@ -31,7 +36,6 @@ export default function Post({ blog }) {
     <>
       <div className='mx-2 relative'>
         <Loader isLoading={isLoading} className={'top-[-135px] left-0 bg-transparent z-40'} />
-        <Alert show={showAlert} message={alertMessage} status={alertStatus} setShow={setShowAlert} />
 
         <div className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative">
 
@@ -45,14 +49,14 @@ export default function Post({ blog }) {
                 if (response.status) {       //Incase of success
                   setIsLoading(false);
                   setShowAlert(true);
-                  setAlertStatus("Success");
+                  setAlertStatus("success");
                   setAlertMessage(response.message);
                   router.refresh()
                 }
                 if (!response.status) {      //Incase of error
                   setIsLoading(false);
                   setShowAlert(true);
-                  setAlertStatus("Error");
+                  setAlertStatus("error");
                   setAlertMessage(response.message);
                 }
               }}

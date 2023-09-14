@@ -1,5 +1,8 @@
 'use client';
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useContext } from 'react';
+
+// Importing context
+import { MyContext } from '../../../lib/MyContext'
 
 // Importing editor
 import JoditEditor from 'jodit-react';
@@ -14,10 +17,9 @@ import { pusblishBlog } from '../../../lib/serverAction'
 export default function Addblog() {
   const [data, setData] = useState();
   const [content, setContent] = useState('');
-  const [showAlert, setShowAlert] = useState(false)
-  const [alertMessage, setAlertMessage] = useState('')
-  const [alertStatus, setAlertStatus] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+
+  // consuming context
+  const { showAlert, setShowAlert, alertMessage, setAlertMessage, alertStatus, setAlertStatus, isLoading, setIsLoading } = useContext(MyContext)
 
   // Function for getting input fields data
   async function getData(e) {
@@ -47,7 +49,6 @@ export default function Addblog() {
 
   return (
     <>
-      <Alert show={showAlert} message={alertMessage} status={alertStatus} setShow={setShowAlert} />
       <Loader isLoading={isLoading} />
       <section className='w-[90%] mx-auto my-14'>
         <h1 className='text-2xl font-bold'>Add Blog</h1>
@@ -95,14 +96,14 @@ export default function Addblog() {
             if (response.status) {       //Incase of success
               setIsLoading(false);
               setShowAlert(true);
-              setAlertStatus("Success");
+              setAlertStatus("success");
               setAlertMessage(response.message);
               resetInputFields()
             }
             if (!response.status) {      //Incase of error
               setIsLoading(false);
               setShowAlert(true);
-              setAlertStatus("Error");
+              setAlertStatus("error");
               setAlertMessage(response.message);
             }
           }}
