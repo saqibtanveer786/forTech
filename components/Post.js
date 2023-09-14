@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Importing the context
-import { MyContext } from '../lib/MyContext';
+import { AlertContext, LoadingContext } from '../lib/context';
 
 // Importing from next
 import Image from 'next/image';
@@ -19,7 +19,8 @@ import { deletePost } from '../lib/serverAction';
 export default function Post({ blog }) {
 
   // consuming context
-  const { showAlert, setShowAlert, alertMessage, setAlertMessage, alertStatus, setAlertStatus, isLoading, setIsLoading } = useContext(MyContext)
+  const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+  const { setIsLoading } = useContext(LoadingContext)
 
   const router = useRouter()
 

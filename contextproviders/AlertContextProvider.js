@@ -1,28 +1,25 @@
 "use client"
 import React, { useState } from "react";
-import { MyContext } from "../lib/MyContext";
+import { AlertContext } from "../lib/context";
 
-function AlertContext({ children }) {
+function AlertContextProvider({ children }) {
     const [showAlert, setShowAlert] = useState(false)
     const [alertMessage, setAlertMessage] = useState('')
     const [alertStatus, setAlertStatus] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
 
     return (
-        <MyContext.Provider value={{
+        <AlertContext.Provider value={{
             showAlert,
             setShowAlert,
             alertMessage,
             setAlertMessage,
             alertStatus,
             setAlertStatus,
-            isLoading,
-            setIsLoading
         }}
         >
             {children}
-        </MyContext.Provider>
+        </AlertContext.Provider>
     );
 }
 
-export default AlertContext;
+export default AlertContextProvider;

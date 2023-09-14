@@ -1,14 +1,14 @@
 "use client"
 import React, { useContext } from 'react'
 
-import { MyContext } from '../lib/MyContext'
+import { AlertContext } from '../lib/context'
 
 import { toasts } from '../lib/toasts'
 
 export default function Toast() {
 
     // consuming the alert context
-    const { showAlert, setShowAlert, alertStatus, alertMessage } = useContext(MyContext)
+    const { showAlert, setShowAlert, alertStatus, alertMessage } = useContext(AlertContext)
 
     return (
         <div className='fixed bottom-10 right-6'>

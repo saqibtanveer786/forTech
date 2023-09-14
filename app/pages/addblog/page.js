@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 
 // Importing context
-import { MyContext } from '../../../lib/MyContext'
+import { AlertContext, LoadingContext } from '../../../lib/context'
 
 // Importing editor
 import JoditEditor from 'jodit-react';
@@ -15,7 +15,8 @@ export default function Addblog() {
   const [content, setContent] = useState('');
 
   // consuming context
-  const { showAlert, setShowAlert, alertMessage, setAlertMessage, alertStatus, setAlertStatus, isLoading, setIsLoading } = useContext(MyContext)
+  const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+  const { setIsLoading } = useContext(LoadingContext)
 
   // Function for getting input fields data
   async function getData(e) {

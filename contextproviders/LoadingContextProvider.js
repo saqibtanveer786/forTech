@@ -1,19 +1,19 @@
 "use client"
 import React, { useState } from "react";
-import { MyContext } from "../lib/MyContext";
+import { LoadingContext } from "../lib/context";
 
-function LoadingContext({ children }) {
+function LoadingContextProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false)
 
     return (
-        <MyContext.Provider value={{
+        <LoadingContext.Provider value={{
             isLoading,
             setIsLoading
         }}
         >
             {children}
-        </MyContext.Provider>
+        </LoadingContext.Provider>
     );
 }
 
-export default LoadingContext;
+export default LoadingContextProvider;
