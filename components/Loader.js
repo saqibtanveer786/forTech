@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { LoadingContext } from '../lib/context'
 
 // Importing gif
-import loadingGif from '../public/laodingGif.gif'
+import loadingGif from '../../public/laodingGif.gif'
 
 export default function Loader() {
 
