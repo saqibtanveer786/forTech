@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://adward797:Oe2GDd4uJMIq@ep-holy-flower-30221901.ap-southeast-1.aws.neon.tech/neondb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -16,8 +16,9 @@ model User {
   createdAt DateTime @default(now())
   email     String   @unique
   name      String?
-  // role      Role     @default(USER)
-  // posts     Post[]
+  role      Role     @default(USER)
+  posts     Post[]
+  messages PeopleMessages[]
 }
 
 model Post {
@@ -26,6 +27,9 @@ model Post {
   content String
   briefdescription String?
   image Bytes
+  published Boolean
+  authorId Int?
+  author User? @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -35,11 +39,14 @@ model PeopleMessages {
   name String
   email String?
   message String
+  userId Int?
+  userDetails User? @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 enum Role {
   USER
+  AUTHER
   ADMIN
 }

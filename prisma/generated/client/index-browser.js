@@ -111,7 +111,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
   email: 'email',
-  name: 'name'
+  name: 'name',
+  role: 'role'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -120,6 +121,8 @@ exports.Prisma.PostScalarFieldEnum = {
   content: 'content',
   briefdescription: 'briefdescription',
   image: 'image',
+  published: 'published',
+  authorId: 'authorId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -129,6 +132,7 @@ exports.Prisma.PeopleMessagesScalarFieldEnum = {
   name: 'name',
   email: 'email',
   message: 'message',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -147,7 +151,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Role = exports.$Enums.Role = {
+  USER: 'USER',
+  AUTHER: 'AUTHER',
+  ADMIN: 'ADMIN'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
