@@ -10,12 +10,12 @@ export default function Header() {
   }
 
   return (
-    <header className="md:flex items-center justify-between py-3 md:py-4 relative " >
+    <header className="md:flex items-center justify-between py-3 md:py-4 relative max-w-7xl mx-auto" >
 
       {/* Logo Name and toggle button */}
-      <div className="flex justify-between min-w-min px-4">
+      <div className="flex justify-between min-w-min">
         {/* name and logo */}
-        <div className="flex text-3xl font-normal relative  items-center">
+        <div className="flex text-3xl font-normal relative items-center">
           <Link href="/">
             <Image src={'/logo.png'} alt='forTech' width={150} height={150} />
           </Link>
@@ -29,7 +29,7 @@ export default function Header() {
       </div>
 
       {/* nabbar */}
-      <nav className={`md:mt-0 transition delay-300 ease-out md:px-12 text-center text-white sm:text-black bg-black sm:bg-white ${!showNavbar && 'hidden'} sm:block`}>
+      <nav className={`md:mt-0 transition delay-300 ease-out text-center text-white sm:text-black bg-black sm:bg-white ${!showNavbar && 'hidden'} sm:block`}>
         <ul id="menu" className=" w-full py-4 md:py-0 md:mt-0 z-40 absolute   md:relative mt-3 pl-4 flex flex-col  md:flex   md:flex-row m-0 p-0  text-lg md:items-center gap-8">
           <li onClick={toggleNavbar}><Link href="/pages/blogs" className="hover:text-blue-900 ">Blog</Link></li>
           {/* <li onClick={toggleNavbar}><Link href="/pages/about" className="hover:text-blue-400 ">About Us</Link></li> */}

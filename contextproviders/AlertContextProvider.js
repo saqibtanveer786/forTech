@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 // Importing context
 import { AlertContext } from '../lib/context'
 
-export default function AlertContextProvider() {
+export default function AlertContextProvider({ children }) {
     const [showAlert, setShowAlert] = useState(false)
     const [alertMessage, setAlertMessage] = useState('')
     const [alertStatus, setAlertStatus] = useState('')
