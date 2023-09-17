@@ -24,7 +24,7 @@ export default function Post({ blog }) {
 
   const router = useRouter()
 
-  const immage = Buffer.from(blog.image.data).toString('base64')
+  // const immage = Buffer.from(blog.image.data).toString('base64')
 
   return (
     <>
@@ -60,11 +60,11 @@ export default function Post({ blog }) {
           </div>
 
           <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}
-            <Image src={`data:image/jpeg;base64,${immage}`} alt='placeholder image' fill={'cover'} />
+            <Image src={blog.image} alt='placeholder image' fill={'cover'} />
           </div>
 
           <div className='w-[300px] lg:w-[450px]'>        {/* Title Col */}
-            <Link href={`/pages/${blog.id}`}>
+            <Link href={`/pages/${blog?.id}`}>
               <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer hover:underline">{blog?.title}</h3>
             </Link>
             {/* <div className="flex gap-2 mb-2 lg:justify-start">

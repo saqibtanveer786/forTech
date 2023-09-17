@@ -11,6 +11,9 @@ import Toast from '../components/Toast';
 import AlertContextProvider from '../contextproviders/AlertContextProvider';
 import LoadingContextProvider from '../contextproviders/LoadingContextProvider ';
 
+// Importing session provider next auth
+import { SessionProvider } from "next-auth/react"
+
 export const metadata = {
   description: 'This is a blog for the post related to the technologies.',
 };
@@ -19,6 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        {/* <SessionProvider> */}
         <LoadingContextProvider>
           <AlertContextProvider>
             <Header />
@@ -27,6 +31,7 @@ export default function RootLayout({ children }) {
             <Toast />
           </AlertContextProvider>
         </LoadingContextProvider>
+        {/* </SessionProvider> */}
       </body>
     </html>
   );
