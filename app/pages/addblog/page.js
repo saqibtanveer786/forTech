@@ -10,9 +10,14 @@ import JoditEditor from 'jodit-react';
 // Importing serverActions
 import { pusblishBlog } from '../../../lib/serverAction'
 
+// Importing upload things
+// import { uploadFiles } from '../../../lib/uploadthings';
+import { UploadButton } from '../../../lib/uploadthings';
+
 export default function Addblog() {
   const [data, setData] = useState();
   const [content, setContent] = useState('');
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
 
   // consuming context
   const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
@@ -21,21 +26,6 @@ export default function Addblog() {
   // Function for getting input fields data
   async function getData(e) {
     e.preventDefault();
-    // In case of image file
-    if (e.target.name === 'image') {
-      // Reading file with FileReader()
-      const file = document.getElementsByName("image")[0].files[0]
-      const reader = new FileReader();
-      reader.readAsDataURL(file)
-      let base64Image
-      reader.onload = async function () {
-        base64Image = await reader.result.split(',')[1]; // Extract the Base64 data
-        setData({ ...data, image: base64Image })
-      }
-      return
-    }
-
-    // In case of other data
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
@@ -46,9 +36,10 @@ export default function Addblog() {
 
   return (
     <>
-      <section className='w-[90%] mx-auto my-14'>
+      <section className='w-[90%] max-w-7xl mx-auto my-14'>
         <h1 className='text-2xl font-bold'>Add Blog</h1>
         <input
+          value={data?.title || ""}
           type="text"
           id="base-input"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-6"
@@ -60,6 +51,7 @@ export default function Addblog() {
         />
 
         <input
+          value={data?.briefdescription || ""}
           type="text"
           id="large-input"
           className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 my-6"
@@ -69,24 +61,31 @@ export default function Addblog() {
           name='briefdescription'
           onChange={getData}
         />
-        <input
-          type="file"
-          id="base-input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-6"
-          placeholder='Front Image'
-          autoComplete='off'
-          required
-          name='image'
-          onChange={getData}
-        />
+        <div className='w-full flex justify-start items-start gap-4 py-4'>
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              // Do something with the response
+              setIsImageUploaded(true)
+              setData({ ...data, image: res[0].fileUrl })
+              alert("Upload Completed");
+            }}
+            onUploadError={(error) => {
+              alert(`ERROR! ${error.message}`);
+            }}
+          />
+          <span className='text-xl text-gray-500'>Upload an image for the blog</span>
+        </div>
         <JoditEditor
           value={content}
           tabIndex={1}
           onChange={setContent}
         />
         <button
+          disabled={!isImageUploaded}
           onClick={async (e) => {
             e.preventDefault()
+            if (!isImageUploaded) return
             setIsLoading(true)
             const response = await pusblishBlog(data, content)
             if (response.status) {       //Incase of success
@@ -104,8 +103,8 @@ export default function Addblog() {
             }
           }}
           type="submit"
-          className="mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >Publish</button>
+          className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${(!isImageUploaded || !data?.title || !data.briefdescription || !content) && 'bg-gray-700 hover:bg-gray-700'}`}
+        >{(!isImageUploaded || !data?.title || !data.briefdescription || !content) ? 'Fill All Fields' : 'Publish'}</button>
       </section>
     </>
   );

@@ -1,5 +1,6 @@
 //Importing  CSS File
 import './globals.css';
+import "@uploadthing/react/styles.css";
 
 //Importing Components
 import Header from '../components/Header';

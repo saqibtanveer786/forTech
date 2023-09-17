@@ -26,8 +26,8 @@ model Post {
   title   String
   content String
   briefdescription String?
-  image Bytes
-  published Boolean
+  image String
+  published Boolean @default(false)
   authorId Int?
   author User? @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())

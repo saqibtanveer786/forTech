@@ -12,15 +12,14 @@ async function POST(request) {
     const { image, title, briefdescription, content } = await request.json();
     // const prisma = new PrismaClient()
 
-    const imageInBytes = Buffer.from(image, 'base64');
-
     // Adding post
     const addPost = await prisma.post.create({
       data: {
         title,
         content,
         briefdescription,
-        image: imageInBytes
+        image,
+        published: true,
       },
     })
 
