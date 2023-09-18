@@ -20,8 +20,8 @@ export default function page() {
                             Continue With
                         </h1>
                     </div>
-                    <div class="flex items-center justify-center min-h-[200px] bg-gray-100 px-4">
-                        <button class="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 w-full justify-center"
+                    <div className="flex items-center justify-center min-h-[200px] bg-gray-100 px-4">
+                        <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 w-full justify-center"
                             onClick={() => signIn('google')}
                         >
                             {logos.google()}

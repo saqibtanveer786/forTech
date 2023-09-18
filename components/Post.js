@@ -18,6 +18,7 @@ import { deletePost } from '../lib/serverAction';
 
 export default function Post({ blog }) {
 
+  const screenWidth = window.innerWidth
   // consuming context
   const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
   const { setIsLoading } = useContext(LoadingContext)
@@ -25,7 +26,6 @@ export default function Post({ blog }) {
   const router = useRouter()
 
   // const immage = Buffer.from(blog.image.data).toString('base64')
-  const screenWidth = window.innerWidth
 
   return (
     <>
