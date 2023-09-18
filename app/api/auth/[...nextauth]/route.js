@@ -7,13 +7,14 @@ export const authOptions = {
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_SECRET,
         }),
-        // ...add more providers here
     ],
     pages: {
-        signIn: '/auth/signin',
-        signOut: '/auth/signout',
-        newUser: '/auth/signin'
+        signIn: '/pages/signin',
+        signOut: '/pages/signout',
+        newUser: '/'
     }
 }
 
-export default NextAuth(authOptions)
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
