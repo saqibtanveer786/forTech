@@ -25,12 +25,13 @@ export default function Post({ blog }) {
   const router = useRouter()
 
   // const immage = Buffer.from(blog.image.data).toString('base64')
+  const screenWidth = window.innerWidth
 
   return (
     <>
       <div className='mx-2 relative'>
 
-        <div className="flex flex-col items-center md:flex-row md:items-start border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative">
+        <div className={`flex flex-${screenWidth >= 700 ? 'row' : 'col'} items-center border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative`}>
 
           <div className='absolute bottom-2 right-2'>   {/* update and delete icons */}
             <MdDeleteOutline
