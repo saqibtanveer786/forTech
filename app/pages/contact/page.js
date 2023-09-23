@@ -49,7 +49,7 @@ export default function Contact() {
   // }
   return (
     <>
-      <section className="">
+      <section className="w-[80%] mx-auto">
         <div className="container mx-auto flex h-full justify-center mt-8 relative">
           <section className="flex flex-col md:flex-row gap-4 p-4 w-full justify-center">
 
