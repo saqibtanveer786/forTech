@@ -4,7 +4,7 @@ const nextConfig = {
         serverActions: true
     },
     images: {
-        domains: ['example.com', 'www.thehighereducationreview.com', "www1.grc.nasa.gov", "encrypted-tbn0.gstatic.com", "utfs.io"],
+        domains: ['example.com', 'www.thehighereducationreview.com', "www1.grc.nasa.gov", "encrypted-tbn0.gstatic.com", "utfs.io", 'lh3.googleusercontent.com'],
     },
 }
 

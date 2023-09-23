@@ -13,20 +13,24 @@ import LoadingContextProvider from '../contextproviders/LoadingContextProvider '
 
 // Importing session provider next auth
 import { SessionProvider } from "next-auth/react"
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../lib/auth';
 
 export const metadata = {
   title: 'forTech',
   description: 'This is a blog for the post related to the technologies.',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions)
+  console.log(session)
   return (
     <html lang="en">
       <body>
         {/* <SessionProvider> */}
         <LoadingContextProvider>
           <AlertContextProvider>
-            <Header />
+            <Header session={session} />
             <Loader />
             {children}
             <Toast />

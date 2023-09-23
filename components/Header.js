@@ -8,15 +8,15 @@ import Image from 'next/image'
 // components
 import DropDown from '../components/DropDown'
 
-export default function Header() {
-  const [showNavbar, setShowNavbar] = useState(false)
+export default function Header({ session }) {
+  const [showNavbar, setShowNavbar] = useState(true)
 
   function toggleNavbar() {
     setShowNavbar(previous => !previous)
   }
 
   return (
-    <header className="md:flex items-center justify-between py-3 md:py-4 relative max-w-7xl mx-auto" >
+    <header className="md:flex items-center justify-between py-3 md:py-4 px-4 md:px-0 relative max-w-7xl mx-auto" >
 
       {/* Logo Name and toggle button */}
       <div className="flex justify-between min-w-min">
@@ -28,23 +28,19 @@ export default function Header() {
         </div>
 
         {/* toogle button */}
-        {/* <svg onClick={toggleNavbar} xmlns="http://www.w3.org/2000/svg" id="menu-toggler" className="block cursor-pointer sm:hidden self-center h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        {/* {!session && <svg onClick={toggleNavbar} xmlns="http://www.w3.org/2000/svg" id="menu-toggler" className="block cursor-pointer sm:hidden self-center h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg> */}
-        <DropDown />
+        </svg>} */}
+        {session && <DropDown session={session} />}
 
+        {!session &&
+          <div className="flex h-full items-center justify-center mt-1">
+            <Link href="/pages/contact" className="block px-2 py-2 hover:bg-gray-100">Contact</Link>
+            <Link href="/pages/signin" className="block px-4 py-2 hover:bg-blue-800 bg-blue-700 rounded-md text-white">Sign In</Link>
+          </div>
+        }
       </div>
 
-      {/* nabbar */}
-      <nav className={`md:mt-0 transition delay-300 ease-out text-center text-white sm:text-black ${!showNavbar && 'hidden'} sm:block`}>
-        <ul id="menu" className=" w-full py-4 md:py-0 md:mt-0 z-40 absolute   md:relative mt-3 pl-4 flex flex-col  md:flex md:flex-row m-0 p-0  text-lg md:items-center gap-8">
-          <li onClick={toggleNavbar}><Link href="/pages/blogs" className="hover:text-blue-900 ">Blog</Link></li>
-          {/* <li onClick={toggleNavbar}><Link href="/pages/about" className="hover:text-blue-400 ">About Us</Link></li> */}
-          <li onClick={toggleNavbar}><Link href="/pages/contact" className="hover:text-blue-900 font-bold">Contact Us</Link></li>
-          {/* <li onClick={toggleNavbar}><Link href="/pages/privacy-policy" className="hover:text-blue-400 ">Privacy policy</Link></li> */}
-          <li onClick={toggleNavbar}><Link href="/pages/addblog" className="hover:text-blue-900 ">Add Blog</Link></li>
-        </ul>
-      </nav>
     </header>
   );
 }
