@@ -16,7 +16,7 @@ import { RxUpdate } from 'react-icons/rx';
 // Import server action
 import { deletePost } from '../lib/serverAction';
 
-export default function Post({ blog }) {
+export default function Post({ blog, session }) {
 
   const screenWidth = window.innerWidth
   // consuming context
@@ -33,7 +33,7 @@ export default function Post({ blog }) {
 
         <div className={`flex flex-${screenWidth >= 700 ? 'row' : 'col'} items-center border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative`}>
 
-          <div className='absolute bottom-2 right-2'>   {/* update and delete icons */}
+          {session && session.user.email === 'adward797@gmail.com' && <div className='absolute bottom-2 right-2'>   {/* update and delete icons */}
             <MdDeleteOutline
               size={25}
               style={{ marginBlock: '5px', cursor: 'pointer' }}
@@ -58,7 +58,7 @@ export default function Post({ blog }) {
             <RxUpdate
               size={23}
               style={{ marginBlock: '5px', cursor: 'pointer' }} />
-          </div>
+          </div>}
 
           <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}
             <Image src={blog.image} alt='placeholder image' fill={'cover'} />

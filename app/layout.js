@@ -15,6 +15,7 @@ import LoadingContextProvider from '../contextproviders/LoadingContextProvider '
 import { SessionProvider } from "next-auth/react"
 
 export const metadata = {
+  title: 'forTech',
   description: 'This is a blog for the post related to the technologies.',
 };
 

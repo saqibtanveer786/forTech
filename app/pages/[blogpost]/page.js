@@ -8,9 +8,16 @@ import Image from 'next/image';
 
 // Importing components
 import Article from '../../../components/Article'
+import { getServerSession } from 'next-auth';
+
+// Library imports
+import { authOptions } from '../../../lib/auth';
 
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
+
+  const session = await getServerSession(authOptions)
+  console.log(session)
   // const immage = Buffer.from(blog?.image.data).toString('base64')
   return (
     <>

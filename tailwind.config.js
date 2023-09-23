@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      'sm': '440px',
+    }
   },
   plugins: [],
 }
