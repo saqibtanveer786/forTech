@@ -9,11 +9,14 @@ import { redirect } from 'next/navigation';
 
 export default function DropDown({ session }) {
     const [showMenu, setShowMenu] = useState(false);
+    const toggleMenu = () => {
+        setShowMenu(previous => !previous);
+    }
     return (
         <div className='relative mt-2'>
             <button
                 id="dropdownAvatarNameButton"
-                onClick={() => setShowMenu(previous => !previous)}
+                onClick={toggleMenu}
                 data-dropdown-toggle="dropdownAvatarName"
                 className="flex items-center text-sm font-medium text-gray-900 rounded-full md:mr-0"
                 type="button">
@@ -21,9 +24,9 @@ export default function DropDown({ session }) {
                     height={20}
                     width={20}
                     className="w-8 h-8 mr-2 rounded-full"
-                    src={session.user.image || '/logo.png'}
+                    src={session?.user.image || '/user-1.jpg'}
                     alt="user photo" />
-                {session.user.name}
+                {session?.user.name}
                 <svg
                     className="w-2.5 h-2.5 ml-2.5"
                     aria-hidden="true"
@@ -41,21 +44,21 @@ export default function DropDown({ session }) {
             {/* <!-- Dropdown menu --> */}
             <div id="dropdownAvatarName" className={`z-10 ${!showMenu && 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-52 absolute right-5`}>
                 <div className="px-4 py-3 text-sm">
-                    <div className="truncate">{session.user.email}</div>
+                    <div className="truncate">{session?.user.email}</div>
                 </div>
                 <ul className="py-2 text-sm" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
-                    <li>
-                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
+                    <li onClick={toggleMenu}>
+                        <Link href="/pages/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
                     </li>
-                    <li>
-                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">All Blogs</Link>
+                    <li onClick={toggleMenu}>
+                        <Link href="/pages/blogs" className="block px-4 py-2 hover:bg-gray-100">All Blogs</Link>
                     </li>
-                    <li>
-                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
+                    <li onClick={toggleMenu}>
+                        <Link href="/pages/contact" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
                     </li>
-                    <li>
-                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Publish Blog</Link>
-                    </li>
+                    {session?.user.email === 'adward797@gmail.com' && <li onClick={toggleMenu}>
+                        <Link href="/pages/addblog" className="block px-4 py-2 hover:bg-gray-100">Publish Blog</Link>
+                    </li>}
                 </ul>
                 <div className="py-2">
                     <button
