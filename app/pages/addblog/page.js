@@ -15,10 +15,10 @@ import { pusblishBlog } from '../../../lib/serverAction'
 import { UploadButton } from '../../../lib/uploadthings';
 
 import { getAuthSession } from "../../../lib/auth"
-const session = getAuthSession()
+// const session = getAuthSession()
 
 export default function Addblog() {
-  console.log(session)
+  // console.log(session)
   const [data, setData] = useState();
   const [content, setContent] = useState('');
   const [isImageUploaded, setIsImageUploaded] = useState(false);
