@@ -2,11 +2,10 @@
 import React, { useContext } from 'react'
 import Image from 'next/image'
 
-// Importing context
-import { LoadingContext } from '../lib/context'
 
 // Importing gif
 import loadingGif from '../public/laodingGif.gif'
+import { LoadingContext } from '../lib/context'
 
 export default function Loader() {
 

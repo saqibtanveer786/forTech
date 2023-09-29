@@ -1,9 +1,8 @@
 "use client"
 import React, { useContext } from 'react'
 
-import { AlertContext } from '../lib/context'
-
 import { toasts } from '../lib/toasts'
+import { AlertContext } from '../lib/context'
 
 export default function Toast() {
 
