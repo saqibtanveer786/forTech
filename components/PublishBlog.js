@@ -13,14 +13,7 @@ import { pusblishBlog } from '../lib/serverAction'
 // import { uploadFiles } from '../../../lib/uploadthings';
 import { UploadButton } from '../lib/uploadthings';
 
-import { useRouter } from 'next/navigation';
-
 export default function PublishBlog({ session }) {
-
-    const router = useRouter()
-
-    if (!session) router.push('/pages/signin')
-
 
     const [data, setData] = useState();
     const [content, setContent] = useState('');
