@@ -13,7 +13,7 @@ export default function page() {
     return (
         <section className="bg-gray-50 px-6 mx-auto h-screen pt-11">
             <div className="flex flex-col items-center justify-center ">
-                <Image src={'/logo.png'} alt='forTech' width={150} height={150} className='my-2' priority />
+                <Image src={'/logoo.png'} alt='forTech' width={150} height={150} className='my-2' priority />
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
