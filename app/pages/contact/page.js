@@ -89,6 +89,7 @@ export default function Contact() {
                     value={data.email || ""}
                     onChange={getData}
                     type="email"
+                    autoComplete='off'
                     className="w-full  p-2 my-2 px-4 border focus:border-b-4  text-xl text-gray-800  focus:outline-none" placeholder="your email"
                     required="true"
                     name='email'
@@ -101,6 +102,7 @@ export default function Contact() {
                     onChange={getData}
                     value={data.name || ""}
                     type="text"
+                    autoComplete='off'
                     className="w-full  p-2 px-4 border  text-xl text-gray-800  focus:outline-none"
                     placeholder="your name"
                     required="true"

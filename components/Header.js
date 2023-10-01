@@ -16,7 +16,7 @@ export default function Header({ session }) {
   }
 
   return (
-    <header className="md:flex items-center justify-between py-3 md:py-4 px-4 md:px-0 relative max-w-7xl mx-auto" >
+    <header className="md:flex items-center justify-between py-3 md:py-4 pr-3 relative max-w-7xl mx-auto" >
 
       {/* Logo Name and toggle button */}
       <div className="flex justify-between min-w-min">
