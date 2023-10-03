@@ -4,13 +4,15 @@ import React from 'react';
 import Image from 'next/image';
 import FullAccessNotification from './FullAccessNotification';
 
-// Importing assests
-// import topImage from '../public/img/general.webp'
+// getting session function
+import { getAuthSession } from '../lib/auth';
 
-export default function TopSection() {
+export default async function TopSection() {
+  const session = await getAuthSession()
+  console.log(session)
   return (
     <section className="bg-gray-900 relative h-96 max-w-7xl mx-auto">
-      <FullAccessNotification />
+      <FullAccessNotification session={session} />
       <Image src={'/img/general.webp'} alt='Top Image' fill={true} style={{ objectFit: 'cover' }} />
     </section>
   );

@@ -1,9 +1,8 @@
 "use client"
-import React, { useState, useContext } from 'react'
-import { LoadingContext } from '../lib/context'
+import React, { useState } from 'react'
 
-export default function FullAccessNotification() {
-    const [showNotification, setShowNotification] = useState(true)
+export default function FullAccessNotification({ session }) {
+    const [showNotification, setShowNotification] = useState(session ? false : true)
     return (
         <div className={`absolute -top-3 right-8 z-30 w-[40%] max-w-[400px] min-w-[300px] mx-auto p-6 bg-gray-800 rounded-lg shadow-md text-white ${showNotification ? '' : 'hidden'}`}>
 
