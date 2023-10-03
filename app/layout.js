@@ -12,7 +12,6 @@ import AlertContextProvider from '../contextproviders/AlertContextProvider';
 import LoadingContextProvider from '../contextproviders/LoadingContextProvider ';
 
 // Importing session provider next auth
-import { SessionProvider } from "next-auth/react"
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../lib/auth';
 
@@ -26,16 +25,18 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <SessionProvider> */}
-        <LoadingContextProvider>
-          <AlertContextProvider>
-            <Header session={session} />
-            <Loader />
-            {children}
-            <Toast />
-          </AlertContextProvider>
-        </LoadingContextProvider>
-        {/* </SessionProvider> */}
+        <div className='max-w-7xl mx-auto relative'>
+          {/* <SessionProvider> */}
+          <LoadingContextProvider>
+            <AlertContextProvider>
+              <Header session={session} />
+              <Loader />
+              {children}
+              <Toast />
+            </AlertContextProvider>
+          </LoadingContextProvider>
+          {/* </SessionProvider> */}
+        </div>
       </body>
     </html>
   );
