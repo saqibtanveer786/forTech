@@ -6,7 +6,7 @@ async function DELETE(request) {
   try {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
-    const id = parseInt(searchParams.get('id'))
+    const id = searchParams.get('id')
 
     // const prisma = new PrismaClient()
 

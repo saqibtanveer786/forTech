@@ -50,7 +50,7 @@ model User {
 model Post {
   id      String       @id @default(cuid())
   title   String
-  content String
+  content Json
   briefdescription String?
   image String
   published Boolean @default(false)

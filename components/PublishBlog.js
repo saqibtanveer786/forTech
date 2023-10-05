@@ -1,8 +1,7 @@
 'use client';
-import React, { useState, useContext, useCallback, useRef } from 'react';
-
+import React, { useState, useContext, useRef } from 'react';
 //editorjs imports 
-import EditorJS from '@editorjs/editorjs'; //?
+import EditorJS from '@editorjs/editorjs'; //?  
 import Header from '@editorjs/header';
 import ImageTool from "@editorjs/image"
 import RawTool from "@editorjs/raw"
@@ -13,34 +12,45 @@ import Quote from "@editorjs/quote"
 import CodeTool from "@editorjs/code"
 
 import TextareaAutosize from 'react-textarea-autosize'
+
 // Importing context
 import { AlertContext, LoadingContext } from '../lib/context'
 
-// Importing editor
-import JoditEditor from 'jodit-react';
-
 // Importing serverActions
-import { pusblishBlog, submitForm } from '../lib/serverAction'
+import { pusblishBlog } from '../lib/serverAction'
 
-// import { uploadFiles } from '../../../lib/uploadthings';
-import { UploadButton } from '../lib/uploadthings';
+// uploadthing 
+import { UploadDropzone } from "@uploadthing/react";
 import { uploadFiles } from '../lib/uploadthings'
 
-export default function PublishBlog({ session }) {
+// nextjs specific 
+import Image from 'next/image'
 
-    const [data, setData] = useState();
-    const [content, setContent] = useState('');
-    const [isImageUploaded, setIsImageUploaded] = useState(false);
+export default function PublishBlog() {
 
+    const [isImageUploaded, setIsImageUploaded] = useState(true);
+
+    // refs here
+    const titleRef = useRef()
+    const descriptionRef = useRef()
+    const editorRef = useRef(false);
+    const imageRef = useRef();
     // consuming context
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setIsLoading } = useContext(LoadingContext)
 
+    // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
     async function submitFormHandler(e) {
         e.preventDefault()
+        if (!isImageUploaded) { setShowAlert(true); setAlertMessage("Uploading front image is necessary"); setAlertStatus("error"); return; }
+        const data = {}
+        data.title = titleRef.current?.value
+        data.briefdescription = descriptionRef.current?.value
+        data.content = await editorRef?.current.save()
+        data.image = imageRef.current
         try {
             setIsLoading(true)
-            const response = await pusblishBlog(data, content)
+            const response = await pusblishBlog(data)
             if (response.status) {       //Incase of success
                 setAlertStatus("success");
                 setAlertMessage(response.message);
@@ -51,6 +61,7 @@ export default function PublishBlog({ session }) {
                 setAlertMessage(response.message);
             }
         } catch (error) {
+            console.log(error);
             setAlertStatus("error");
             setAlertMessage("Something went wrong");
         } finally {
@@ -60,25 +71,15 @@ export default function PublishBlog({ session }) {
         }
     }
 
-    // Function for getting input fields data
-    async function getData(e) {
-        e.preventDefault();
-        setData({ ...data, [e.target.name]: e.target.value });
-    }
-
     // Function for resetting input fields
     function resetInputFields() {
-        setData({})
-        setContent('')
     }
 
-    const titleRef = useRef()
-    const descriptionRef = useRef()
-    const ref = useRef(false);
-    if (!ref.current) {
+    // initializing editorjs
+    if (!editorRef.current) {
         let editor = new EditorJS({
             holder: 'editorjs',
-            onReady: () => { ref.current = editor },
+            onReady: () => { editorRef.current = editor },
             placeholder: "Tab here to start",
             inlineToolbar: true,
             data: { blocks: [] },
@@ -111,7 +112,10 @@ export default function PublishBlog({ session }) {
                         }
                     }
                 },
-                raw: RawTool,
+                raw: {
+                    class: RawTool,
+                    inlineToolbar: true
+                },
                 embed: {
                     class: Embed,
                     config: {
@@ -150,8 +154,10 @@ export default function PublishBlog({ session }) {
 
     return (
         <>
-            <section className='px-8 max-w-7xl mx-auto'>
-                <div className='prose prose-stone'>
+            <section className=' max-w-3xl mx-auto'>
+
+                {/* Title */}
+                <div className='prose prose-stone px-2'>
                     <TextareaAutosize
                         ref={(e) => {
                             titleRef.current = e
@@ -160,21 +166,45 @@ export default function PublishBlog({ session }) {
                         className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
                     />
                 </div>
-                <div className='prose prose-stone'>
+
+                {/* Description */}
+                <div className='prose prose-stone px-2'>
                     <TextareaAutosize
                         ref={(e) => {
-                            titleRef.current = e
+                            descriptionRef.current = e
                         }}
                         placeholder='Meta Description'
-                        className='w-full px-4 resize-none appearance-none overflow-hidden bg-transparent text-lg font-bold focus:outline-none'
+                        className='w-full resize-none appearance-none overflow-hidden bg-transparent text-lg font-bold focus:outline-none'
                     />
                 </div>
-                <div id='editorjs' className=''></div>
+
+                {/* Front Image */}
+                <div className='max-w-7xl grid place-items-center'>
+                    <UploadDropzone
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                            setIsImageUploaded(true)
+                            imageRef.current = res[0].url
+                            console.log(imageRef.current)
+                        }}
+                        onUploadError={(error) => {
+                            alert(`ERROR! ${error}`);
+                        }}
+                        className={`w-full ${isImageUploaded ? 'hidden' : ''}`}
+                    />
+                    <Image src='/img/general.webp' alt='Image' width={700} height={700} className={`mb-3 ${isImageUploaded ? "" : "hidden"}`} />
+                </div>
+
+                {/* Editor Js */}
+                <div id='editorjs' className='w-[700px] mx-auto'></div>
+
+                {/* Submit Button */}
                 <button
-                    onClick={async () => { const blocks = await ref.current?.save(); console.log(blocks) }}
+                    onClick={submitFormHandler}
                     type="submit"
-                    className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}
+                    className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center focus:outline-none`}
                 >Publish</button>
+
             </section>
         </>
     )
