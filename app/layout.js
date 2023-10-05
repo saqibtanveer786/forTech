@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className='max-w-7xl mx-auto relative'>
+        <div className='container max-w-7xl mx-auto relative'>
           {/* <SessionProvider> */}
           <LoadingContextProvider>
             <AlertContextProvider>

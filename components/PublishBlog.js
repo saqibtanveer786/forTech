@@ -1,6 +1,18 @@
 'use client';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback, useRef } from 'react';
 
+//editorjs imports 
+import EditorJS from '@editorjs/editorjs'; //?
+import Header from '@editorjs/header';
+import ImageTool from "@editorjs/image"
+import RawTool from "@editorjs/raw"
+import Embed from "@editorjs/embed"
+import Checklist from "@editorjs/checklist"
+import List from '@editorjs/list';
+import Quote from "@editorjs/quote"
+import CodeTool from "@editorjs/code"
+
+import TextareaAutosize from 'react-textarea-autosize'
 // Importing context
 import { AlertContext, LoadingContext } from '../lib/context'
 
@@ -8,10 +20,11 @@ import { AlertContext, LoadingContext } from '../lib/context'
 import JoditEditor from 'jodit-react';
 
 // Importing serverActions
-import { pusblishBlog } from '../lib/serverAction'
+import { pusblishBlog, submitForm } from '../lib/serverAction'
 
 // import { uploadFiles } from '../../../lib/uploadthings';
 import { UploadButton } from '../lib/uploadthings';
+import { uploadFiles } from '../lib/uploadthings'
 
 export default function PublishBlog({ session }) {
 
@@ -23,88 +36,145 @@ export default function PublishBlog({ session }) {
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setIsLoading } = useContext(LoadingContext)
 
+    async function submitFormHandler(e) {
+        e.preventDefault()
+        try {
+            setIsLoading(true)
+            const response = await pusblishBlog(data, content)
+            if (response.status) {       //Incase of success
+                setAlertStatus("success");
+                setAlertMessage(response.message);
+                resetInputFields()
+            }
+            if (!response.status) {      //Incase of error
+                setAlertStatus("error");
+                setAlertMessage(response.message);
+            }
+        } catch (error) {
+            setAlertStatus("error");
+            setAlertMessage("Something went wrong");
+        } finally {
+            setIsLoading(false);
+            setShowAlert(true);
+
+        }
+    }
+
     // Function for getting input fields data
     async function getData(e) {
         e.preventDefault();
         setData({ ...data, [e.target.name]: e.target.value });
     }
 
+    // Function for resetting input fields
     function resetInputFields() {
         setData({})
         setContent('')
     }
 
+    const titleRef = useRef()
+    const descriptionRef = useRef()
+    const ref = useRef(false);
+    if (!ref.current) {
+        let editor = new EditorJS({
+            holder: 'editorjs',
+            onReady: () => { ref.current = editor },
+            placeholder: "Tab here to start",
+            inlineToolbar: true,
+            data: { blocks: [] },
+            tools: {
+                header: {
+                    class: Header,
+                    config: {
+                        placeholder: 'Enter a header',
+                        levels: [1, 2, 3, 4, 5, 6],
+                        defaultLevel: 1
+                    },
+                    inlineToolbar: true,
+                },
+                image: {
+                    class: ImageTool,
+                    config: {
+                        uploader: {
+                            async uploadByFile(file) {
+                                const [res] = await uploadFiles({
+                                    files: [file],
+                                    endpoint: "imageUploader",
+                                })
+                                return {
+                                    success: 1,
+                                    file: {
+                                        url: res.url
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                raw: RawTool,
+                embed: {
+                    class: Embed,
+                    config: {
+                        services: {
+                            youtube: true,
+                            coub: true
+                        }
+                    }
+                },
+                checklist: {
+                    class: Checklist,
+                    inlineToolbar: true,
+                },
+                list: {
+                    class: List,
+                    inlineToolbar: true,
+                    config: {
+                        defaultStyle: 'unordered',
+                    }
+                },
+                quote: {
+                    class: Quote,
+                    inlineToolbar: true,
+                    config: {
+                        quotePlaceholder: 'Enter a quote',
+                        captionPlaceholder: 'Quote\'s author',
+                    },
+                },
+                code: {
+                    class: CodeTool,
+                    placeholder: "Code",
+                },
+            }
+        });
+    }
+
     return (
         <>
-            <section className='w-[90%] max-w-7xl mx-auto my-14'>
-                <h1 className='text-2xl font-bold'>Add Blog</h1>
-                <input
-                    value={data?.title || ""}
-                    type="text"
-                    id="base-input"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 my-6"
-                    placeholder='Title'
-                    autoComplete='off'
-                    required
-                    name='title'
-                    onChange={getData}
-                />
-
-                <input
-                    value={data?.briefdescription || ""}
-                    type="text"
-                    id="large-input"
-                    className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 my-6"
-                    placeholder='Brief Description'
-                    autoComplete='off'
-                    required
-                    name='briefdescription'
-                    onChange={getData}
-                />
-                <div className='w-full flex justify-start items-start gap-4 py-4'>
-                    <UploadButton
-                        endpoint="imageUploader"
-                        onClientUploadComplete={(res) => {
-                            // Do something with the response
-                            setIsImageUploaded(true)
-                            setData({ ...data, image: res[0].fileUrl })
-                            alert("Upload Completed");
+            <section className='px-8 max-w-7xl mx-auto'>
+                <div className='prose prose-stone'>
+                    <TextareaAutosize
+                        ref={(e) => {
+                            titleRef.current = e
                         }}
-                        onUploadError={(error) => {
-                            alert(`ERROR! ${error.message}`);
-                        }}
+                        placeholder='Title'
+                        className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
                     />
-                    <span className='text-xl text-gray-500'>Upload an image for the blog</span>
                 </div>
-                <JoditEditor
-                    value={content}
-                    tabIndex={1}
-                    onChange={setContent}
-                />
+                <div className='prose prose-stone'>
+                    <TextareaAutosize
+                        ref={(e) => {
+                            titleRef.current = e
+                        }}
+                        placeholder='Meta Description'
+                        className='w-full px-4 resize-none appearance-none overflow-hidden bg-transparent text-lg font-bold focus:outline-none'
+                    />
+                </div>
+                <div id='editorjs' className=''></div>
                 <button
-                    disabled={!isImageUploaded}
-                    onClick={async (e) => {
-                        e.preventDefault()
-                        if (!isImageUploaded) return
-                        setIsLoading(true)
-                        const response = await pusblishBlog(data, content)
-                        if (response.status) {       //Incase of success
-                            setIsLoading(false);
-                            setShowAlert(true);
-                            setAlertStatus("success");
-                            setAlertMessage(response.message);
-                            resetInputFields()
-                        }
-                        if (!response.status) {      //Incase of error
-                            setIsLoading(false);
-                            setShowAlert(true);
-                            setAlertStatus("error");
-                            setAlertMessage(response.message);
-                        }
-                    }}
+                    onClick={async () => { const blocks = await ref.current?.save(); console.log(blocks) }}
                     type="submit"
-                    className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${(!isImageUploaded || !data?.title || !data.briefdescription || !content) && 'bg-gray-700 hover:bg-gray-700'}`}
-                >{(!isImageUploaded || !data?.title || !data.briefdescription || !content) ? 'Fill All Fields' : 'Publish'}</button>
+                    className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center`}
+                >Publish</button>
             </section>
         </>
     )

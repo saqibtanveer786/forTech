@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 // import { PrismaClient } from '../../../prisma/generated/client';
 import prisma from '../../../lib/prisma'
@@ -8,7 +8,7 @@ export async function GET(req) {
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
     const stringId = searchParams.get('id');
-    const id = parseInt(stringId)
+    const id = stringId
 
     // const prisma = new PrismaClient()
     // Adding post
