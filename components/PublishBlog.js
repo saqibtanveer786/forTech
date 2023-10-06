@@ -1,7 +1,9 @@
 'use client';
 import React, { useState, useContext, useRef } from 'react';
+import dynamic from 'next/dynamic';
 //editorjs imports 
-import EditorJS from '@editorjs/editorjs'; //?  
+// const EditorJS = dynamic(() => import('@editorjs/editorjs'), { ssr: false });
+import EditorJS from '@editorjs/editorjs'; //?
 import Header from '@editorjs/header';
 import ImageTool from "@editorjs/image"
 import RawTool from "@editorjs/raw"
@@ -196,14 +198,16 @@ export default function PublishBlog() {
                 </div>
 
                 {/* Editor Js */}
-                <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto'></div>
+                <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto mb-2'></div>
 
                 {/* Submit Button */}
-                <button
-                    onClick={submitFormHandler}
-                    type="submit"
-                    className={`mt-14 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center focus:outline-none`}
-                >Publish</button>
+                <div className='flex justify-end my-4'>
+                    <button
+                        onClick={submitFormHandler}
+                        type="submit"
+                        className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center focus:outline-none `}
+                    >Publish</button>
+                </div>
 
             </section>
         </>
