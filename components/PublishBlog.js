@@ -28,7 +28,7 @@ import Image from 'next/image'
 
 export default function PublishBlog() {
 
-    const [isImageUploaded, setIsImageUploaded] = useState(true);
+    const [isImageUploaded, setIsImageUploaded] = useState(false);
 
     // refs here
     const titleRef = useRef()
@@ -157,7 +157,7 @@ export default function PublishBlog() {
             <section className=' max-w-3xl mx-auto'>
 
                 {/* Title */}
-                <div className='prose prose-stone px-2'>
+                <div className='prose prose-stone sm:px-9 px-2'>
                     <TextareaAutosize
                         ref={(e) => {
                             titleRef.current = e
@@ -168,7 +168,7 @@ export default function PublishBlog() {
                 </div>
 
                 {/* Description */}
-                <div className='prose prose-stone px-2'>
+                <div className='prose prose-stone sm:px-9 px-2'>
                     <TextareaAutosize
                         ref={(e) => {
                             descriptionRef.current = e
@@ -192,11 +192,11 @@ export default function PublishBlog() {
                         }}
                         className={`w-full ${isImageUploaded ? 'hidden' : ''}`}
                     />
-                    <Image src='/img/general.webp' alt='Image' width={700} height={700} className={`mb-3 ${isImageUploaded ? "" : "hidden"}`} />
+                    <Image src={imageRef.current || '/img/general.webp'} alt='Image' width={700} height={700} className={`mb-3 ${isImageUploaded ? "" : "hidden"}`} />
                 </div>
 
                 {/* Editor Js */}
-                <div id='editorjs' className='w-[700px] mx-auto'></div>
+                <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto'></div>
 
                 {/* Submit Button */}
                 <button
