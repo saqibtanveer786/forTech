@@ -14,6 +14,7 @@ export default function Toast() {
             {showAlert && alertStatus === 'success' && toasts.success(alertMessage, setShowAlert)}
             {showAlert && alertStatus === 'error' && toasts.error(alertMessage, setShowAlert)}
             {showAlert && alertStatus === 'warn' && toasts.warn(alertMessage, setShowAlert)}
+            {showAlert && alertStatus === 'message' && toasts.message(alertMessage, setShowAlert)}
         </div>
     )
 }
