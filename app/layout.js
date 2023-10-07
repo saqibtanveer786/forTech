@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
               <Header session={session} />
               <Loader />
               {children}
-              <Toast />
+              <Toast session={session} />
             </AlertContextProvider>
           </LoadingContextProvider>
           {/* </SessionProvider> */}

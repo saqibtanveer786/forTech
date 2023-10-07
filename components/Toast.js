@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { toasts } from '../lib/toasts'
 import { AlertContext } from '../lib/context'
 
-export default function Toast() {
+export default function Toast({ session }) {
 
     // consuming the alert context
     const { showAlert, setShowAlert, alertStatus, alertMessage } = useContext(AlertContext)
@@ -14,7 +14,7 @@ export default function Toast() {
             {showAlert && alertStatus === 'success' && toasts.success(alertMessage, setShowAlert)}
             {showAlert && alertStatus === 'error' && toasts.error(alertMessage, setShowAlert)}
             {showAlert && alertStatus === 'warn' && toasts.warn(alertMessage, setShowAlert)}
-            {showAlert && alertStatus === 'message' && toasts.message(alertMessage, setShowAlert)}
+            {showAlert && alertStatus === 'message' && !session && toasts.message(alertMessage, setShowAlert)}
         </div>
     )
 }
