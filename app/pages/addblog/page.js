@@ -12,9 +12,9 @@ import { redirect } from 'next/navigation';
 export default async function AddBlog() {
 
   const session = await getAuthSession()
-  if (!session || session?.user?.email !== process.env.ADMIN_EMAIL) {
-    redirect("/", 'push')
-  }
+  // if (!session || session?.user?.email !== process.env.ADMIN_EMAIL) {
+  //   redirect("/", 'push')
+  // }
   return (
     <PublishBlog session={session} />
   );

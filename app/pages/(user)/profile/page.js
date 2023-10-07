@@ -2,11 +2,9 @@ import React from 'react'
 
 import Image from 'next/image'
 import { getAuthSession } from '../../../../lib/auth'
-import { redirect } from 'next/navigation'
 
 export default async function page() {
     const session = await getAuthSession()
-    if (!session) redirect("/pages/signin", 'push')
     return (
         <>
             <div className="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow mx-auto mt-4 h-96 grid place-items-center">
