@@ -13,7 +13,7 @@ export default function DropDown({ session }) {
         setShowMenu(previous => !previous);
     }
     return (
-        <div className='relative mt-2 flex items-center'>
+        <div className='relative mt-[15px] flex items-center'>
             <button
                 id="dropdownAvatarNameButton"
                 onClick={toggleMenu}

@@ -1,7 +1,9 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 // Importing components
-import Post from './Post'
+const Post = dynamic(() => import('./Post'), { ssr: false })
+// import Post from './Post'
 import { getBlogs } from '../lib/serverAction'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../lib/auth'

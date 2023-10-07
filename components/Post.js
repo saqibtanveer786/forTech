@@ -18,7 +18,10 @@ import { deletePost } from '../lib/serverAction';
 
 export default function Post({ blog, session }) {
 
-  const screenWidth = window.innerWidth
+  let screenWidth;
+  if (typeof window !== 'undefined') {
+    screenWidth = window.innerWidth
+  }
   // consuming context
   const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
   const { setIsLoading } = useContext(LoadingContext)
