@@ -7,13 +7,13 @@ import Image from 'next/image'
 import loadingGif from '../public/laodingGif.gif'
 import { LoadingContext } from '../lib/context'
 
-export default function Loader() {
+export default function Loader({ isPageLoading }) {
 
     // consuming context
     const { isLoading } = useContext(LoadingContext)
 
     return (
-        isLoading && <div className={`grid place-items-center h-[100vh] w-full fixed z-50 bg-black top-0 opacity-60 left-0`}>
+        isLoading || isPageLoading && <div className={`grid place-items-center h-[100vh] w-full fixed z-50 bg-black top-0 opacity-60 left-0`}>
             <svg className='' width="150" height="150" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#03c9d7">
                 <g fill="none" fill-rule="evenodd" stroke-width="2">
                     <circle cx="22" cy="22" r="1">
