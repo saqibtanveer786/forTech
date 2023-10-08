@@ -8,7 +8,7 @@ async function DELETE(request) {
   try {
     // checking authorization 
     const session = await getAuthSession()
-    if (!session || session?.user?.email !== process.env.ADMIN_EMAIL) return NextResponse.json(
+    if (!session || session?.user?.email !== 'adward797@gmail.com') return NextResponse.json(
       {
         message: `You are not Allowed`,
       },
