@@ -1,12 +1,21 @@
 import { NextResponse } from 'next/server';
 
-// import { PrismaClient } from '../../../prisma/generated/client';
 import prisma from '../../../lib/prisma';
+
+import { getAuthSession } from '../../../lib/auth';
 
 export async function POST() {
   try {
-    // const prisma = await new PrismaClient()
-    // Getting Posts
+    // checking authorization 
+    const session = await getAuthSession()
+    if (!session) return NextResponse.json(
+      {
+        message: `You are not Allowed`,
+      },
+      { status: 404 }
+    )
+
+    // getting Posts
     const posts = await prisma.post.findMany()
 
     return NextResponse.json(

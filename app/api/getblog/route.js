@@ -1,16 +1,26 @@
 import { NextResponse } from 'next/server';
 
-// import { PrismaClient } from '../../../prisma/generated/client';
 import prisma from '../../../lib/prisma'
+
+import { getAuthSession } from '../../../lib/auth';
 
 export async function GET(req) {
   try {
+    // checking authorization 
+    const session = await getAuthSession()
+    if (!session) return NextResponse.json(
+      {
+        message: `You are not Allowed`,
+      },
+      { status: 404 }
+    )
+
+    // getting the blog id
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
     const stringId = searchParams.get('id');
     const id = stringId
 
-    // const prisma = new PrismaClient()
     // Adding post
     const addPost = await prisma.post.findUnique({
       where: {
