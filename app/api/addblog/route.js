@@ -2,19 +2,8 @@ const { NextRequest, NextResponse } = require('next/server');
 
 import prisma from '../../../lib/prisma'
 
-import { getAuthSession } from '../../../lib/auth'
-
 async function POST(request) {
   try {
-    // checking authorization 
-    const session = await getAuthSession()
-    if (!session || session?.user?.email !== process.env.ADMIN_EMAIL) return NextResponse.json(
-      {
-        message: `You are not Allowed`,
-      },
-      { status: 404 }
-    )
-
     const { image, title, briefdescription, content } = await request.json();
     // const prisma = new PrismaClient()
 

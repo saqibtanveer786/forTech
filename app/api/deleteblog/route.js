@@ -2,19 +2,8 @@ const { NextRequest, NextResponse } = require('next/server');
 
 import prisma from '../../../lib/prisma';
 
-import { getAuthSession } from '../../../lib/auth';
-
 async function DELETE(request) {
   try {
-    // checking authorization 
-    const session = await getAuthSession()
-    if (!session || session?.user?.email !== 'adward797@gmail.com') return NextResponse.json(
-      {
-        message: `You are not Allowed`,
-      },
-      { status: 404 }
-    )
-
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
     const id = searchParams.get('id')
