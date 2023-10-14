@@ -22,7 +22,6 @@ export async function GET(req) {
       { status: addPost ? 200 : 404 }
     );
   } catch (error) {
-    // console.log('iserror is: ', error)
     return NextResponse.json(
       { message: 'Internal Server Error' },
       { status: 500 }

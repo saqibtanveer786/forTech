@@ -1,15 +1,14 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 
 // Importing server actions
 import { getBlog } from '../../../lib/serverAction';
 
 // nextjs imports
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 // Importing components
 const Article = dynamic(() => import("../../../components/Article"), { ssr: false })
-// import Article from '../../../components/Article'
 
 // Library imports
 import { getAuthSession } from '../../../lib/auth';

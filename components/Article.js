@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Article({ content }) {
 
-    const CodeRenderer = ({ data, style, classNames, config }) => {
+    const CodeRenderer = ({ data }) => {
         return (
             <pre className='bg-gray-800 rounded-md p-4 my-4'>
                 <code className='text-gray-100 text-sm'>{data.code}</code>
@@ -13,8 +13,8 @@ export default function Article({ content }) {
         )
     };
 
-    const ImageRenderer = ({ data, style, classNames, config }) => {
-        console.log("imagedata is :", data)
+    const ImageRenderer = ({ data }) => {
+
         return (
             <Image src={data.file.url} alt='Image' width={300} height={300} className='mx-auto' />
         )
@@ -27,9 +27,6 @@ export default function Article({ content }) {
     return (
 
         <article className='pt-12 max-w-[800px] mx-auto'>
-            {/* <div dangerouslySetInnerHTML={{ __html: <Output data={content} /> || '<p>This blog does not have content</p>' }} >
-
-            </div> */}
             <Output data={content} renderers={renderers} />
         </article>
     )

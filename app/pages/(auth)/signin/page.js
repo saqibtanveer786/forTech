@@ -1,10 +1,7 @@
 "use client"
 import React from 'react'
 
-// Importing nextjs components
-import Image from 'next/image'
-
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 
 // Importing logos
 import { logos } from '../../../../lib/logos'

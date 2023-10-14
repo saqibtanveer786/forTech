@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { signOut } from 'next-auth/react';
-
-import { redirect } from 'next/navigation';
 
 export default function DropDown({ session }) {
     const [showMenu, setShowMenu] = useState(false);
