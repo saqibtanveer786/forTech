@@ -167,6 +167,13 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  postId: 'postId',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -203,7 +210,8 @@ exports.Prisma.ModelName = {
   Post: 'Post',
   PeopleMessages: 'PeopleMessages',
   Session: 'Session',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Comment: 'Comment'
 };
 
 /**

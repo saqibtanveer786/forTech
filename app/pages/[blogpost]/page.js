@@ -1,3 +1,4 @@
+"use server"
 import React from 'react';
 
 // Importing server actions
@@ -9,6 +10,7 @@ import dynamic from 'next/dynamic';
 
 // Importing components
 const Article = dynamic(() => import("../../../components/Article"), { ssr: false })
+import CommentBox from '../../../components/CommentBox'
 
 // Library imports
 import { getAuthSession } from '../../../lib/auth';
@@ -36,6 +38,7 @@ export default async function page({ params }) {
             </div> */}
             <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
             <Article content={blog?.content} />
+            <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
           </main>
         </section>
       </div>
