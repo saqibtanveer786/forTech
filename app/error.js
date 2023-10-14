@@ -12,7 +12,7 @@ export default function Error({
     }, [error])
 
     return (
-        <div className='h-screen w-full gird place-items-center'>
+        <div className='h-screen w-[100%] gird place-items-center'>
             <h2>Something went wrong!</h2>
             <button
                 onClick={

@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Importing server actions
-import { getBlog } from '../../../lib/serverAction';
+import { getBlog, getComments } from '../../../lib/serverAction';
 
 // nextjs imports
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic';
 // Importing components
 const Article = dynamic(() => import("../../../components/Article"), { ssr: false })
 import CommentBox from '../../../components/CommentBox'
+import CommentList from '../../../components/CommentList'
 
 // Library imports
 import { getAuthSession } from '../../../lib/auth';
@@ -20,6 +21,7 @@ import { redirect } from 'next/navigation';
 
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
+  const comments = await getComments(params.blogpost);
 
   const session = await getAuthSession()
   if (!session || session.length === 0) redirect("/pages/signin", 'push')
@@ -38,6 +40,7 @@ export default async function page({ params }) {
             </div> */}
             <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
             <Article content={blog?.content} />
+            <CommentList comments={comments} />
             <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
           </main>
         </section>
