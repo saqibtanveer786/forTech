@@ -11,6 +11,17 @@ async function POST(req) {
         const findComments = await prisma.Comment.findMany({
             where: {
                 postId
+            },
+            select: {
+                message: true,
+                user: {
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                        image: true
+                    }
+                }
             }
         })
 
