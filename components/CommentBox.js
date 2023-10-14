@@ -9,7 +9,7 @@ export default function CommentBox({ userId, blogId }) {
     const [message, setMessage] = useState('')
 
     //consuming context 
-    const { isSubmittingComment, setIsSubmittingComment, setIsLoading } = useContext(LoadingContext)
+    const { isSubmittingComment, setIsSubmittingComment, } = useContext(LoadingContext)
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
 
     async function commentSubmitHandler() {
@@ -24,7 +24,7 @@ export default function CommentBox({ userId, blogId }) {
     }
 
     return (
-        <>
+        <div className='max-w-[800px] mx-auto my-8'>
             <textarea
                 placeholder="your comment"
                 cols="5"
@@ -36,6 +36,6 @@ export default function CommentBox({ userId, blogId }) {
                 disabled={isSubmittingComment}
             ></textarea>
             <button className={`my-2 py-2 text-xl text-center w-full text-gray-50 hover:bg-blue-600 focus:outline-none rounded flex justify-center items-center ${isSubmittingComment ? 'bg-blue-100' : 'bg-blue-700'}`} onClick={commentSubmitHandler}>{isSubmittingComment ? logos.circleLoader() : "Comment"}</button>
-        </>
+        </div>
     )
 }
