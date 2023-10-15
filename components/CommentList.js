@@ -1,13 +1,14 @@
 "use client"
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import { deleteComment } from '../lib/serverAction'
 import { AlertContext } from '../lib/context'
 
 export default function CommentList({ comments, sessionId }) {
-
     // consuming context
-    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+    const { setShowAlert, setAlertMessage, setAlertStatus, commentState, setCommentState } = useContext(AlertContext)
+
+    setCommentState(comments)
 
     function toggleMenu(id) {
         document.getElementById(id).classList.toggle('hidden')
@@ -16,9 +17,9 @@ export default function CommentList({ comments, sessionId }) {
     return (
         <div className='max-w-[800px] mx-auto'>
             <h2 className='font-bold text-3xl mt-4'>Comments</h2>
-            <ul>
-                {comments && comments.length !== 0 && comments.map((comment) => {
-                    return <article key={comment.id} className="p-6 text-base bg-white rounded-lg relative">
+            <ul id='commentList'>
+                {commentState && commentState.length !== 0 && commentState.map((comment, i) => {
+                    return <article id={i} key={comment.id} className="p-6 text-base bg-white rounded-lg relative">
                         <footer className="flex justify-between items-center mb-2">
                             <div className="flex items-center">
                                 <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold"><Image
@@ -60,6 +61,9 @@ export default function CommentList({ comments, sessionId }) {
                                                     setAlertMessage(response.message);
                                                     setAlertStatus(response.status);
                                                     setShowAlert(true);
+                                                    if (response.status === 'success') {
+                                                        document.getElementById(i).classList.add('hidden');
+                                                    }
                                                 }}
                                             >Remove</div>
                                         </li></>}

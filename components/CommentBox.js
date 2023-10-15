@@ -5,22 +5,23 @@ import { submitComment } from '../lib/serverAction'
 import { logos } from '../lib/logos'
 import { AlertContext, LoadingContext } from '../lib/context'
 
+
 export default function CommentBox({ userId, blogId }) {
     const [message, setMessage] = useState('')
 
     //consuming context 
     const { isSubmittingComment, setIsSubmittingComment, } = useContext(LoadingContext)
-    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+    const { setShowAlert, setAlertMessage, setAlertStatus, commentState, setCommentState } = useContext(AlertContext)
 
     async function commentSubmitHandler() {
-        setIsSubmittingComment(true)
+        setIsSubmittingComment((previous) => !previous)
         const response = await submitComment(message, userId, blogId)
         setIsSubmittingComment(false)
         setAlertMessage(response.message)
-        if (response.status) setAlertStatus("success")
-        if (!response.status) setAlertStatus("error")
         setShowAlert(true)
         setMessage('')
+        if (response.status) { setAlertStatus("success"); setCommentState(commentState.push(response.comment)) }
+        if (!response.status) setAlertStatus("error")
     }
 
     return (
@@ -35,7 +36,7 @@ export default function CommentBox({ userId, blogId }) {
                 name='message'
                 disabled={isSubmittingComment}
             ></textarea>
-            <button className={`my-2 py-2 text-xl text-center w-full text-gray-50 hover:bg-blue-600 focus:outline-none rounded flex justify-center items-center ${isSubmittingComment ? 'bg-blue-100' : 'bg-blue-700'}`} onClick={commentSubmitHandler}>{isSubmittingComment ? logos.circleLoader() : "Comment"}</button>
+            <button className={`my-2 py-2 text-xl text-center w-full text-gray-50 hover:bg-blue-600 focus:outline-none rounded flex justify-center items-center ${isSubmittingComment ? 'bg-blue-200' : 'bg-blue-700'}`} onClick={commentSubmitHandler}>{isSubmittingComment ? logos.circleLoader() : "Comment"}</button>
         </div>
     )
 }
