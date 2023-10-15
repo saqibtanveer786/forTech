@@ -28,8 +28,6 @@ async function POST(request) {
             }
         })
 
-        console.log("Added comment is: ", addcomment)
-
         return NextResponse.json(
             addcomment ? { comment: addcomment, message: "Comment Added Successfully", status: true } : { message: "Error While Adding", status: false },
             { status: addcomment ? 200 : 404 }
