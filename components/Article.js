@@ -7,7 +7,7 @@ export default function Article({ content }) {
 
     const CodeRenderer = ({ data }) => {
         return (
-            <pre className='bg-gray-800 rounded-md p-4 my-4'>
+            <pre className='bg-gray-800 rounded-md p-4 my-4 max-w-[800px] sm:w-[100%] w-[300px] overflow-scroll'>
                 <code className='text-gray-100 text-sm'>{data.code}</code>
             </pre>
         )
