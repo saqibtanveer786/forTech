@@ -28,7 +28,7 @@ export default async function page({ params }) {
   // const immage = Buffer.from(blog?.image.data).toString('base64')
   return (
     <>
-      <div className="container mx-auto px-12">
+      <div className="container mx-auto px-6">
         <section className="grid md:grid-cols-1 mt-12 mb-12">
           <main className="col-span-2 relative md:mr-2">
             <h1 className="text-3xl font-bold text-gray-800 max-w-[800px] mx-auto">{blog?.title}</h1>
