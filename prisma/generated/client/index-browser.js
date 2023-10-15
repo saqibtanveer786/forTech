@@ -171,7 +171,14 @@ exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   message: 'message',
   postId: 'postId',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.VoteScalarFieldEnum = {
+  userId: 'userId',
+  postId: 'postId',
+  type: 'type'
 };
 
 exports.Prisma.SortOrder = {
@@ -204,6 +211,11 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN'
 };
 
+exports.VoteType = exports.$Enums.VoteType = {
+  UP: 'UP',
+  DOWN: 'DOWN'
+};
+
 exports.Prisma.ModelName = {
   Account: 'Account',
   User: 'User',
@@ -211,7 +223,8 @@ exports.Prisma.ModelName = {
   PeopleMessages: 'PeopleMessages',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
-  Comment: 'Comment'
+  Comment: 'Comment',
+  Vote: 'Vote'
 };
 
 /**
