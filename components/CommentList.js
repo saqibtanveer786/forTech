@@ -1,14 +1,14 @@
 "use client"
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import { deleteComment } from '../lib/serverAction'
-import { AlertContext, CommentModal, OtherStates } from '../lib/context'
+import { CommentModal, LoadingContext, OtherStates } from '../lib/context'
 
 export default function CommentList({ comments, sessionId }) {
     // consuming context
-    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setOpenModal, setCommentValue } = useContext(CommentModal)
     const { currentCommentGettingUpdated, setCurrentCommentGettingUpdated } = useContext(OtherStates)
+    const { setIsLoading } = useContext(LoadingContext)
 
 
     function toggleMenu(id) {
@@ -67,13 +67,12 @@ export default function CommentList({ comments, sessionId }) {
                                                 onClick={async (e) => {
                                                     e.preventDefault();
                                                     toggleMenu(comment.id);
+                                                    setIsLoading(true)
                                                     const response = await deleteComment(comment.id);
-                                                    setAlertMessage(response.message);
-                                                    setAlertStatus(response.status);
-                                                    setShowAlert(true);
                                                     if (response.status === 'success') {
                                                         document.getElementById(i).classList.add('hidden');
                                                     }
+                                                    setIsLoading(false)
                                                 }}
                                             >Remove</div>
                                         </li></>}

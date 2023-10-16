@@ -1,6 +1,6 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
-import { AlertContext, CommentModal, LoadingContext, OtherStates } from '../lib/context'
+import React, { useContext, } from 'react'
+import { CommentModal, LoadingContext, OtherStates } from '../lib/context'
 import { updateComment } from '../lib/serverAction'
 
 import { useRouter } from 'next/navigation'
@@ -11,7 +11,6 @@ export default function CommentUpModal() {
     // consuming context 
     const { openModal, setOpenModal, commentValue, setCommentValue } = useContext(CommentModal)
     const { currentCommentGettingUpdated } = useContext(OtherStates)
-    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setIsLoading } = useContext(LoadingContext)
 
     async function updateCommentHandler(e) {
@@ -19,15 +18,10 @@ export default function CommentUpModal() {
             e.preventDefault()
             setIsLoading(true)
             const response = await updateComment(currentCommentGettingUpdated, commentValue)
-            setAlertMessage(response.message)
-            setAlertStatus(response.status)
             if (response.status === 'success') { router.refresh(); setOpenModal((previous) => !previous) }
         } catch (error) {
             console.log(error)
-            setAlertMessage("An unexpected error occurred")
-            setAlertStatus("error")
         } finally {
-            setShowAlert(true)
             setIsLoading(false)
         }
     }
