@@ -28,8 +28,7 @@ export default function CommentList({ comments, sessionId }) {
                                     className="mr-2 w-6 h-6 rounded-full"
                                     src={comment.user?.image}
                                     alt="Michael Gough" />{comment.user?.name}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                                    title="February 8th, 2022">{comment.createdAt.split("T")[0]}</time></p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400"><time>{comment.createdAt.split("T")[0]}</time></p>
                             </div>
                             {(comment.user?.id === sessionId) && <button
                                 id="dropdownComment1Button"
