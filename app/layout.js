@@ -6,10 +6,10 @@ import "@uploadthing/react/styles.css";
 import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Toast from '../components/Toast';
+import CommentUpModal from '../components/CommentUpModal';
 
 //Importing Context
-import AlertContextProvider from '../contextproviders/AlertContextProvider';
-import LoadingContextProvider from '../contextproviders/LoadingContextProvider ';
+import Providers from '../contextproviders/Providers';
 
 // Importing session provider next auth
 import { getServerSession } from 'next-auth';
@@ -26,16 +26,13 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div className='container max-w-7xl mx-auto relative'>
-          {/* <SessionProvider> */}
-          <LoadingContextProvider>
-            <AlertContextProvider>
-              <Header session={session} />
-              <Loader />
-              {children}
-              <Toast session={session} />
-            </AlertContextProvider>
-          </LoadingContextProvider>
-          {/* </SessionProvider> */}
+          <Providers>
+            <Header session={session} />
+            <Loader />
+            {children}
+            <Toast session={session} />
+            <CommentUpModal />
+          </Providers>
         </div>
       </body>
     </html>

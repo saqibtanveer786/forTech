@@ -8,7 +8,6 @@ export default function AlertContextProvider({ children }) {
     const [showAlert, setShowAlert] = useState(true)
     const [alertMessage, setAlertMessage] = useState('Please Login To Access All The Blogs We Publish')
     const [alertStatus, setAlertStatus] = useState('message')
-    const [commentState, setCommentState] = useState([])
     return (
         <AlertContext.Provider value={{
             showAlert,
@@ -17,8 +16,6 @@ export default function AlertContextProvider({ children }) {
             setAlertMessage,
             alertStatus,
             setAlertStatus,
-            commentState,
-            setCommentState
         }}>
             {children}
         </AlertContext.Provider>

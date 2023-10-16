@@ -1,17 +1,18 @@
 "use client"
 import React, { useContext, useState } from 'react'
+import { useRouter } from 'next/navigation';
 
 import { submitComment } from '../lib/serverAction'
 import { logos } from '../lib/logos'
 import { AlertContext, LoadingContext } from '../lib/context'
 
 
-export default function CommentBox({ userId, blogId }) {
+export default function CommentBox({ userId, blogId, }) {
     const [message, setMessage] = useState('')
 
     //consuming context 
     const { isSubmittingComment, setIsSubmittingComment, } = useContext(LoadingContext)
-    const { setShowAlert, setAlertMessage, setAlertStatus, commentState, setCommentState } = useContext(AlertContext)
+    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
 
     async function commentSubmitHandler() {
         setIsSubmittingComment((previous) => !previous)
@@ -20,9 +21,10 @@ export default function CommentBox({ userId, blogId }) {
         setAlertMessage(response.message)
         setShowAlert(true)
         setMessage('')
-        if (response.status) { setAlertStatus("success"); setCommentState(commentState.push(response.comment)) }
+        if (response.status) { setAlertStatus("success"); router.refresh() }
         if (!response.status) setAlertStatus("error")
     }
+    const router = useRouter()
 
     return (
         <div className='max-w-[800px] mx-auto my-8'>

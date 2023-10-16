@@ -2,13 +2,14 @@
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import { deleteComment } from '../lib/serverAction'
-import { AlertContext } from '../lib/context'
+import { AlertContext, CommentModal, OtherStates } from '../lib/context'
 
 export default function CommentList({ comments, sessionId }) {
     // consuming context
-    const { setShowAlert, setAlertMessage, setAlertStatus, commentState, setCommentState } = useContext(AlertContext)
+    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+    const { setOpenModal, setCommentValue } = useContext(CommentModal)
+    const { currentCommentGettingUpdated, setCurrentCommentGettingUpdated } = useContext(OtherStates)
 
-    setCommentState(comments)
 
     function toggleMenu(id) {
         document.getElementById(id).classList.toggle('hidden')
@@ -18,7 +19,7 @@ export default function CommentList({ comments, sessionId }) {
         <div className='max-w-[800px] mx-auto'>
             <h2 className='font-bold text-3xl mt-4'>Comments</h2>
             <ul id='commentList'>
-                {commentState && commentState.length !== 0 && commentState.map((comment, i) => {
+                {comments && comments.length !== 0 && comments.map((comment, i) => {
                     return <article id={i} key={comment.id} className="p-6 text-base bg-white rounded-lg relative">
                         <footer className="flex justify-between items-center mb-2">
                             <div className="flex items-center">
@@ -48,7 +49,17 @@ export default function CommentList({ comments, sessionId }) {
                                 <ul className="py-1 text-sm text-gray-700"
                                     aria-labelledby="dropdownMenuIconHorizontalButton">
                                     {(comment.user?.id === sessionId) && <><li>
-                                        <div className="block py-2 px-4 hover:bg-gray-100 cursor-pointer">Edit</div>
+                                        <div
+                                            className="block py-2 px-4 hover:bg-gray-100 cursor-pointer"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setCommentValue(comment.message)
+                                                toggleMenu(comment.id);
+                                                setOpenModal((previous) => !previous);
+                                                setCurrentCommentGettingUpdated(comment.id);
+                                                console.log("comment getting updated is: ", currentCommentGettingUpdated);
+                                            }}
+                                        >Edit</div>
                                     </li>
                                         <li>
                                             <div
@@ -56,7 +67,7 @@ export default function CommentList({ comments, sessionId }) {
                                                 onClick={async (e) => {
                                                     e.preventDefault();
                                                     toggleMenu(comment.id);
-                                                    const response = await deleteComment(comment.id)
+                                                    const response = await deleteComment(comment.id);
                                                     setAlertMessage(response.message);
                                                     setAlertStatus(response.status);
                                                     setShowAlert(true);
