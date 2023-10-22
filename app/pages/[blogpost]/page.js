@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 
 // Importing components
 const Article = dynamic(() => import("../../../components/Article"), { ssr: false })
+import Aside from '../../../components/Aside'
 import CommentBox from '../../../components/CommentBox'
 import CommentList from '../../../components/CommentList'
 
@@ -29,20 +30,18 @@ export default async function page({ params }) {
   return (
     <>
       <div className="container mx-auto px-6">
-        <section className="grid md:grid-cols-1 mt-12 mb-12">
-          <main className="col-span-2 relative md:mr-2">
-            <h1 className="text-3xl font-bold text-gray-800 max-w-[800px] mx-auto">{blog?.title}</h1>
-            {/* <div className="flex mt-2 my-2 items-center gap-4">
-              <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-              <div className="text-gray-500">
-                By <span className="text-gray-800 cursor-pointer">Saqib Tanveer</span> on 14th April 2020
+        <section className="mt-12 mb-12">
+          <main className="relative md:mr-2">
+            <div className='flex items-start justify-center flex-wrap '>
+              <div>
+                <h1 className="text-3xl font-bold text-gray-800 max-w-[800px] mx-auto">{blog?.title}</h1>
+                <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
+                <Article content={blog?.content} />
+                <CommentList comments={comments} sessionId={session.user?.id} />
+                <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
               </div>
-            </div> */}
-            <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
-            <Article content={blog?.content} />
-            <Aside
-            <CommentList comments={comments} sessionId={session.user?.id} />
-            <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
+              <Aside />
+            </div>
           </main>
         </section>
       </div>
