@@ -14,7 +14,6 @@ import { AlertContext, LoadingContext } from '../lib/context';
 import { deletePost } from '../lib/serverAction';
 
 export default function PostSpeedDial({ blogId }) {
-    console.log('blogIdis: ' + blogId)
 
     // consuming context
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)

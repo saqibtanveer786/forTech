@@ -40,6 +40,7 @@ export default async function page({ params }) {
             </div> */}
             <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
             <Article content={blog?.content} />
+            <Aside
             <CommentList comments={comments} sessionId={session.user?.id} />
             <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
           </main>
