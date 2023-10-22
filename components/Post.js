@@ -1,20 +1,12 @@
 "use client"
-import React, { useContext } from 'react';
-import { useRouter } from 'next/navigation';
-
-// Importing the context
-import { AlertContext, LoadingContext } from '../lib/context';
+import React from 'react';
 
 // Importing from next
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Importing react icons
-import { MdDeleteOutline } from 'react-icons/md';
-import { RxUpdate } from 'react-icons/rx';
-
-// Import server action
-import { deletePost } from '../lib/serverAction';
+// components
+import PostSpeedDial from './PostSpeedDial'
 
 export default function Post({ blog, session }) {
 
@@ -22,12 +14,6 @@ export default function Post({ blog, session }) {
   if (typeof window !== 'undefined') {
     screenWidth = window.innerWidth
   }
-  // consuming context
-  const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
-  const { setIsLoading } = useContext(LoadingContext)
-
-  const router = useRouter()
-
   // const immage = Buffer.from(blog.image.data).toString('base64')
 
   return (
@@ -36,31 +22,8 @@ export default function Post({ blog, session }) {
 
         <div className={`flex flex-${screenWidth >= 700 ? 'row' : 'col'} items-center border rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative`}>
 
-          {session && session.user.email === 'adward797@gmail.com' && <div className='absolute bottom-2 right-2'>   {/* update and delete icons */}
-            <MdDeleteOutline
-              size={25}
-              style={{ marginBlock: '5px', cursor: 'pointer' }}
-              onClick={async () => {
-                setIsLoading(true);
-                const response = await deletePost(blog.id)
-                if (response.status) {       //Incase of success
-                  setIsLoading(false);
-                  setShowAlert(true);
-                  setAlertStatus("success");
-                  setAlertMessage(response.message);
-                  router.refresh()
-                }
-                if (!response.status) {      //Incase of error
-                  setIsLoading(false);
-                  setShowAlert(true);
-                  setAlertStatus("error");
-                  setAlertMessage(response.message);
-                }
-              }}
-            />
-            <RxUpdate
-              size={23}
-              style={{ marginBlock: '5px', cursor: 'pointer' }} />
+          {session && session.user?.role === 'ADMIN' && <div className='absolute bottom-2 right-2'>
+            <PostSpeedDial blogId={blog?.id} />
           </div>}
 
           <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}

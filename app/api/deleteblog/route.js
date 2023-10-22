@@ -8,7 +8,12 @@ async function DELETE(request) {
     const searchParams = new URLSearchParams(url.search);
     const id = searchParams.get('id')
 
-    // const prisma = new PrismaClient()
+    // check on id
+    if (!id)
+      return NextResponse.json(
+        { message: "No Id", status: false },
+        { status: 500 }
+      )
 
     // deleting post
     const deletePost = await prisma.post.delete({

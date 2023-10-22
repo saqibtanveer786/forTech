@@ -54,7 +54,7 @@ export default function DropDown({ session }) {
                     <li onClick={toggleMenu}>
                         <Link href="/pages/contact" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
                     </li>
-                    {session?.user.email === 'adward797@gmail.com' && <li onClick={toggleMenu}>
+                    {session.user?.email === 'ADMIN' && <li onClick={toggleMenu}>
                         <Link href="/pages/addblog" className="block px-4 py-2 hover:bg-gray-100">Publish Blog</Link>
                     </li>}
                 </ul>

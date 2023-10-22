@@ -96,7 +96,7 @@ model Comment {
   message String
   postId   String
   userId   String
-  post     Post @relation(fields: [postId], references: [id])
+  post     Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   user     User @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
