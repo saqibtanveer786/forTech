@@ -6,7 +6,7 @@ import { logos } from '../lib/logos'
 
 export default function AboutAuthor() {
     return (
-        <div id="author-card" className="flex flex-col items-center">
+        <div id="author-card" className="flex flex-col items-center px-14 xl:px-0">
             <h2 className="text-xl font-semibold border-l-4 border-gray-800 pl-2 text-gray-700 self-start mb-3">About Author</h2>
             <div >
                 <Image src='/img/saqibtanveerimg.webp' alt="Author's Image" width={150} height={150} className='rounded-full' />
