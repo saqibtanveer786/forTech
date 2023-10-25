@@ -3,6 +3,11 @@ import React from 'react'
 import Image from 'next/image'
 import { getAuthSession } from '../../../../lib/auth'
 
+export const metadata = {
+    title: 'forTech-Profile',
+    description: "User's profile details on forTech",
+}
+
 export default async function page() {
     const session = await getAuthSession()
     return (

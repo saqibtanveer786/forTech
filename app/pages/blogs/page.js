@@ -8,6 +8,32 @@ import PostCategories from '../../../components/PostCategories'
 import { getBlogs } from '../../../lib/serverAction'
 import { getAuthSession } from '../../../lib/auth'
 
+export const metadata = {
+    title: "forTech-AllBlogsPage",
+    description: "All blogs can be accessed here with categories tabs",
+    metaBase: process.env.HOST,
+    openGraph: {
+        url: process.env.HOST,
+        title: "forTech",
+        description: "forTech-AllBlogs | this page can be used to access all the blogs",
+        siteName: "forTech",
+        images: [
+            {
+                url: 'https://fortech-alpha.vercel.app/img/general.webp',
+                width: 600,
+                height: 800,
+                alt: 'forTech'
+            },
+            {
+                url: 'https://fortech-alpha.vercel.app/img/general.webp',
+                width: 1600,
+                height: 1800,
+                alt: 'forTech',
+            },
+        ],
+    }
+}
+
 export default async function Page() {
     const blogs = await getBlogs()
     const session = await getAuthSession()
