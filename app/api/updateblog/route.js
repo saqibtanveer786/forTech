@@ -1,20 +1,36 @@
-import { NextResponse } from 'next/server';
-const fs = require('fs');
+const { NextRequest, NextResponse } = require('next/server');
 
-import { getAuthSession } from '../../../lib/auth'
+import prisma from '../../../lib/prisma'
 
 async function PUT(request) {
   try {
-    const data = await request.json();
-    console.log(data);
-    const updateFile = await fs.writeFileSync(
-      `blogs/${data.slug}.json`,
-      JSON.stringify(data)
-    );
+    const url = new URL(request.url);
+    const searchParams = new URLSearchParams(url.search);
+    const id = searchParams.get('id')
 
-    return NextResponse.json(data);
+    const { image, title, briefdescription, content } = await request.json();
+    // const prisma = new PrismaClient()
+
+    // Adding post
+    const addPost = await prisma.post.update({
+      where: {
+        id
+      },
+      data: {
+        title,
+        content,
+        briefdescription,
+        image,
+      },
+    })
+
+    return NextResponse.json(
+      addPost ? { post: addPost, message: "Blog Updated Successfully", status: true } : { message: "Error While Adding", status: false },
+      { status: addPost ? 200 : 404 }
+    );
   } catch (error) {
-    console.log(error);
+    console.log('erroris', error);
+    return NextResponse.json({ message: `An Unexpected Error Occured error is: ${error}`, status: false });
   }
 }
 

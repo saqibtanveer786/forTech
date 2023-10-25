@@ -12,6 +12,7 @@ import { AlertContext, LoadingContext } from '../lib/context';
 
 // Import server action
 import { deletePost } from '../lib/serverAction';
+import Link from 'next/link';
 
 export default function PostSpeedDial({ blogId }) {
 
@@ -51,12 +52,12 @@ export default function PostSpeedDial({ blogId }) {
                             }}
                         />
                     </div>
-                    <div className='flex justify-center items-center w-[45px] h-[45px] text-gray-400 hover:text-white bg-gray-700 hover:bg-gray-600 rounded-full border border-gray-600 shadow-sm focus:ring-4 focus:ring-gray-400 focus:outline-none'>
+                    <Link href={`/pages/updateblog/${blogId}`} className='flex justify-center items-center w-[45px] h-[45px] text-gray-400 hover:text-white bg-gray-700 hover:bg-gray-600 rounded-full border border-gray-600 shadow-sm focus:ring-4 focus:ring-gray-400 focus:outline-none'>
                         <RxUpdate
                             size={21}
                             className='cursor-pointer'
                         />
-                    </div>
+                    </Link>
                 </div>
 
                 {/* Toggler Button */}
