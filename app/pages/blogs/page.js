@@ -13,6 +13,7 @@ export const metadata = {
     description: "All blogs can be accessed here with categories tabs",
     metaBase: process.env.HOST,
     openGraph: {
+        type: "website",
         url: process.env.HOST,
         title: "forTech",
         description: "forTech-AllBlogs | this page can be used to access all the blogs",

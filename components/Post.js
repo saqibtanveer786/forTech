@@ -25,10 +25,9 @@ export default function Post({ blog, session }) {
           {session && session.user?.role === 'ADMIN' && <div className='absolute bottom-2 right-2'>
             <PostSpeedDial blogId={blog?.id} />
           </div>}
+          {/* Image Col */}
+          <Image src={blog.image} alt='placeholder image' width={300} height={200} />
 
-          <div className="w-[300px] h-[200px] relative ">          {/* Image Col */}
-            <Image src={blog.image} alt='placeholder image' fill={'cover'} />
-          </div>
 
           <div className='w-[300px] lg:w-[450px]'>        {/* Title Col */}
             <Link href={`/pages/${blog?.id}`}>
