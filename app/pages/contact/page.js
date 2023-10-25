@@ -7,11 +7,6 @@ import { submitForm } from '../../../lib/serverAction'
 // Importing contexts
 import { AlertContext, LoadingContext } from '../../../lib/context';
 
-export const metadata = {
-  title: 'forTech-Contact',
-  description: 'forTech | leave a message for forTech'
-}
-
 export default function Contact() {
   const [data, setData] = useState({})
 
