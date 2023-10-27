@@ -25,53 +25,43 @@ export default function PostSpeedDial({ blogId }) {
     const listRef = useRef()
     return (
         <>
-            <div className="absolute bottom-0 right-1 group flex flex-col items-center">
+            <div className="absolute bottom-0 right-0 group flex items-center justify-center p-6">
 
                 {/* Actions List */}
-                <div ref={listRef} className=" flex-col gap-2 items-center invisible py-7 -mb-5 p-1 transition-opacity duration-500" >
-                    <div className='flex justify-center items-center w-[45px] h-[45px] text-gray-400 hover:text-white bg-gray-700 hover:bg-gray-600 rounded-full border border-gray-600 shadow-sm focus:ring-4 focus:ring-gray-400 focus:outline-none'>
-                        <MdDeleteOutline
-                            size={23}
-                            className='cursor-pointer'
-                            onClick={async () => {
-                                setIsLoading(true);
-                                const response = await deletePost(blogId)
-                                if (response.status) {       //Incase of success
-                                    setIsLoading(false);
-                                    setShowAlert(true);
-                                    setAlertStatus("success");
-                                    setAlertMessage(response.message);
-                                    router.refresh()
-                                }
-                                if (!response.status) {      //Incase of error
-                                    setIsLoading(false);
-                                    setShowAlert(true);
-                                    setAlertStatus("error");
-                                    setAlertMessage(response.message);
-                                }
-                            }}
-                        />
-                    </div>
-                    <Link href={`/pages/updateblog/${blogId}`} className='flex justify-center items-center w-[45px] h-[45px] text-gray-400 hover:text-white bg-gray-700 hover:bg-gray-600 rounded-full border border-gray-600 shadow-sm focus:ring-4 focus:ring-gray-400 focus:outline-none'>
-                        <RxUpdate
-                            size={21}
-                            className='cursor-pointer'
-                        />
-                    </Link>
+                <div className='absolute bottom-0 right-1 rounded-full transition-all duration-[0.2s] ease-out scale-x-0 group-hover:scale-x-100 group-hover:-translate-y-24 flex p-2 hover:p-3 bg-red-300 hover:bg-red-400 text-white'>
+                    <MdDeleteOutline
+                        className='cursor-pointer w-5 h-5'
+                        onClick={async () => {
+                            setIsLoading(true);
+                            const response = await deletePost(blogId)
+                            if (response.status) {       //Incase of success
+                                setIsLoading(false);
+                                setShowAlert(true);
+                                setAlertStatus("success");
+                                setAlertMessage(response.message);
+                                router.refresh()
+                            }
+                            if (!response.status) {      //Incase of error
+                                setIsLoading(false);
+                                setShowAlert(true);
+                                setAlertStatus("error");
+                                setAlertMessage(response.message);
+                            }
+                        }}
+                    />
                 </div>
+                <Link href={`/pages/updateblog/${blogId}`} className='absolute bottom-0 right-1 rounded-full transition-all duration-[0.2s] ease-out scale-x-0 group-hover:scale-x-100 group-hover:-translate-y-14 flex p-2 hover:p-3 bg-green-300 hover:bg-green-400 text-white'>
+                    <RxUpdate
+                        size={21}
+                        className='cursor-pointer'
+                    />
+                </Link>
 
                 {/* Toggler Button */}
                 <button
-                    className="flex items-center justify-center text-white bg-blue-700 rounded-full w-12 h-12 hover:bg-blue-800 focus:ring-blue-300"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        listRef?.current.classList.toggle('flex');
-                        listRef?.current.classList.toggle('invisible');
-                        const node = document.getElementById(blogId);
-                        node.classList.toggle('rotate-45')
-                    }}
+                    className="flex items-center justify-center text-white bg-blue-700 rounded-full w-12 h-12 hover:bg-blue-800 focus:ring-blue-300 absolute bottom-0 right-0 "
                 >
-                    <AiOutlinePlus id={blogId} className='transition-transform'
+                    <AiOutlinePlus id={blogId} className='transition-transform group-hover:rotate-45'
                         size={20}
                     />
                 </button>
