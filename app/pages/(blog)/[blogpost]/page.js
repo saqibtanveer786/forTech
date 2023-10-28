@@ -2,20 +2,20 @@
 import React from 'react';
 
 // Importing server actions
-import { getBlog, getComments } from '../../../lib/serverAction';
+import { getBlog, getComments } from '../../../../lib/serverAction';
 
 // nextjs imports
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 // Importing components
-const Article = dynamic(() => import("../../../components/Article"), { ssr: false })
-import Aside from '../../../components/Aside'
-import CommentBox from '../../../components/CommentBox'
-import CommentList from '../../../components/CommentList'
+const Article = dynamic(() => import("../../../../components/Article"), { ssr: false })
+import Aside from '../../../../components/Aside'
+import CommentBox from '../../../../components/CommentBox'
+import CommentList from '../../../../components/CommentList'
 
 // Library imports
-import { getAuthSession } from '../../../lib/auth';
+import { getAuthSession } from '../../../../lib/auth';
 
 // next navigation
 import { redirect } from 'next/navigation';

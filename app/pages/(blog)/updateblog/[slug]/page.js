@@ -1,9 +1,9 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
-import { getBlog } from '../../../../lib/serverAction'
+import { getBlog } from '../../../../../lib/serverAction'
 
-const UpdateBlog = dynamic(() => import("../../../../components/UpdateBlog"), { ssr: false })
+const UpdateBlog = dynamic(() => import("../../../../../components/UpdateBlog"), { ssr: false })
 // import UpdateBlog from '../../../../components/UpdateBlog'
 
 export default async function page({ params }) {

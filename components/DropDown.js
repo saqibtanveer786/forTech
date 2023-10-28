@@ -52,7 +52,7 @@ export default function DropDown({ session }) {
                         <Link href="/pages/blogs" className="block px-4 py-2 hover:bg-gray-100">All Blogs</Link>
                     </li>
                     <li onClick={toggleMenu}>
-                        <Link href="/pages/contact" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
+                        <Link href="/pages/about" className="block px-4 py-2 hover:bg-gray-100">About Us</Link>
                     </li>
                     {session.user?.role === 'ADMIN' && <li onClick={toggleMenu}>
                         <Link href="/pages/addblog" className="block px-4 py-2 hover:bg-gray-100">Publish Blog</Link>

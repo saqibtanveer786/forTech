@@ -1,12 +1,12 @@
 import React from 'react'
 
 // Importing components
-import Post from '../../../components/Post'
-import PostCategories from '../../../components/PostCategories'
+import Post from '../../../../components/Post'
+import PostCategories from '../../../../components/PostCategories'
 
 // Importing server actions
-import { getBlogs } from '../../../lib/serverAction'
-import { getAuthSession } from '../../../lib/auth'
+import { getBlogs } from '../../../../lib/serverAction'
+import { getAuthSession } from '../../../../lib/auth'
 
 export const metadata = {
     title: "forTech-AllBlogsPage",
