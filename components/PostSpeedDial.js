@@ -25,7 +25,7 @@ export default function PostSpeedDial({ blogId }) {
     const listRef = useRef()
     return (
         <>
-            <div className="absolute bottom-0 right-0 group flex items-center justify-center p-6">
+            <div className="absolute bottom-0 right-0 group flex items-center justify-center p-6 h-32">
 
                 {/* Actions List */}
                 <div className='absolute bottom-0 right-1 rounded-full transition-all duration-[0.2s] ease-out scale-x-0 group-hover:scale-x-100 group-hover:-translate-y-24 flex p-2 hover:p-3 bg-red-300 hover:bg-red-400 text-white'>
