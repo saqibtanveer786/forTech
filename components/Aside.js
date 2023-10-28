@@ -12,6 +12,8 @@ export default function Aside() {
             {/* AboutAuthor */}
             <AboutAuthor />
 
+            {/* Related Posts */}
+            <RelatedPost />
         </aside>
     )
 }
