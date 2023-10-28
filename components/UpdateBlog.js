@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 //editorjs imports 
@@ -34,6 +34,7 @@ import Image from 'next/image'
 export default function UpdateBlog({ id, title, description, image, content }) {
     const router = useRouter()
     const [isImageUploaded, setIsImageUploaded] = useState(true);
+    const [isMounted, setIsMounted] = useState(false);
 
     const editorRef = useRef();
 
@@ -81,82 +82,115 @@ export default function UpdateBlog({ id, title, description, image, content }) {
     function resetInputFields() {
     }
 
-    // initializing editorjs
-    if (!editorRef.current) {
-        let editor = new EditorJS({
-            holder: 'editorjs',
-            onReady: () => { editorRef.current = editor },
-            placeholder: "Tab here to start",
-            inlineToolbar: true,
-            data: content,
-            autofocus: true,
-            tools: {
-                header: {
-                    class: Header,
-                    config: {
-                        placeholder: 'Enter a header',
-                        levels: [1, 2, 3, 4, 5, 6],
-                        defaultLevel: 1
+    // function to initialize editor
+    const initializeEditor = useCallback(async () => {
+        const EditorJS = (await import('@editorjs/editorjs')).default
+        const Header = (await import('@editorjs/header')).default
+        const ImageTool = (await import("@editorjs/image")).default
+        const RawTool = (await import("@editorjs/raw")).default
+        const Embed = (await import("@editorjs/embed")).default
+        const Checklist = (await import("@editorjs/checklist")).default
+        const List = (await import('@editorjs/list')).default
+        const Quote = (await import("@editorjs/quote")).default
+        const CodeTool = (await import("@editorjs/code")).default
+        // initializing editorjs
+        if (!editorRef.current) {
+            let editor = new EditorJS({
+                holder: 'editorjs',
+                onReady: () => { editorRef.current = editor },
+                placeholder: "Tab here to start",
+                autofocus: true,
+                inlineToolbar: true,
+                data: { blocks: [] },
+                tools: {
+                    header: {
+                        class: Header,
+                        config: {
+                            placeholder: 'Enter a header',
+                            levels: [1, 2, 3, 4, 5, 6],
+                            defaultLevel: 1
+                        },
+                        inlineToolbar: true,
                     },
-                    inlineToolbar: true,
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        uploader: {
-                            async uploadByFile(file) {
-                                const [res] = await uploadFiles({
-                                    files: [file],
-                                    endpoint: "imageUploader",
-                                })
-                                return {
-                                    success: 1,
-                                    file: {
-                                        url: res.url
+                    image: {
+                        class: ImageTool,
+                        config: {
+                            uploader: {
+                                async uploadByFile(file) {
+                                    const [res] = await uploadFiles({
+                                        files: [file],
+                                        endpoint: "imageUploader",
+                                    })
+                                    return {
+                                        success: 1,
+                                        file: {
+                                            url: res.url
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                },
-                raw: {
-                    class: RawTool,
-                    inlineToolbar: true
-                },
-                embed: {
-                    class: Embed,
-                    config: {
-                        services: {
-                            youtube: true,
-                            coub: true
-                        }
-                    }
-                },
-                checklist: {
-                    class: Checklist,
-                    inlineToolbar: true,
-                },
-                list: {
-                    class: List,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered',
-                    }
-                },
-                quote: {
-                    class: Quote,
-                    inlineToolbar: true,
-                    config: {
-                        quotePlaceholder: 'Enter a quote',
-                        captionPlaceholder: 'Quote\'s author',
                     },
-                },
-                code: {
-                    class: CodeTool,
-                    placeholder: "Code",
-                },
+                    raw: {
+                        class: RawTool,
+                        inlineToolbar: true
+                    },
+                    embed: {
+                        class: Embed,
+                        config: {
+                            services: {
+                                youtube: true,
+                                coub: true
+                            }
+                        }
+                    },
+                    checklist: {
+                        class: Checklist,
+                        inlineToolbar: true,
+                    },
+                    list: {
+                        class: List,
+                        inlineToolbar: true,
+                        config: {
+                            defaultStyle: 'unordered',
+                        }
+                    },
+                    quote: {
+                        class: Quote,
+                        inlineToolbar: true,
+                        config: {
+                            quotePlaceholder: 'Enter a quote',
+                            captionPlaceholder: 'Quote\'s author',
+                        },
+                    },
+                    code: {
+                        class: CodeTool,
+                        placeholder: "Code",
+                    },
+                }
+            });
+        }
+    }, [])
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setIsMounted(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isMounted) {
+            initializeEditor()
+
+            return () => {
+                editorRef.current?.destroy()
+                editorRef.current = undefined
             }
-        });
+        }
+    }, [isMounted, initializeEditor])
+
+    if (!isMounted) {
+        return null
     }
 
     return (
@@ -193,11 +227,11 @@ export default function UpdateBlog({ id, title, description, image, content }) {
                         onUploadError={(error) => {
                             alert(`ERROR! ${error}`);
                         }}
-                        className={`w-full ${imageState && 'hidden'}`}
+                        className={`max-w-[700px] w-full ${imageState && 'hidden'}`}
                     />
                     <Image src={imageState} alt='Image' width={700} height={700} className={`mb-3 ${!imageState && "hidden"}`} />
                 </div>
-                <AiOutlinePlus size={30} className='bg-black rounded-full text-white p-1 ml-8' onClick={(e) => { e.preventDefault(); setImageState('') }} />
+                <AiOutlinePlus size={30} className='bg-black rounded-full text-white p-1 ml-0 sm:ml-8' onClick={(e) => { e.preventDefault(); setImageState('') }} />
 
                 {/* Editor Js */}
                 <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto mb-2' ></div>

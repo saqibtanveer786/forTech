@@ -1,17 +1,9 @@
 'use client';
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 //editorjs imports 
 // const EditorJS = dynamic(() => import('@editorjs/editorjs'), { ssr: false });
 import EditorJS from '@editorjs/editorjs'; //?
-import Header from '@editorjs/header';
-import ImageTool from "@editorjs/image"
-import RawTool from "@editorjs/raw"
-import Embed from "@editorjs/embed"
-import Checklist from "@editorjs/checklist"
-import List from '@editorjs/list';
-import Quote from "@editorjs/quote"
-import CodeTool from "@editorjs/code"
 
 import TextareaAutosize from 'react-textarea-autosize'
 
@@ -31,6 +23,7 @@ import Image from 'next/image'
 export default function PublishBlog() {
 
     const [isImageUploaded, setIsImageUploaded] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     // refs here
     const titleRef = useRef()
@@ -40,6 +33,96 @@ export default function PublishBlog() {
     // consuming context
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setIsLoading } = useContext(LoadingContext)
+
+    // function to initialize editor
+    const initializeEditor = useCallback(async () => {
+        const EditorJS = (await import('@editorjs/editorjs')).default
+        const Header = (await import('@editorjs/header')).default
+        const ImageTool = (await import("@editorjs/image")).default
+        const RawTool = (await import("@editorjs/raw")).default
+        const Embed = (await import("@editorjs/embed")).default
+        const Checklist = (await import("@editorjs/checklist")).default
+        const List = (await import('@editorjs/list')).default
+        const Quote = (await import("@editorjs/quote")).default
+        const CodeTool = (await import("@editorjs/code")).default
+        // initializing editorjs
+        if (!editorRef.current) {
+            let editor = new EditorJS({
+                holder: 'editorjs',
+                onReady: () => { editorRef.current = editor },
+                placeholder: "Tab here to start",
+                autofocus: true,
+                inlineToolbar: true,
+                data: { blocks: [] },
+                tools: {
+                    header: {
+                        class: Header,
+                        config: {
+                            placeholder: 'Enter a header',
+                            levels: [1, 2, 3, 4, 5, 6],
+                            defaultLevel: 1
+                        },
+                        inlineToolbar: true,
+                    },
+                    image: {
+                        class: ImageTool,
+                        config: {
+                            uploader: {
+                                async uploadByFile(file) {
+                                    const [res] = await uploadFiles({
+                                        files: [file],
+                                        endpoint: "imageUploader",
+                                    })
+                                    return {
+                                        success: 1,
+                                        file: {
+                                            url: res.url
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    raw: {
+                        class: RawTool,
+                        inlineToolbar: true
+                    },
+                    embed: {
+                        class: Embed,
+                        config: {
+                            services: {
+                                youtube: true,
+                                coub: true
+                            }
+                        }
+                    },
+                    checklist: {
+                        class: Checklist,
+                        inlineToolbar: true,
+                    },
+                    list: {
+                        class: List,
+                        inlineToolbar: true,
+                        config: {
+                            defaultStyle: 'unordered',
+                        }
+                    },
+                    quote: {
+                        class: Quote,
+                        inlineToolbar: true,
+                        config: {
+                            quotePlaceholder: 'Enter a quote',
+                            captionPlaceholder: 'Quote\'s author',
+                        },
+                    },
+                    code: {
+                        class: CodeTool,
+                        placeholder: "Code",
+                    },
+                }
+            });
+        }
+    }, [])
 
     // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
     async function submitFormHandler(e) {
@@ -77,81 +160,26 @@ export default function PublishBlog() {
     function resetInputFields() {
     }
 
-    // initializing editorjs
-    if (!editorRef.current) {
-        let editor = new EditorJS({
-            holder: 'editorjs',
-            onReady: () => { editorRef.current = editor },
-            placeholder: "Tab here to start",
-            inlineToolbar: true,
-            data: { blocks: [] },
-            tools: {
-                header: {
-                    class: Header,
-                    config: {
-                        placeholder: 'Enter a header',
-                        levels: [1, 2, 3, 4, 5, 6],
-                        defaultLevel: 1
-                    },
-                    inlineToolbar: true,
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        uploader: {
-                            async uploadByFile(file) {
-                                const [res] = await uploadFiles({
-                                    files: [file],
-                                    endpoint: "imageUploader",
-                                })
-                                return {
-                                    success: 1,
-                                    file: {
-                                        url: res.url
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                raw: {
-                    class: RawTool,
-                    inlineToolbar: true
-                },
-                embed: {
-                    class: Embed,
-                    config: {
-                        services: {
-                            youtube: true,
-                            coub: true
-                        }
-                    }
-                },
-                checklist: {
-                    class: Checklist,
-                    inlineToolbar: true,
-                },
-                list: {
-                    class: List,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered',
-                    }
-                },
-                quote: {
-                    class: Quote,
-                    inlineToolbar: true,
-                    config: {
-                        quotePlaceholder: 'Enter a quote',
-                        captionPlaceholder: 'Quote\'s author',
-                    },
-                },
-                code: {
-                    class: CodeTool,
-                    placeholder: "Code",
-                },
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setIsMounted(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isMounted) {
+            initializeEditor()
+
+            return () => {
+                editorRef.current?.destroy()
+                editorRef.current = undefined
             }
-        });
+        }
+    }, [isMounted, initializeEditor])
+
+    if (!isMounted) {
+        return null
     }
 
     return (
@@ -192,7 +220,7 @@ export default function PublishBlog() {
                         onUploadError={(error) => {
                             alert(`ERROR! ${error}`);
                         }}
-                        className={`w-full ${isImageUploaded ? 'hidden' : ''}`}
+                        className={`w-[700px] ${isImageUploaded ? 'hidden' : ''}`}
                     />
                     <Image src={imageRef.current || '/img/general.webp'} alt='Image' width={700} height={700} className={`mb-3 ${isImageUploaded ? "" : "hidden"}`} />
                 </div>
