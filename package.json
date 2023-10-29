@@ -19,7 +19,7 @@
     "@editorjs/list": "^1.8.0",
     "@editorjs/quote": "^2.5.0",
     "@editorjs/raw": "^2.4.0",
-    "@prisma/client": "^5.4.2",
+    "@prisma/client": "^5.5.2",
     "@uploadthing/react": "^5.6.0",
     "@uploadthing/solid": "^5.4.0",
     "attr-accept": "^2.2.2",

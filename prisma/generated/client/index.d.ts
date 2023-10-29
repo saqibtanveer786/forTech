@@ -342,8 +342,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.4.2
-   * Query Engine version: ac9d7041ed77bcc8a8dbd2ab6616b39013829574
+   * Prisma Client JS version: 5.5.2
+   * Query Engine version: 2804dc98259d2ea960602aca6b8e7fdc03c1758f
    */
   export type PrismaVersion = {
     client: string
@@ -1890,7 +1890,7 @@ export namespace Prisma {
   type AccountGetPayload<S extends boolean | null | undefined | AccountDefaultArgs> = $Result.GetResult<Prisma.$AccountPayload, S>
 
   type AccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<AccountFindManyArgs, 'select' | 'include'> & {
+    Omit<AccountFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: AccountCountAggregateInputType | true
     }
 
@@ -2852,7 +2852,7 @@ export namespace Prisma {
   type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
 
   type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<UserFindManyArgs, 'select' | 'include'> & {
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: UserCountAggregateInputType | true
     }
 
@@ -3952,7 +3952,7 @@ export namespace Prisma {
   type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
 
   type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<PostFindManyArgs, 'select' | 'include'> & {
+    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: PostCountAggregateInputType | true
     }
 
@@ -4956,7 +4956,7 @@ export namespace Prisma {
   type PeopleMessagesGetPayload<S extends boolean | null | undefined | PeopleMessagesDefaultArgs> = $Result.GetResult<Prisma.$PeopleMessagesPayload, S>
 
   type PeopleMessagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<PeopleMessagesFindManyArgs, 'select' | 'include'> & {
+    Omit<PeopleMessagesFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: PeopleMessagesCountAggregateInputType | true
     }
 
@@ -5882,7 +5882,7 @@ export namespace Prisma {
   type SessionGetPayload<S extends boolean | null | undefined | SessionDefaultArgs> = $Result.GetResult<Prisma.$SessionPayload, S>
 
   type SessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<SessionFindManyArgs, 'select' | 'include'> & {
+    Omit<SessionFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: SessionCountAggregateInputType | true
     }
 
@@ -6772,7 +6772,7 @@ export namespace Prisma {
   type VerificationTokenGetPayload<S extends boolean | null | undefined | VerificationTokenDefaultArgs> = $Result.GetResult<Prisma.$VerificationTokenPayload, S>
 
   type VerificationTokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<VerificationTokenFindManyArgs, 'select' | 'include'> & {
+    Omit<VerificationTokenFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: VerificationTokenCountAggregateInputType | true
     }
 
@@ -7650,7 +7650,7 @@ export namespace Prisma {
   type CommentGetPayload<S extends boolean | null | undefined | CommentDefaultArgs> = $Result.GetResult<Prisma.$CommentPayload, S>
 
   type CommentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<CommentFindManyArgs, 'select' | 'include'> & {
+    Omit<CommentFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: CommentCountAggregateInputType | true
     }
 
@@ -8553,7 +8553,7 @@ export namespace Prisma {
   type VoteGetPayload<S extends boolean | null | undefined | VoteDefaultArgs> = $Result.GetResult<Prisma.$VotePayload, S>
 
   type VoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<VoteFindManyArgs, 'select' | 'include'> & {
+    Omit<VoteFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: VoteCountAggregateInputType | true
     }
 
