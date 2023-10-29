@@ -32,7 +32,7 @@ export default function Header({ session }) {
       {!session &&
         <div className="flex h-full items-center justify-center mt-4 self-center">
           <Link href="/pages/about" className="block px-2 py-2 hover:bg-gray-100 mx-2">About Us</Link>
-          <Link href="/pages/about" className="block px-4 py-2 hover:bg-blue-800 bg-blue-700 rounded-md text-white">Sign In</Link>
+          <Link href="/pages/signin" className="block px-4 py-2 hover:bg-blue-800 bg-blue-700 rounded-md text-white">Sign In</Link>
         </div>
       }
 

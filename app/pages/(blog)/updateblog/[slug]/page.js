@@ -9,7 +9,6 @@ const UpdateBlog = dynamic(() => import("../../../../../components/UpdateBlog"),
 export default async function page({ params }) {
 
     const blog = await getBlog(params.slug)
-    console.log(blog)
     return (
         <>
             <UpdateBlog id={blog.id} title={blog.title} description={blog.briefdescription} image={blog.image} content={blog.content} />

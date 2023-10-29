@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic';
+
 //Importing  CSS File
 import './globals.css';
 import "@uploadthing/react/styles.css";
@@ -7,6 +9,8 @@ import Header from '../components/Header';
 import Loader from '../components/Loader';
 import Toast from '../components/Toast';
 import CommentUpModal from '../components/CommentUpModal';
+const FloatChat = dynamic(() => import("../components/FloatChat"))
+// import FloatingChat from '../components/FloatingChat';
 
 //Importing Context
 import Providers from '../contextproviders/Providers';
@@ -30,6 +34,7 @@ export default async function RootLayout({ children }) {
             <Header session={session} />
             <Loader />
             {children}
+            {session && <FloatChat />}
             <Toast session={session} />
             <CommentUpModal />
           </Providers>
