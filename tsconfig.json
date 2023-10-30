@@ -25,7 +25,26 @@
     "**/*.ts",
     "**/*.tsx",
     "app/api/getblog/route.js",
-    "app/api/peoplemessage/route.js"
+    "app/api/peoplemessage/route.js",
+    "components/Charts/ChartTwo.js",
+    "components/Charts/ChartThree.js",
+    "components/Charts/ChartOne.js",
+    "components/Charts/ChartFour.js",
+    "components/Chat/ChatCard.js",
+    "components/Dashboard/E-commerce.js",
+    "components/Tables/TableTwo.js",
+    "components/Tables/TableThree.js",
+    "components/Tables/TableOne.js",
+    "components/Tables/TableFour.js",
+    "components/Maps/MapOne.js",
+    "app/dashboard/layout.js",
+    "components/Sidebar/SidebarLinkGroup.js",
+    "components/Sidebar/index.js",
+    "components/DashboardHeader/index.js",
+    "components/DashboardHeader/DropdownUser.js",
+    "components/DashboardHeader/DropdownNotification.js",
+    "components/DashboardHeader/DropdownMessage.js",
+    "components/DashboardHeader/DarkModeSwitcher.js"
   ],
   "exclude": ["node_modules"]
 }
