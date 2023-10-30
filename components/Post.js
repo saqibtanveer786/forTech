@@ -26,7 +26,7 @@ export default function Post({ blog, session }) {
             <PostSpeedDial blogId={blog?.id} />
           </div>}
           {/* Image Col */}
-          <Image src={blog.image} alt='placeholder image' width={300} height={200} />
+          <Image src={blog.image} alt='placeholder image' width={300} height={200} priority />
 
 
           <div className='w-[300px] lg:w-[450px]'>        {/* Title Col */}

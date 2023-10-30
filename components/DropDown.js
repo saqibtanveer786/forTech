@@ -7,8 +7,9 @@ import { signOut } from 'next-auth/react';
 
 export default function DropDown({ session }) {
     const [showMenu, setShowMenu] = useState(false);
-    const toggleMenu = () => {
-        setShowMenu(previous => !previous);
+    const toggleMenu = (e) => {
+        e.preventDefault();
+        return setShowMenu(previous => !previous);
     }
     return (
         <div className='relative mt-[15px] flex items-center'>
@@ -23,7 +24,9 @@ export default function DropDown({ session }) {
                     width={20}
                     className="w-8 h-8 mr-2 rounded-full"
                     src={session?.user.image || '/user-1.jpg'}
-                    alt="user photo" />
+                    alt="user photo"
+                    priority
+                />
                 {session?.user.name}
                 <svg
                     className="w-2.5 h-2.5 ml-2.5"
