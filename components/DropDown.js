@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 
+import { LiaInfoSolid } from 'react-icons/lia'
+import { TfiLayoutListPost } from "react-icons/tfi"
+import { MdOutlineCreate } from "react-icons/md"
+import { AiOutlineUser } from "react-icons/ai"
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,7 +17,7 @@ export default function DropDown({ session }) {
         return setShowMenu(previous => !previous);
     }
     return (
-        <div className='relative mt-[15px] flex items-center'>
+        <div className=' md:hidden relative items-center'>
             <button
                 id="dropdownAvatarNameButton"
                 onClick={toggleMenu}
@@ -48,18 +53,55 @@ export default function DropDown({ session }) {
                     <div className="truncate">{session?.user.email}</div>
                 </div>
                 <ul className="py-2 text-sm" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
-                    <li onClick={toggleMenu}>
-                        <Link href="/pages/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
+                    <li>
+                        <Link
+                            href="/profile"
+                            className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                        >
+                            <AiOutlineUser
+                                size={20}
+                                className="fill-current"
+                            />
+                            Profile
+                        </Link>
                     </li>
                     <li onClick={toggleMenu}>
-                        <Link href="/pages/blogs" className="block px-4 py-2 hover:bg-gray-100">All Blogs</Link>
+                        <Link
+                            href="/blogs"
+                            className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                        >
+                            <TfiLayoutListPost
+                                size={20}
+                                className="fill-current"
+                            />
+                            Blogs
+                        </Link>
                     </li>
-                    <li onClick={toggleMenu}>
-                        <Link href="/pages/about" className="block px-4 py-2 hover:bg-gray-100">About Us</Link>
+                    <li>
+                        <Link
+                            href="/about"
+                            className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                        >
+                            <LiaInfoSolid
+                                size={20}
+                                className="fill-current"
+                            />
+                            About
+                        </Link>
                     </li>
-                    {session.user?.role === 'ADMIN' && <li onClick={toggleMenu}>
-                        <Link href="/pages/addblog" className="block px-4 py-2 hover:bg-gray-100">Publish Blog</Link>
-                    </li>}
+                    {session.user?.role === 'ADMIN' &&
+                        <li>
+                            <Link
+                                href="/profile"
+                                className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                            >
+                                <MdOutlineCreate
+                                    size={20}
+                                    className="fill-current"
+                                />
+                                Publish
+                            </Link>
+                        </li>}
                 </ul>
                 <div className="py-2">
                     <button

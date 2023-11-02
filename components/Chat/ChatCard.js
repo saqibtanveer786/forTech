@@ -11,14 +11,6 @@ const chatData = [
     dot: 3,
   },
   {
-    avatar: "/images/user/user-02.png",
-    name: "Henry Fisher",
-    text: "Waiting for you!",
-    time: 12,
-    textCount: 0,
-    dot: 1,
-  },
-  {
     avatar: "/images/user/user-04.png",
     name: "Jhon Doe",
     text: "What's up?",
@@ -42,25 +34,13 @@ const chatData = [
     textCount: 0,
     dot: 3,
   },
-  {
-    avatar: "/images/user/user-03.png",
-    name: "Jhon Doe",
-    text: "How are you?",
-    time: 32,
-    textCount: 3,
-    dot: 6,
-  },
 ];
 
 const ChatCard = () => {
-  let screenWidth;
-  if (typeof window !== "undefined") {
-    screenWidth = window.innerWidth;
-  }
   return (
-    <div className={`col-span-12 rounded-sm border border-stroke bg-white py-6 shadow-default ${screenWidth >= 1280 && 'col-span-4'}`}>
+    <div className="col-span-12 rounded-sm border border-stroke bg-white py-6 shadow-default xl:col-span-4 xl:max-h-[485px] overflow-y-auto">
       <h4 className="mb-6 px-7.5 text-xl font-semibold text-black">
-        Chats
+        Messages
       </h4>
 
       <div>

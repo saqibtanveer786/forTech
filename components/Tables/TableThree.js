@@ -1,4 +1,5 @@
-import { Package } from "@/types/package";
+"use client";
+import React from "react";
 
 const packageData = [
   {
@@ -29,7 +30,7 @@ const packageData = [
 
 const TableThree = () => {
   return (
-    <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-defaultsm:px-7.5 xl:pb-1">
+    <div className="col-span-12 xl:col-span-4 rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-defaultsm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead>

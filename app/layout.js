@@ -25,20 +25,10 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(authOptions)
   return (
     <html lang="en">
       <body>
-        <div className='container max-w-7xl mx-auto relative'>
-          <Providers>
-            <Header session={session} />
-            <Loader />
-            {children}
-            {session && <FloatChat />}
-            <Toast session={session} />
-            <CommentUpModal />
-          </Providers>
-        </div>
+        {children}
       </body>
     </html>
   );

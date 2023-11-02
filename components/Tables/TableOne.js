@@ -44,77 +44,71 @@ const brandData = [
 ];
 
 const TableOne = () => {
-
-  let screenWidth;
-  if (typeof window !== 'undefined') {
-    screenWidth = window.innerWidth;
-  }
-
   return (
-    <div className={`rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default ${screenWidth >= 640 && 'px-7.5'} ${screenWidth >= 640 && 'xl:pb-1'}`}>
+    <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 sm:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black">
-        Top Channels
+        Top Posts
       </h4>
 
       <div className="flex flex-col">
-        <div className={`grid grid-cols-3 rounded-sm bg-gray-2 ${screenWidth >= 640 && 'grid-cols-5'}`}>
-          <div className={`p-2.5 ${screenWidth >= 640 && 'p-5'}`}>
-            <h5 className={`text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base'}`}>
+        <div className="grid grid-cols-3 rounded-sm bg-gray-2 sm:grid-cols-5">
+          <div className="p-2.5 sm:p-5">
+            <h5 className="text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base">
               Source
             </h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className={`text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base'}`}>
+          <div className="p-2.5 text-center sm:p-5">
+            <h5 className="text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base">
               Visitors
             </h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className={`text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base'}`}>
-              Revenues
+          <div className="p-2.5 text-center sm:p-5">
+            <h5 className="text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base">
+              Likes
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className={`text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base'}`}>
-              Sales
+          <div className="p-2.5 text-center sm:block sm:p-5">
+            <h5 className="text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base">
+              DisLike
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className={`text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base'}`}>
-              Conversion
+          <div className="p-2.5 text-center sm:block sm:p-5">
+            <h5 className="text-sm font-medium uppercase ${screenWidth >= 425 && 'text-base">
+              Comment
             </h5>
           </div>
         </div>
 
         {brandData.map((brand, key) => (
           <div
-            className={`grid grid-cols-3 ${screenWidth >= 640 && 'grid-cols-5'} ${key === brandData.length - 1
+            className={`grid grid-cols-3 sm:grid-cols-5 ${key === brandData.length - 1
               ? ""
               : "border-b border-stroke"
               }`}
             key={key}
           >
-            <div className={`flex items-center gap-3 p-2.5 ${screenWidth >= 1280 && 'p-5'}`}>
+            <div className="flex items-center gap-3 p-2.5 ${screenWidth >= 1280 && 'p-5">
               <div className="flex-shrink-0">
                 <Image src={brand.logo} alt="Brand" width={48} height={48} />
               </div>
-              <p className={`hidden text-black ${screenWidth >= 640 && 'block'}`}>
+              <p className="hidden text-black sm:block">
                 {brand.name}
               </p>
             </div>
 
-            <div className={`flex items-center justify-center p-2.5 ${screenWidth >= 1280 && 'p-5'}`}>
+            <div className="flex items-center justify-center p-2.5 ${screenWidth >= 1280 && 'p-5">
               <p className="text-black">{brand.visitors}K</p>
             </div>
 
-            <div className={`flex items-center justify-center p-2.5 ${screenWidth >= 1280 && 'p-5'}`}>
+            <div className="flex items-center justify-center p-2.5 ${screenWidth >= 1280 && 'p-5">
               <p className="text-meta-3">${brand.revenues}</p>
             </div>
 
-            <div className={`hidden items-center justify-center p-2.5 sm:flex ${screenWidth >= 1280 && 'p-5'}`}>
+            <div className="items-center justify-center p-2.5 sm:flex ${screenWidth >= 1280 && 'p-5">
               <p className="text-black">{brand.sales}</p>
             </div>
 
-            <div className={`hidden items-center justify-center p-2.5 sm:flex ${screenWidth >= 1280 && 'p-5'}`}>
+            <div className="items-center justify-center p-2.5 sm:flex ${screenWidth >= 1280 && 'p-5">
               <p className="text-meta-5">{brand.conversion}%</p>
             </div>
           </div>

@@ -1,19 +1,12 @@
 "use client"
-import React, { useState, useContext } from 'react'
+import React from 'react'
 
 import { RxCross2 } from 'react-icons/rx'
 import { MdChatBubbleOutline } from 'react-icons/md'
 
-import { AlertContext, LoadingContext } from '../lib/context'
-
 import { submitForm } from '../lib/serverAction'
 
-export default async function FloatingChat() {
-    const [open, setOpen] = useState(false)
-
-    // consuming the contexts
-    const { isLoading, setIsLoading } = useContext(LoadingContext)
-    const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
+export default function FloatingChat() {
 
     function toggleHandler(e) {
         if (e) e.preventDefault();
@@ -51,7 +44,7 @@ export default async function FloatingChat() {
                 className={`fixed hidden flex-col z-50 bottom-20 right-8 sm:top-auto sm:right-5 sm:left-auto h-[330px] w-[250px] sm:w-[350px] overflow-auto min-h-[600x] sm:h-[600px] border border-gray-300 bg-white shadow-2xl rounded-md transition-all`}
             >
                 {/* Header */}
-                <div className="flex p-5 flex-col justify-center items-center h-32 bg-indigo-600">
+                <div className="flex p-5 flex-col justify-center items-center h-32 bg-primary">
                     <h3 className="text-lg text-white">How can we help?</h3>
                     <p className="text-white opacity-50">We will response you soon In Sha Allah</p>
                 </div>
@@ -129,7 +122,7 @@ export default async function FloatingChat() {
                         <div className="mb-3">
                             <button
                                 type="submit"
-                                className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+                                className="w-full px-3 py-4 text-white bg-primary rounded-md focus:bg-indigo-600 focus:outline-none"
                             >
                                 Send Message
                             </button>
@@ -142,7 +135,7 @@ export default async function FloatingChat() {
             {/* Toogle Button with two svgs */}
             <button
                 id="w3f__widget--btn"
-                className="fixed z-40 right-5 bottom-5 shadow-lg flex justify-center items-center w-14 h-14 bg-indigo-500 rounded-full focus:outline-none hover:bg-indigo-600 focus:bg-indigo-600 transition duration-300 ease "
+                className="fixed z-40 right-5 bottom-5 shadow-lg flex justify-center items-center w-14 h-14 bg-primary rounded-full focus:outline-none hover:bg-indigo-600 transition duration-300 ease "
                 onClick={toggleHandler}
             >
                 <MdChatBubbleOutline

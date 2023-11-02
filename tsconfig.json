@@ -44,7 +44,8 @@
     "components/DashboardHeader/DropdownUser.js",
     "components/DashboardHeader/DropdownNotification.js",
     "components/DashboardHeader/DropdownMessage.js",
-    "components/DashboardHeader/DarkModeSwitcher.js"
+    "components/DashboardHeader/DarkModeSwitcher.js",
+    "app/dashboard/settings/page.js"
   ],
   "exclude": ["node_modules"]
 }

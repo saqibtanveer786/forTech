@@ -30,7 +30,7 @@ export default function Post({ blog, session }) {
 
 
           <div className='w-[450px]'>        {/* Title Col */}
-            <Link href={`/pages/${blog?.id}`}>
+            <Link href={`/${blog?.id}`}>
               <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer hover:underline">{blog?.title}</h3>
             </Link>
             <p className="text-gray-700">{blog?.briefdescription}</p>

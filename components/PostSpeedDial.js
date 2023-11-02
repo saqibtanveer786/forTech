@@ -59,7 +59,7 @@ export default function PostSpeedDial({ blogId }) {
 
                 {/* Toggler Button */}
                 <button
-                    className="flex items-center justify-center text-white bg-blue-700 rounded-full w-12 h-12 hover:bg-blue-800 focus:ring-blue-300 absolute bottom-0 right-0 "
+                    className="flex items-center justify-center text-white bg-primary rounded-full w-12 h-12 hover:bg-indigo-500 focus:ring-blue-300 absolute bottom-0 right-0 "
                 >
                     <AiOutlinePlus id={blogId} className='transition-transform group-hover:rotate-45'
                         size={20}

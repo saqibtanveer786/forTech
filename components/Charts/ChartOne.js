@@ -146,16 +146,14 @@ const ChartOne = () => {
   handleReset;
 
   // NextJS Requirement
-  let screenWidth;
   if (typeof window !== 'undefined') {
-    screenWidth = window.innerWidth;
     const isWindowAvailable = () => typeof window !== "undefined";
 
     if (!isWindowAvailable()) return <></>;
   }
   return (
-    <div className={`col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default sm:px-7.5 ${screenWidth >= 1280 && 'col-span-8'}`}>
-      <div className={`flex flex-wrap items-start justify-between gap-3 ${screenWidth >= 642 && 'flex-nowrap'}`}>
+    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default sm:px-7.5 xl:col-span-8">
+      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
           <div className="flex min-w-47.5">
             <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
