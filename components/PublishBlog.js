@@ -1,8 +1,6 @@
 'use client';
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
-import dynamic from 'next/dynamic';
-//editorjs imports 
-// const EditorJS = dynamic(() => import('@editorjs/editorjs'), { ssr: false });
+
 import EditorJS from '@editorjs/editorjs'; //?
 
 import TextareaAutosize from 'react-textarea-autosize'

@@ -5,11 +5,11 @@ export default function RelatedPost() {
     return (
 
         <div id="related-posts" className="grid gap-2">
-            <p className="text-3xl font-semibold border-l-4 my-8 border-gray-800 pl-2 text-gray-700">Related Posts</p>
+            <p className="text-xl font-semibold border-l-4 my-8 border-gray-800 pl-2 text-gray-700">Related Posts</p>
             <div className='flex flex-wrap gap-6'>
-                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[270px]">
+                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[350px]">
                     <div className="w-fit">
-                        <Image src="/img/general.webp" alt='image' height={250} width={250} />
+                        <Image src="/img/general.webp" alt='image' height={250} width={300} />
                     </div>
                     <div className="px-2 flex flex-col justify-start pt-4">
                         <p className="text-xl cursor-pointer">
@@ -20,9 +20,9 @@ export default function RelatedPost() {
                         <p className="text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. m, sapiente explicabo!</p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[270px]">
+                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[350px]">
                     <div className="w-fit">
-                        <Image src="/img/general.webp" alt='image' height={250} width={250} />
+                        <Image src="/img/general.webp" alt='image' height={250} width={300} />
                     </div>
                     <div className="px-2 flex flex-col justify-start pt-4">
                         <p className="text-xl cursor-pointer">
@@ -33,9 +33,9 @@ export default function RelatedPost() {
                         <p className="text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. m, sapiente explicabo!</p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[270px]">
+                <div className="grid grid-cols-1 border rounded-lg p-3 max-w-[350px]">
                     <div className="w-fit">
-                        <Image src="/img/general.webp" alt='image' height={250} width={250} />
+                        <Image src="/img/general.webp" alt='image' height={250} width={300} />
                     </div>
                     <div className="px-2 flex flex-col justify-start pt-4">
                         <p className="text-xl cursor-pointer">
