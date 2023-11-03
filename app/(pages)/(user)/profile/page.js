@@ -3,8 +3,6 @@ import Image from 'next/image'
 
 import { getAuthSession } from '../../../../lib/auth'
 
-import UserBio from '../../../../components/UserBio'
-
 import { BiSolidCamera } from 'react-icons/bi'
 
 export const metadata = {

@@ -5,10 +5,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { logos } from '../lib/logos'
 
-import { BiLogOut } from 'react-icons/bi'
+import { LiaInfoSolid } from 'react-icons/lia'
 import { RxDashboard } from 'react-icons/rx'
 import { TfiLayoutListPost } from "react-icons/tfi"
-import { MdOutlineCreate } from "react-icons/md"
 import { AiOutlineUser } from "react-icons/ai"
 
 // components
@@ -16,12 +15,6 @@ import DropDown from '../components/DropDown'
 import { signOut } from 'next-auth/react';
 
 export default function Header({ session }) {
-  const [showNavbar, setShowNavbar] = useState(true)
-
-  function toggleNavbar() {
-    setShowNavbar(previous => !previous)
-  }
-
   return (
     <header className="flex items-center justify-between py-4 pr-3 relative max-w-7xl mx-auto" >
 
@@ -34,7 +27,7 @@ export default function Header({ session }) {
 
       {/* Menu List */}
       {session && <ul className="hidden md:flex items-center ">
-        <li>
+        {(session.user?.role === 'AUTHER' || session.user?.role === 'ADMIN') && <li>
           <Link
             href="/dashboard"
             className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
@@ -45,7 +38,7 @@ export default function Header({ session }) {
             />
             DashBoard
           </Link>
-        </li>
+        </li>}
         <li>
           <Link
             href="/blogs"
@@ -60,10 +53,10 @@ export default function Header({ session }) {
         </li>
         <li>
           <Link
-            href="/addblog"
+            href="/about"
             className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
           >
-            <MdOutlineCreate
+            <LiaInfoSolid
               size={20}
               className="fill-current"
             />

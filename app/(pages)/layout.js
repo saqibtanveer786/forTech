@@ -15,7 +15,7 @@ export default async function PagesLayout({
 }) {
     const session = await getServerSession(authOptions)
     return (
-        <>
+        <div className="bg-white">
             <div className='max-w-7xl mx-auto relative'>
                 <Providers>
                     <Header session={session} />
@@ -26,6 +26,6 @@ export default async function PagesLayout({
                     <CommentUpModal />
                 </Providers>
             </div>
-        </>
+        </div>
     );
 }

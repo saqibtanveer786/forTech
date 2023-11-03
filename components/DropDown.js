@@ -4,6 +4,7 @@ import { LiaInfoSolid } from 'react-icons/lia'
 import { TfiLayoutListPost } from "react-icons/tfi"
 import { MdOutlineCreate } from "react-icons/md"
 import { AiOutlineUser } from "react-icons/ai"
+import { RxDashboard } from 'react-icons/rx'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -92,14 +93,14 @@ export default function DropDown({ session }) {
                     {session.user?.role === 'ADMIN' &&
                         <li>
                             <Link
-                                href="/profile"
+                                href="/dashboard"
                                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
                             >
-                                <MdOutlineCreate
+                                <RxDashboard
                                     size={20}
                                     className="fill-current"
                                 />
-                                Publish
+                                Dashboard
                             </Link>
                         </li>}
                 </ul>
