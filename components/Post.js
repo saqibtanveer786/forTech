@@ -20,7 +20,7 @@ export default function Post({ blog, session }) {
     <>
       <div className='mx-2 relative'>
 
-        <div className={`flex flex-${screenWidth >= 700 ? 'row' : 'col'} items-center border border-gray rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative bg-white shadow-4`}>
+        <div className={`flex flex-${screenWidth >= 700 ? 'row' : 'col'} items-center border-gray-200 border-2 rounded-lg gap-4 h-auto p-4 my-6 w-fit mx-auto relative `}>
 
           {session && session.user?.role === 'ADMIN' && <div className='absolute bottom-2 right-2'>
             <PostSpeedDial blogId={blog?.id} />

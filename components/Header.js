@@ -60,7 +60,7 @@ export default function Header({ session }) {
               size={20}
               className="fill-current"
             />
-            Publish
+            About
           </Link>
         </li>
         <li>
