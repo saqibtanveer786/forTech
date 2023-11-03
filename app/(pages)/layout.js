@@ -16,7 +16,7 @@ export default async function PagesLayout({
     const session = await getServerSession(authOptions)
     return (
         <>
-            <div className='container max-w-7xl mx-auto relative'>
+            <div className='max-w-7xl mx-auto relative'>
                 <Providers>
                     <Header session={session} />
                     <Loader />

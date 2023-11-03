@@ -13,6 +13,7 @@ import { AiOutlineUser } from "react-icons/ai"
 
 // components
 import DropDown from '../components/DropDown'
+import { signOut } from 'next-auth/react';
 
 export default function Header({ session }) {
   const [showNavbar, setShowNavbar] = useState(true)
@@ -35,14 +36,14 @@ export default function Header({ session }) {
       {session && <ul className="hidden md:flex items-center ">
         <li>
           <Link
-            href="/profile"
+            href="/dashboard"
             className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
           >
-            <AiOutlineUser
+            <RxDashboard
               size={20}
               className="fill-current"
             />
-            Profile
+            DashBoard
           </Link>
         </li>
         <li>
@@ -71,18 +72,20 @@ export default function Header({ session }) {
         </li>
         <li>
           <Link
-            href="/dashboard"
+            href="/profile"
             className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
           >
-            <RxDashboard
+            <AiOutlineUser
               size={20}
               className="fill-current"
             />
-            DashBoard
+            Profile
           </Link>
         </li>
         <li>
-          <Link href="/signin" className="block px-4 py-2 bg-graydark hover:bg-black rounded-md text-white ml-2">Sign Out</Link>
+          <button
+            onClick={(e) => { e.preventDefault(); signOut() }}
+            className="block px-4 py-2 bg-graydark hover:bg-black rounded-md text-white ml-2">Sign Out</button>
         </li>
       </ul>}
 

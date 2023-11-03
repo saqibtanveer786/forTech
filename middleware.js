@@ -7,15 +7,18 @@ export default withAuth(
         const pathname = req.nextUrl.pathname
 
         const isAuthenticated = await getToken({ req })
+        const token = isAuthenticated
+        const isAdmin = token.role === 'ADMIN'
+        const isAuther = token.role === 'AUTHER'
 
-        if (pathname.startsWith('/pages/addblog')) {
-            const token = isAuthenticated
-
-            const isAdmin = token.role === 'ADMIN'
+        if (pathname.startsWith('/addblog')) {
             if (isAdmin) return NextResponse.next()
-
-            const isAuther = token.role === 'AUTHER'
             if (!isAuther || !isAuthenticated) return NextResponse.redirect(new URL('/', req.url))
+        }
+
+        if (pathname.startsWith('/dashboard')) {
+            if (isAdmin || isAuther) return NextResponse.next()
+            if (!isAdmin || !isAuther) return NextResponse.redirect(new URL('/', req.url))
         }
 
         return NextResponse.next()
@@ -23,5 +26,5 @@ export default withAuth(
 )
 
 export const config = {
-    matcher: ['/pages/blogs', '/pages/profile', '/pages/addblog'],
+    matcher: ['/blogs', '/profile', '/addblog'],
 }
