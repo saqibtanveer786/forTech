@@ -35,9 +35,12 @@ model User {
   name      String?
   email     String?   @unique
   emailVerified DateTime? @map("email_verified")
+  username  String?
+  following Follows[] @relation("following")
   image     String?
 
   role      Role     @default(USER)
+  autherProfile AuthorProfile? 
   posts     Post[]
   messages  PeopleMessages[]
   comments  Comment[]
@@ -49,6 +52,54 @@ model User {
   createdAt DateTime @default(now())
 }
 
+model AuthorProfile {
+  id          String       @id @default(cuid())
+  bio         String  
+  idcard    String?
+  phone     String?
+  website   String?
+  socialLinks Json?     
+  location  String
+  birthDate DateTime
+  specialization String? 
+  skills      String[] 
+  portfolio   String? 
+
+  followers Follows[] @relation("followers")  
+  education   Education[]
+  experience  Experience[]
+  user  User?  @relation(fields: [id], references: [id])
+}
+
+model Experience {
+  id          String      @id @default(cuid())
+  position    String
+  company     String
+  startDate   DateTime
+  endDate     DateTime?
+  description String
+  authorProfileId String
+  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id])
+}
+
+model Education {
+  id          String      @id @default(cuid())
+  institution String
+  degree      String
+  field       String
+  startYear   Int
+  endYear     Int?
+  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id])
+  authorProfileId String
+}
+
+model Category {
+  id String @id @default(cuid())
+  name String
+  description String?
+  posts Post[]
+}
+
 model Post {
   id      String       @id @default(cuid())
   title   String
@@ -57,9 +108,12 @@ model Post {
   image String
   published Boolean @default(false)
   authorId String?
+
   author User? @relation(fields: [authorId], references: [id])
+  category Category[]
   comments Comment[]
   votes Vote[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -111,6 +165,15 @@ model Vote {
   type VoteType
 
   @@id([userId, postId])
+}
+
+model Follows {
+  followerId  String
+  followers  AuthorProfile? @relation("followers", fields: [followerId], references: [id])
+  followingId String
+  following   User? @relation("following", fields: [followingId], references: [id])
+
+  @@id([followerId, followingId])
 }
 
 enum Role {
