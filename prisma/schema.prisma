@@ -60,26 +60,26 @@ model AuthorProfile {
   website   String?
   socialLinks Json?     
   location  String
-  birthDate DateTime
+  birthDate String?
   specialization String? 
   skills      String[] 
-  portfolio   String? 
 
   followers Follows[] @relation("followers")  
   education   Education[]
   experience  Experience[]
-  user  User?  @relation(fields: [id], references: [id])
+  userId  String @unique
+  user  User?  @relation(fields: [userId], references: [id])
 }
 
 model Experience {
   id          String      @id @default(cuid())
   position    String
   company     String
-  startDate   DateTime
-  endDate     DateTime?
+  startDate   String
+  endDate     String?
   description String
   authorProfileId String
-  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id])
+  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id], onDelete: Cascade)
 }
 
 model Education {
@@ -87,9 +87,9 @@ model Education {
   institution String
   degree      String
   field       String
-  startYear   Int
-  endYear     Int?
-  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id])
+  startYear   String
+  endYear     String?
+  authorProfile AuthorProfile @relation(fields: [authorProfileId], references: [id], onDelete: Cascade)
   authorProfileId String
 }
 

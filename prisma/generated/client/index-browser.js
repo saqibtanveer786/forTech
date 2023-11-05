@@ -17,11 +17,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.5.2
- * Query Engine version: 2804dc98259d2ea960602aca6b8e7fdc03c1758f
+ * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
  */
 Prisma.prismaVersion = {
   client: "5.5.2",
-  engine: "2804dc98259d2ea960602aca6b8e7fdc03c1758f"
+  engine: "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -127,9 +127,50 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
+  username: 'username',
   image: 'image',
   role: 'role',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.AuthorProfileScalarFieldEnum = {
+  id: 'id',
+  bio: 'bio',
+  idcard: 'idcard',
+  phone: 'phone',
+  website: 'website',
+  socialLinks: 'socialLinks',
+  location: 'location',
+  birthDate: 'birthDate',
+  specialization: 'specialization',
+  skills: 'skills',
+  userId: 'userId'
+};
+
+exports.Prisma.ExperienceScalarFieldEnum = {
+  id: 'id',
+  position: 'position',
+  company: 'company',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  authorProfileId: 'authorProfileId'
+};
+
+exports.Prisma.EducationScalarFieldEnum = {
+  id: 'id',
+  institution: 'institution',
+  degree: 'degree',
+  field: 'field',
+  startYear: 'startYear',
+  endYear: 'endYear',
+  authorProfileId: 'authorProfileId'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -181,9 +222,19 @@ exports.Prisma.VoteScalarFieldEnum = {
   type: 'type'
 };
 
+exports.Prisma.FollowsScalarFieldEnum = {
+  followerId: 'followerId',
+  followingId: 'followingId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.JsonNullValueInput = {
@@ -219,12 +270,17 @@ exports.VoteType = exports.$Enums.VoteType = {
 exports.Prisma.ModelName = {
   Account: 'Account',
   User: 'User',
+  AuthorProfile: 'AuthorProfile',
+  Experience: 'Experience',
+  Education: 'Education',
+  Category: 'Category',
   Post: 'Post',
   PeopleMessages: 'PeopleMessages',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Comment: 'Comment',
-  Vote: 'Vote'
+  Vote: 'Vote',
+  Follows: 'Follows'
 };
 
 /**
