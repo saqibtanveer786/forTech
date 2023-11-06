@@ -1,4 +1,3 @@
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { getAuthSession } from '../../../../lib/auth'
 

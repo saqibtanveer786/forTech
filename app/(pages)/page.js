@@ -3,7 +3,6 @@ import TopSection from '../../components/TopSection';
 import FeaturedPosts from '../../components/FeaturedPosts'
 import AdsForFrontPage from '../../components/AdsForFrontPage'
 
-import 'react-quill/dist/quill.snow.css'
 
 export const metadata = {
   title: 'forTech',
