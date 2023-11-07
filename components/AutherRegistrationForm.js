@@ -94,7 +94,7 @@ export default function AutherRegistrationForm({ userId }) {
                                         <div className="relative">
                                             <input
                                                 className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
-                                                type="text"
+                                                type="number"
                                                 name="idcard"
                                                 onChange={(e) => {
                                                     e.preventDefault();
@@ -157,8 +157,7 @@ export default function AutherRegistrationForm({ userId }) {
                                     </label>
                                     <input
                                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
-                                        type="datetime-local"
-                                        value="2023-02-07T05:48"
+                                        type="number"
                                         name="birthDate"
                                         onChange={(e) => {
                                             e.preventDefault();
