@@ -1,3 +1,5 @@
+import { getAuthersPostData } from "lib/serverAction";
+
 import ECommerce from "../../components/Dashboard/E-commerce";
 
 export const metadata = {
@@ -5,10 +7,12 @@ export const metadata = {
     description: "This is dashboard page for the authors and admins"
 };
 
-export default function Home() {
+
+export default async function Home() {
+    const data = await getAuthersPostData()
     return (
         <>
-            <ECommerce />
+            <ECommerce data={data} />
         </>
     );
 }
