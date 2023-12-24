@@ -25,7 +25,7 @@ export default async function page({ params }) {
   const comments = await getComments(params.blogpost);
 
   const session = await getAuthSession()
-  if (!session || session.length === 0) redirect("/pages/signin", 'push')
+  if (!session || session.length === 0) redirect("/signin", 'push')
   // const immage = Buffer.from(blog?.image.data).toString('base64')
   return (
     <>
