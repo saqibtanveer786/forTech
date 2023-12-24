@@ -13,7 +13,7 @@ import { AiOutlineDislike } from "react-icons/ai"
 
 const ECommerce = ({ data }) => {
   let totalLikes = 0, totalDislikes = 0, totalComments = 0;
-  data.posts.forEach((item, i) => {
+  data && data.posts.forEach((item, i) => {
     item.votes.forEach((vote) => {
       if (vote.type === "UP")
         totalLikes++;
