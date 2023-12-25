@@ -14,9 +14,7 @@ export default function page() {
                             <br className="block sm:hidden" />Saqib Tanveer
                         </h2>
                         <p className="max-w-lg mt-3 text-xl leading-relaxed text-gray-600 md:mt-8">
-                            Amet minim mollit non deserunt
-                            ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
-                            Exercitation veniam consequat sunt nostrud amet.
+                            I am a Full Stack Web Developer. This blog is developed for sharing out the technologies to others for free.
                         </p>
 
                         <p className="mt-4 text-xl text-gray-600 md:mt-8">
@@ -24,8 +22,8 @@ export default function page() {
                                 <span className="absolute inline-block w-full bottom-0.5 h-2 bg-yellow-300"></span>
                                 <span className="relative"> Have a question? </span>
                             </span>
-                            <br className="block sm:hidden" />Ask me on <Link href="/pages/contact"
-                                className="transition-all duration-200 text-sky-500 hover:text-sky-600 hover:underline">Twitter</Link>
+                            <br className="block sm:hidden" />Ask me on <Link href="https://www.facebook.com/saqibtanveerawebdeveloper"
+                                className="transition-all duration-200 text-sky-500 hover:text-sky-600 hover:underline">Facebook</Link>
                         </p>
                     </div>
 
