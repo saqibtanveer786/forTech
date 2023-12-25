@@ -7,7 +7,7 @@ export async function POST(request) {
         let comments = [];
 
         const userId = await request.nextUrl.searchParams.get("userid")
-        console.log("userid is:", userId)
+        // console.log("userid is:", userId)
 
         // check if auther profile already exists
         const user = await prisma.user.findUnique({
@@ -18,7 +18,7 @@ export async function POST(request) {
                 role: true
             }
         })
-        if (!user.role === 'ADMIN' || !user.role === 'AUTHER') return NextResponse.json({ message: "Not Allowed", status: 'error' }, { status: 401 })
+        // if (!user.role === 'ADMIN' || !user.role === 'AUTHER') return NextResponse.json({ message: "Not Allowed", status: 'error' }, { status: 401 })
 
         const findPosts = await prisma.post.findMany({
             where: {
