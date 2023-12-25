@@ -32,7 +32,7 @@ const TableOne = ({ posts }) => {
         {posts.map((post, key) => (
           <div className=" h-16 w-full flex border-b-2" key={key}
           >
-            <div className="flex items-center gap-3 p-2.5 xl:py-4 w-[15%]">
+            <div className="flex items-center justify-center gap-3 p-2.5 xl:py-4 w-[15%]">
               <div className="flex-shrink-0">
                 <Image src={post.image} alt="Brand" width={48} height={48} />
               </div>
