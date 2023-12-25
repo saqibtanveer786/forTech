@@ -31,7 +31,7 @@ const ECommerce = ({ data }) => {
     <>
 
       <div className="grid grid-cols-1 gap-4 xsm:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 max-w-7xl mx-auto">
-        <CardDataStats title="Total Posts" total={data.posts.length} rate="0.43%" levelUp>
+        <CardDataStats title="Total Posts" total={data.posts && data.posts.length} rate="0.43%" levelUp>
           <TfiLayoutListPost
             className="fill-primary"
             size={20}
