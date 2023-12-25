@@ -44,7 +44,7 @@ const ChatCard = ({ comments }) => {
       </h4>
 
       <div>
-        {comments.map((comment, key) => (
+        {comments && comments.map((comment, key) => (
           <Link
             href="/"
             className="flex items-center gap-5 py-3 px-7.5 hover:bg-gray-3 "

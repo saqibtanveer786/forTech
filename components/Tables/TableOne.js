@@ -29,7 +29,7 @@ const TableOne = ({ posts }) => {
 
       <div className="flex flex-col">
 
-        {posts.map((post, key) => (
+        {posts && posts.map((post, key) => (
           <div className=" h-16 w-full flex border-b-2" key={key}
           >
             <div className="flex items-center justify-center gap-3 p-2.5 xl:py-4 w-[15%]">
