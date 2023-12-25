@@ -9,7 +9,7 @@ export const metadata = {
 
 
 export default async function Home() {
-    const data = await getAuthersPostData()
+    const data = await getAuthersPostData('clo11vi7j0000uvj8ihnho7yi')
     return (
         <>
             <ECommerce data={data} />
