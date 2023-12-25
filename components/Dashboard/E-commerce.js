@@ -13,17 +13,19 @@ import { AiOutlineDislike } from "react-icons/ai"
 
 const ECommerce = ({ data }) => {
   let totalLikes = 0, totalDislikes = 0, totalComments = 0;
-  data && data.posts.forEach((item, i) => {
-    item.votes.forEach((vote) => {
-      if (vote.type === "UP")
-        totalLikes++;
+  if (data.posts !== undefined && data.posts !== null) {
+    data.posts.forEach((item, i) => {
+      item.votes.forEach((vote) => {
+        if (vote.type === "UP")
+          totalLikes++;
 
-      if (vote.type === "DOWN")
-        totalDislikes++;
+        if (vote.type === "DOWN")
+          totalDislikes++;
+      })
+      totalComments += item.comments.length;
+
     })
-    totalComments += item.comments.length;
-
-  })
+  }
 
   return (
     <>
