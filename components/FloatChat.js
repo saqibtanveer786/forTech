@@ -1,12 +1,18 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { RxCross2 } from 'react-icons/rx'
 import { MdChatBubbleOutline } from 'react-icons/md'
 
 import { submitForm } from '../lib/serverAction'
 
+import { AlertContext, LoadingContext } from 'lib/context'
+
 export default function FloatingChat() {
+
+    //consuming the context
+    const { setIsLoading } = useContext(LoadingContext)
+    const { setAlertMessage, setShowAlert, setAlertStatus } = useContext(AlertContext)
 
     function toggleHandler(e) {
         if (e) e.preventDefault();
