@@ -8,6 +8,8 @@ import { RxDashboard } from 'react-icons/rx'
 import { TfiLayoutListPost } from "react-icons/tfi"
 import { MdOutlineCreate } from "react-icons/md"
 import { IoSettingsOutline } from "react-icons/io5"
+import { LiaInfoSolid } from "react-icons/lia";
+import { AiOutlineUser } from "react-icons/ai";
 
 const Header = (props) => {
   return (
@@ -53,11 +55,11 @@ const Header = (props) => {
                 href="/addblog"
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
               >
-                <MdOutlineCreate
+                <LiaInfoSolid
                   size={20}
                   className="fill-current"
                 />
-                Publish
+                About
               </Link>
             </li>
             <li>
@@ -65,11 +67,11 @@ const Header = (props) => {
                 href="/dashboard/settings"
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
               >
-                <IoSettingsOutline
+                <AiOutlineUser
                   size={20}
                   className="fill-current"
                 />
-                Setting
+                Profile
               </Link>
             </li>
           </ul>
