@@ -43,7 +43,7 @@ export default async function page({ params }) {
                 <CommentList comments={comments} sessionId={session.user?.id} />
                 <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
               </div>
-              <Aside asideData={asideData}/>
+              <Aside asideData={asideData} recentOpenedBlog={params.blogpost}/>
             </div>
           </main>
         </section>
