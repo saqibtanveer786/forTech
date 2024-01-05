@@ -52,7 +52,7 @@ const Header = (props) => {
             </li>
             <li>
               <Link
-                href="/addblog"
+                href="/about"
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
               >
                 <LiaInfoSolid
@@ -64,7 +64,7 @@ const Header = (props) => {
             </li>
             <li>
               <Link
-                href="/dashboard/settings"
+                href="/profile"
                 className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
               >
                 <AiOutlineUser
