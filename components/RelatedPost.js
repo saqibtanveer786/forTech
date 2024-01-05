@@ -9,7 +9,7 @@ export default function RelatedPost({relatedPosts}) {
             <p className="text-xl font-semibold border-l-4 my-8 border-gray-800 pl-2 text-gray-700">Related Posts</p>
             <div className='flex flex-wrap gap-6'>
                 {relatedPosts&& relatedPosts.map((post, i) => {
-                    return  (<div className="grid grid-cols-1 border rounded-lg p-3 max-w-[350px]">
+                    return  (<div key={i} className="grid grid-cols-1 border rounded-lg p-3 max-w-[350px]">
                     <div className="w-fit">
                         <Image src={post?.image} alt='image' height={250} width={300} />
                     </div>
