@@ -1,6 +1,5 @@
 import React from "react";
 
-import Header from '../../components/Header'
 import Providers from '../../contextproviders/Providers'
 import Loader from "../../components/Loader";
 import Toast from "../../components/Toast";
@@ -9,6 +8,7 @@ import CommentUpModal from "../../components/CommentUpModal";
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
+import Header from "@components/Header";
 
 export default async function PagesLayout({
     children,
@@ -18,7 +18,7 @@ export default async function PagesLayout({
         <div className="bg-white">
             <div className='max-w-7xl mx-auto relative'>
                 <Providers>
-                    <Header session={session} />
+                    <Header session={session} fromDashboard={false} />
                     <Loader />
                     {children}
                     {session && <FloatChat />}

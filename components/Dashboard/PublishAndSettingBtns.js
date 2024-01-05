@@ -6,6 +6,7 @@ import { TfiLayoutListPost } from "react-icons/tfi"
 import { MdOutlineCreate } from "react-icons/md"
 import { IoSettingsOutline } from "react-icons/io5"
 import Link from 'next/link'
+import DropdownNotification from '@components/DashboardHeader/DropdownNotification'
 
 export default function PublishAndSettingBtns() {
   return (
@@ -30,6 +31,23 @@ export default function PublishAndSettingBtns() {
                 />
                 Setting
               </Link>
+
+          <div className="flex items-center gap-3 2xsm:gap-7">
+            <ul className="flex items-center gap-2 2xsm:gap-4">
+
+              {/* <!-- Notification Menu Area --> */}
+              <DropdownNotification />
+              {/* <!-- Notification Menu Area --> */}
+
+              {/* <!-- LogOut Button --> */}
+              <BiLogOut
+                size={20}
+                className="fill-current hover:cursor-pointer"
+              />
+              {/* <!-- LogOut Button --> */}
+
+            </ul>
+          </div>
     </div>
   )
 }

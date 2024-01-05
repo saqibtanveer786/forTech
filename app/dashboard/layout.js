@@ -3,20 +3,21 @@ import "./style.css";
 import "./data-tables-css.css";
 import "./satoshi.css";
 
-import Header from "../../components/DashboardHeader";
 
 import Providers from "../../contextproviders/Providers";
+import { getAuthSession } from "lib/auth";
+import Header from "@components/DashboardHeader";
 
-export default function DashboardLayout({
-  children,
-}) {
+export default async function DashboardLayout({  children})
+{
+  const session = await getAuthSession()
 
   return (
     <>
       <div className="flex h-screen overflow-hidden">
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Providers>
-            <Header />
+            <Header session={session}/>
             <main>
               <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
                 {children}
