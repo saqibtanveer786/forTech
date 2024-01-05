@@ -8,7 +8,6 @@ export async function POST(request) {
         const userId = await request.nextUrl.searchParams.get("userid")
         console.log("userid is:", userId)
 
-        const deleteRecords = await prisma.AuthorProfile.deleteMany({})
 
         // check if auther profile already exists
         const autherAlreadyExists = await prisma.AuthorProfile.findUnique({

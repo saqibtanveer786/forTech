@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Importing server actions
-import { getBlog, getComments } from '../../../../lib/serverAction';
+import { getAuthorsData, getBlog, getComments } from '../../../../lib/serverAction';
 
 // nextjs imports
 import Image from 'next/image';
@@ -23,6 +23,9 @@ import { redirect } from 'next/navigation';
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
   const comments = await getComments(params.blogpost);
+  // console.log(blog)
+  // console.log(blog.authorId)
+  const asideData = await getAuthorsData(blog?.authorId);
 
   const session = await getAuthSession()
   if (!session || session.length === 0) redirect("/signin", 'push')
@@ -40,7 +43,7 @@ export default async function page({ params }) {
                 <CommentList comments={comments} sessionId={session.user?.id} />
                 <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
               </div>
-              <Aside />
+              <Aside asideData={asideData}/>
             </div>
           </main>
         </section>
