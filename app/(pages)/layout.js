@@ -8,7 +8,6 @@ import CommentUpModal from "../../components/BlogPostDetailedPage/CommentUpModal
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
-import Header from "@components/DashboardHeader";
 
 export default async function PagesLayout({
     children,
@@ -18,7 +17,6 @@ export default async function PagesLayout({
         <div className="bg-white">
             <div className='max-w-7xl mx-auto relative'>
                 <Providers>
-                    <Header session={session} fromDashboard={false} />
                     <Loader />
                     {children}
                     {session && <FloatChat />}

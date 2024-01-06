@@ -7,11 +7,14 @@ import { TfiLayoutListPost } from "react-icons/tfi"
 import { LiaInfoSolid } from "react-icons/lia";
 import { AiOutlineUser } from "react-icons/ai";
 import DropDown from "./DropDown";
-
+import { usePathname } from 'next/navigation'
 const Header = ({session, fromDashboard}) => {
+  const path = usePathname();
+  console.log(path === '/dashboard') 
   return (
-    <header className={`z-999 flex w-full ${fromDashboard ? '' : 'bg-white drop-shadow-1'} max-w-7xl mx-auto`}>
-      <div className={`flex flex-grow items-center justify-between py-4 pr-3 ${!fromDashboard? '': 'shadow-2'} `}>
+    <header className={`z-999 flex w-full ${path === '/dashboard' ? 'bg-white drop-shadow-1' : ''} max-w-7xl mx-auto`}>
+
+      <div className={`flex flex-grow items-center justify-between py-4 pr-3 ${path === '/dashboard'? 'shadow-2': ''} `}>
         {/* left col */}
         <div className="flex items-center gap-2 sm:gap-4">
           <Link className="block flex-shrink-0 -mt-4" href="/">

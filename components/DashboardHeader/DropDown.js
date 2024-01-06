@@ -49,7 +49,7 @@ export default function DropDown({ session }) {
             </button>
 
             {/* <!-- Dropdown menu --> */}
-            <div id="dropdownAvatarName" className={`z-10 ${!showMenu && 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-52 absolute right-5 top-12`}>
+            <div id="dropdownAvatarName" className={`${!showMenu && 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-52 absolute right-5 top-12`}>
                 <div className="px-4 py-3 text-sm">
                     <div className="truncate">{session?.user.email}</div>
                 </div>
