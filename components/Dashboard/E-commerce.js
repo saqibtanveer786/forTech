@@ -3,7 +3,7 @@ import React from "react";
 import ChartOne from "../Charts/ChartOne";
 import ChatCard from "../Chat/ChatCard";
 import TableOne from "../Tables/TableOne";
-import CardDataStats from "../CardDataStats";
+import CardDataStats from "./CardDataStats";
 import TableThree from "../Tables/TableThree";
 
 import { PiEyeBold } from "react-icons/pi"

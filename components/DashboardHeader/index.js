@@ -6,7 +6,7 @@ import { RxDashboard } from 'react-icons/rx'
 import { TfiLayoutListPost } from "react-icons/tfi"
 import { LiaInfoSolid } from "react-icons/lia";
 import { AiOutlineUser } from "react-icons/ai";
-import DropDown from "@components/DropDown";
+import DropDown from "./DropDown";
 
 const Header = ({session, fromDashboard}) => {
   return (

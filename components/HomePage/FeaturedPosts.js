@@ -2,11 +2,11 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 
 // Importing components
-const Post = dynamic(() => import('./Post'), { ssr: false })
+const Post = dynamic(() => import('../BlogPost/Post'), { ssr: false })
 // import Post from './Post'
-import { getBlogs } from '../lib/serverAction'
+import { getBlogs } from '../../lib/serverAction'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../lib/auth'
+import { authOptions } from '../../lib/auth'
 
 export default async function FeaturedPosts() {
     const blogs = await getBlogs()

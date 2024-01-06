@@ -1,36 +1,86 @@
 'use client';
-import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
-
+import React, { useState, useContext, useRef, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import dynamic from 'next/dynamic';
+//editorjs imports 
+// const EditorJS = dynamic(() => import('@editorjs/editorjs'), { ssr: false });
 import EditorJS from '@editorjs/editorjs'; //?
+import Header from '@editorjs/header';
+import ImageTool from "@editorjs/image"
+import RawTool from "@editorjs/raw"
+import Embed from "@editorjs/embed"
+import Checklist from "@editorjs/checklist"
+import List from '@editorjs/list';
+import Quote from "@editorjs/quote"
+import CodeTool from "@editorjs/code"
 
 import TextareaAutosize from 'react-textarea-autosize'
 
 // Importing context
-import { AlertContext, LoadingContext } from '../lib/context'
+import { AlertContext, LoadingContext } from '../../lib/context'
+// react icons
+import { AiOutlinePlus } from 'react-icons/ai';
 
 // Importing serverActions
-import { pusblishBlog } from '../lib/serverAction'
+import { updateBlog } from '../../lib/serverAction'
 
 // uploadthing 
 import { UploadDropzone } from "@uploadthing/react";
-import { uploadFiles } from '../lib/uploadthings'
+import { uploadFiles } from '../../lib/uploadthings'
 
 // nextjs specific 
 import Image from 'next/image'
 
-export default function PublishBlog() {
-
-    const [isImageUploaded, setIsImageUploaded] = useState(false);
+export default function UpdateBlog({ id, title, description, image, content }) {
+    const router = useRouter()
+    const [isImageUploaded, setIsImageUploaded] = useState(true);
     const [isMounted, setIsMounted] = useState(false);
 
-    // refs here
-    const titleRef = useRef()
-    const descriptionRef = useRef()
-    const editorRef = useRef(false);
-    const imageRef = useRef();
+    const editorRef = useRef();
+
     // consuming context
     const { setShowAlert, setAlertMessage, setAlertStatus } = useContext(AlertContext)
     const { setIsLoading } = useContext(LoadingContext)
+    const [titleState, setTitleState] = useState(title)
+    const [descriptionState, setDescriptionState] = useState(description)
+    const [imageState, setImageState] = useState(image)
+
+    // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
+    async function submitFormHandler(e) {
+        e.preventDefault()
+        if (!isImageUploaded) { setShowAlert(true); setAlertMessage("Uploading front image is necessary"); setAlertStatus("error"); return; }
+        const data = {}
+        data.title = titleState
+        data.briefdescription = descriptionState
+        data.content = await editorRef?.current.save()
+        data.image = imageState
+        try {
+            setIsLoading(true)
+            const response = await updateBlog(data, id)
+            if (response.status) {       //Incase of success
+                setAlertStatus("success");
+                setAlertMessage(response.message);
+                resetInputFields();
+                router.push("/");
+                router.refresh();
+            }
+            if (!response.status) {      //Incase of error
+                setAlertStatus("error");
+                setAlertMessage(response.message);
+            }
+        } catch (error) {
+            console.log(error);
+            setAlertStatus("error");
+            setAlertMessage("Something went wrong");
+        } finally {
+            setIsLoading(false);
+            setShowAlert(true);
+        }
+    }
+
+    // Function for resetting input fields
+    function resetInputFields() {
+    }
 
     // function to initialize editor
     const initializeEditor = useCallback(async () => {
@@ -122,43 +172,6 @@ export default function PublishBlog() {
         }
     }, [])
 
-    // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
-    async function submitFormHandler(e) {
-        e.preventDefault()
-        if (!isImageUploaded) { setShowAlert(true); setAlertMessage("Uploading front image is necessary"); setAlertStatus("error"); return; }
-        const data = {}
-        data.title = titleRef.current?.value
-        data.briefdescription = descriptionRef.current?.value
-        data.content = await editorRef?.current.save()
-        data.image = imageRef.current
-        try {
-            setIsLoading(true)
-            const response = await pusblishBlog(data)
-            if (response.status) {       //Incase of success
-                setAlertStatus("success");
-                setAlertMessage(response.message);
-                resetInputFields()
-            }
-            if (!response.status) {      //Incase of error
-                setAlertStatus("error");
-                setAlertMessage(response.message);
-            }
-        } catch (error) {
-            console.log(error);
-            setAlertStatus("error");
-            setAlertMessage("Something went wrong");
-        } finally {
-            setIsLoading(false);
-            setShowAlert(true);
-
-        }
-    }
-
-    // Function for resetting input fields
-    function resetInputFields() {
-    }
-
-
     useEffect(() => {
         if (typeof window !== "undefined") {
             setIsMounted(true)
@@ -187,9 +200,8 @@ export default function PublishBlog() {
                 {/* Title */}
                 <div className='prose prose-stone sm:px-9 px-2'>
                     <TextareaAutosize
-                        ref={(e) => {
-                            titleRef.current = e
-                        }}
+                        value={titleState}
+                        onChange={(e) => { e.preventDefault(); setTitleState(e.target.value) }}
                         placeholder='Title'
                         className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
                     />
@@ -198,9 +210,8 @@ export default function PublishBlog() {
                 {/* Description */}
                 <div className='prose prose-stone sm:px-9 px-2'>
                     <TextareaAutosize
-                        ref={(e) => {
-                            descriptionRef.current = e
-                        }}
+                        value={descriptionState}
+                        onChange={(e) => { e.preventDefault(); setDescriptionState(e.target.value) }}
                         placeholder='Meta Description'
                         className='w-full resize-none appearance-none overflow-hidden bg-transparent text-lg font-bold focus:outline-none'
                     />
@@ -211,20 +222,19 @@ export default function PublishBlog() {
                     <UploadDropzone
                         endpoint="imageUploader"
                         onClientUploadComplete={(res) => {
-                            setIsImageUploaded(true)
-                            imageRef.current = res[0].url
-                            console.log(imageRef.current)
+                            setImageState(res[0].url)
                         }}
                         onUploadError={(error) => {
                             alert(`ERROR! ${error}`);
                         }}
-                        className={`w-[700px] ${isImageUploaded ? 'hidden' : ''}`}
+                        className={`max-w-[700px] w-full ${imageState && 'hidden'}`}
                     />
-                    <Image src={imageRef.current || '/img/general.webp'} alt='Image' width={700} height={700} className={`mb-3 ${isImageUploaded ? "" : "hidden"}`} />
+                    <Image src={imageState} alt='Image' width={700} height={700} className={`mb-3 ${!imageState && "hidden"}`} />
                 </div>
+                <AiOutlinePlus size={30} className='bg-black rounded-full text-white p-1 ml-0 sm:ml-8' onClick={(e) => { e.preventDefault(); setImageState('') }} />
 
                 {/* Editor Js */}
-                <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto mb-2'></div>
+                <div id='editorjs' className='sm:w-[100%] w-[100%] mx-auto mb-2' ></div>
 
                 {/* Submit Button */}
                 <div className='flex justify-end my-4'>
@@ -232,7 +242,7 @@ export default function PublishBlog() {
                         onClick={submitFormHandler}
                         type="submit"
                         className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center focus:outline-none `}
-                    >Publish</button>
+                    >Update</button>
                 </div>
 
             </section>

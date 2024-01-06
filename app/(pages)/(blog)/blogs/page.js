@@ -1,8 +1,8 @@
 import React from 'react'
 
 // Importing components
-import Post from '../../../../components/Post'
-import PostCategories from '../../../../components/PostCategories'
+import Post from '../../../../components/BlogPost/Post'
+import PostCategories from '../../../../components/BlogPost/PostCategories'
 
 // Importing server actions
 import { getBlogs } from '../../../../lib/serverAction'

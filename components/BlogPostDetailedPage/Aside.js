@@ -1,7 +1,7 @@
 import React from 'react'
 
 // components
-import PostCategories from './PostCategories'
+import PostCategories from '../BlogPost/PostCategories'
 import AboutAuthor from './AboutAuthor'
 import RelatedPost from './RelatedPost'
 

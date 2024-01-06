@@ -8,10 +8,10 @@ import { RxUpdate } from 'react-icons/rx';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 // Importing the context
-import { AlertContext, LoadingContext } from '../lib/context';
+import { AlertContext, LoadingContext } from '../../lib/context';
 
 // Import server action
-import { deletePost } from '../lib/serverAction';
+import { deletePost } from '../../lib/serverAction';
 import Link from 'next/link';
 
 export default function PostSpeedDial({ blogId }) {

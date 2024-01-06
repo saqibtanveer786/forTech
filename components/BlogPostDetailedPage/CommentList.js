@@ -1,8 +1,8 @@
 "use client"
 import React, { useContext } from 'react'
 import Image from 'next/image'
-import { deleteComment } from '../lib/serverAction'
-import { CommentModal, LoadingContext, OtherStates } from '../lib/context'
+import { deleteComment } from '../../lib/serverAction'
+import { CommentModal, LoadingContext, OtherStates } from '../../lib/context'
 
 export default function CommentList({ comments, sessionId }) {
     // consuming context

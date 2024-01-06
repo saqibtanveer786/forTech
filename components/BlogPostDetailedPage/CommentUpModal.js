@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext, } from 'react'
-import { CommentModal, LoadingContext, OtherStates } from '../lib/context'
-import { updateComment } from '../lib/serverAction'
+import { CommentModal, LoadingContext, OtherStates } from '../../lib/context'
+import { updateComment } from '../../lib/serverAction'
 
 import { useRouter } from 'next/navigation'
 

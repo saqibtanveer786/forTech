@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 // icons
-import { logos } from '../lib/logos'
+import { logos } from '../../lib/logos'
 
 export default function AboutAuthor({name, email, image, bio, socialLinks}) {
     return (

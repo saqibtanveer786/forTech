@@ -4,7 +4,7 @@ import Providers from '../../contextproviders/Providers'
 import Loader from "../../components/Loader";
 import Toast from "../../components/Toast";
 import FloatChat from "../../components/FloatChat";
-import CommentUpModal from "../../components/CommentUpModal";
+import CommentUpModal from "../../components/BlogPostDetailedPage/CommentUpModal";
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";

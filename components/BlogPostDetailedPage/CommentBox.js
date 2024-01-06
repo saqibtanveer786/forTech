@@ -2,9 +2,9 @@
 import React, { useContext, useState } from 'react'
 import { useRouter } from 'next/navigation';
 
-import { submitComment } from '../lib/serverAction'
-import { logos } from '../lib/logos'
-import { AlertContext, LoadingContext } from '../lib/context'
+import { submitComment } from '../../lib/serverAction'
+import { logos } from '../../lib/logos'
+import { AlertContext, LoadingContext } from '../../lib/context'
 
 
 export default function CommentBox({ userId, blogId, }) {

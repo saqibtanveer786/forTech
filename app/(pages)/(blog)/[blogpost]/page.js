@@ -9,10 +9,10 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 // Importing components
-const Article = dynamic(() => import("../../../../components/Article"), { ssr: false })
-import Aside from '../../../../components/Aside'
-import CommentBox from '../../../../components/CommentBox'
-import CommentList from '../../../../components/CommentList'
+const Article = dynamic(() => import("../../../../components/BlogPostDetailedPage/Article"), { ssr: false })
+import Aside from '../../../../components/BlogPostDetailedPage/Aside'
+import CommentBox from '../../../../components/BlogPostDetailedPage/CommentBox'
+import CommentList from '../../../../components/BlogPostDetailedPage/CommentList'
 
 // Library imports
 import { getAuthSession } from '../../../../lib/auth';

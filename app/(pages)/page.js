@@ -1,7 +1,7 @@
 // Importing Components
-import TopSection from '../../components/TopSection';
-import FeaturedPosts from '../../components/FeaturedPosts'
-import AdsForFrontPage from '../../components/AdsForFrontPage'
+import TopSection from '../../components/HomePage/TopSection';
+import FeaturedPosts from '../../components/HomePage/FeaturedPosts'
+import AdsForFrontPage from '../../components/HomePage/AdsForFrontPage'
 
 
 export const metadata = {
