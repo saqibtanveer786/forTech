@@ -8,7 +8,7 @@ import CommentUpModal from "../../components/CommentUpModal";
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
-import Header from "@components/Header";
+import Header from "@components/DashboardHeader";
 
 export default async function PagesLayout({
     children,

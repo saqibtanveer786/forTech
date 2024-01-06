@@ -1,13 +1,9 @@
 "use client"
 import Link from "next/link";
-import DropdownNotification from "./DropdownNotification";
 import { logos } from "../../lib/logos";
 
-import { BiLogOut } from 'react-icons/bi'
 import { RxDashboard } from 'react-icons/rx'
 import { TfiLayoutListPost } from "react-icons/tfi"
-import { MdOutlineCreate } from "react-icons/md"
-import { IoSettingsOutline } from "react-icons/io5"
 import { LiaInfoSolid } from "react-icons/lia";
 import { AiOutlineUser } from "react-icons/ai";
 import DropDown from "@components/DropDown";
@@ -36,7 +32,6 @@ const Header = ({session, fromDashboard}) => {
                   size={20}
                   className="fill-current"
                 />
-                Dashboard
               </Link>
             </li>
             <li>
@@ -48,7 +43,6 @@ const Header = ({session, fromDashboard}) => {
                   size={20}
                   className="fill-current"
                 />
-                Blogs
               </Link>
             </li>
             <li>
@@ -60,7 +54,6 @@ const Header = ({session, fromDashboard}) => {
                   size={20}
                   className="fill-current"
                 />
-                About
               </Link>
             </li>
             <li>
@@ -72,7 +65,6 @@ const Header = ({session, fromDashboard}) => {
                   size={20}
                   className="fill-current"
                 />
-                Profile
               </Link>
             </li>
             <li>
