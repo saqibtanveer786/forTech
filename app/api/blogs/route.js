@@ -5,7 +5,16 @@ import prisma from '../../../lib/prisma';
 export async function POST() {
   try {
     // getting Posts
-    const posts = await prisma.post.findMany()
+    const posts = await prisma.post.findMany({
+      select: {
+        id: true,
+        title: true,
+        briefdescription: true,
+        image: true
+      }
+    })
+
+    console.log(posts)
 
     return NextResponse.json(
       posts ? { posts } : { message: "Error While Getting Posts" },
