@@ -11,7 +11,7 @@ import { TfiLayoutListPost } from "react-icons/tfi"
 import { AiOutlineLike } from "react-icons/ai"
 import { AiOutlineDislike } from "react-icons/ai"
 
-const ECommerce = ({ data }) => {
+const ECommerce = ({ data, session }) => {
   let totalLikes = 0, totalDislikes = 0, totalComments = 0;
   if (data.posts !== undefined && data.posts !== null) {
     data.posts.forEach((item, i) => {
@@ -60,7 +60,7 @@ const ECommerce = ({ data }) => {
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5 max-w-7xl mx-auto">
         <ChartOne />
         <TableThree />
-        <ChatCard comments={data.comments} />
+        <ChatCard comments={data.comments} name={session.user?.name}/>
         <div className="col-span-12 xl:col-span-8">
           <TableOne posts={data.posts} />
         </div>

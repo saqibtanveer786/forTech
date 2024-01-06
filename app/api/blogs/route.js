@@ -14,8 +14,6 @@ export async function POST() {
       }
     })
 
-    console.log(posts)
-
     return NextResponse.json(
       posts ? { posts } : { message: "Error While Getting Posts" },
       { status: posts ? 200 : 404 }

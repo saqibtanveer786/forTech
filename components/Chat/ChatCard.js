@@ -1,48 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getAuthSession } from "lib/auth";
 
-const chatData = [
-  {
-    avatar: "/images/user/user-01.png",
-    name: "Devid Heilo",
-    text: "How are you?",
-    time: 12,
-    textCount: 3,
-    dot: 3,
-  },
-  {
-    avatar: "/images/user/user-04.png",
-    name: "Jhon Doe",
-    text: "What's up?",
-    time: 32,
-    textCount: 0,
-    dot: 3,
-  },
-  {
-    avatar: "/images/user/user-05.png",
-    name: "Jane Doe",
-    text: "Great",
-    time: 32,
-    textCount: 2,
-    dot: 6,
-  },
-  {
-    avatar: "/images/user/user-01.png",
-    name: "Jhon Doe",
-    text: "How are you?",
-    time: 32,
-    textCount: 0,
-    dot: 3,
-  },
-];
-
-const ChatCard = ({ comments }) => {
+const ChatCard = async ({ comments, name }) => {
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white py-6 shadow-default xl:col-span-4 xl:max-h-[485px] overflow-y-auto">
       <h4 className="mb-6 px-7.5 text-xl font-semibold text-black">
         New Comments
       </h4>
-
+      
       <div>
         {comments && comments.map((comment, key) => (
           <Link
@@ -61,7 +27,7 @@ const ChatCard = ({ comments }) => {
             <div className="flex flex-1 items-center justify-between">
               <div>
                 <h5 className="font-medium text-black">
-                  {comment.user.name}
+                  {comment.user.name === name? 'You' : comment.user.name }
                 </h5>
                 <p>
                   <span className="text-sm text-black">
