@@ -19,6 +19,7 @@ import { getAuthSession } from '../../../../lib/auth';
 
 // next navigation
 import { redirect } from 'next/navigation';
+import LikeDislikeBtns from '@components/BlogPostDetailedPage/LikeDislikeBtns';
 
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
@@ -40,6 +41,7 @@ export default async function page({ params }) {
                 <h1 className="text-3xl font-bold text-gray-800 max-w-[800px] mx-auto">{blog?.title}</h1>
                 <Image src={blog?.image} alt="placeholder tag" width={800} height={800} className='mx-auto mt-10' />
                 <Article content={blog?.content} />
+                <LikeDislikeBtns userId={session?.user?.id} postId={params?.blogpost} />
                 <CommentList comments={comments} sessionId={session.user?.id} />
                 <CommentBox userId={session?.user?.id} blogId={params.blogpost} />
               </div>
