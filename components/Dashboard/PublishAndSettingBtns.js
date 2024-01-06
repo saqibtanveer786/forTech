@@ -39,13 +39,6 @@ export default function PublishAndSettingBtns() {
               <DropdownNotification />
               {/* <!-- Notification Menu Area --> */}
 
-              {/* <!-- LogOut Button --> */}
-              <BiLogOut
-                size={20}
-                className="fill-current hover:cursor-pointer"
-              />
-              {/* <!-- LogOut Button --> */}
-
             </ul>
           </div>
     </div>
