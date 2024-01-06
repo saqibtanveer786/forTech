@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 const TableOne = ({ posts }) => {
@@ -39,7 +40,7 @@ const TableOne = ({ posts }) => {
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:py-4 w-[30%]">
-              <p className="text-black">{post.title.substr(0, 10)} ....</p>
+              <Link href={`/${post?.id}`} className="text-black">{post.title.substr(0, 10)} ....</Link>
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:py-4 w-[20%]">

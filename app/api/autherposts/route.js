@@ -25,10 +25,9 @@ export async function POST(request) {
                 authorId: userId,
             },
             select: {
+                id: true,
                 title: true,
                 image: true,
-                createdAt: true,
-                updatedAt: true,
                 comments: {
                     select: {
                         message: true,
