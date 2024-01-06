@@ -13,13 +13,13 @@ const Article = dynamic(() => import("../../../../components/BlogPostDetailedPag
 import Aside from '../../../../components/BlogPostDetailedPage/Aside'
 import CommentBox from '../../../../components/BlogPostDetailedPage/CommentBox'
 import CommentList from '../../../../components/BlogPostDetailedPage/CommentList'
+const LikeDislikeBtns = dynamic(() => import('@components/BlogPostDetailedPage/LikeDislikeBtns'));
 
 // Library imports
 import { getAuthSession } from '../../../../lib/auth';
 
 // next navigation
 import { redirect } from 'next/navigation';
-import LikeDislikeBtns from '@components/BlogPostDetailedPage/LikeDislikeBtns';
 
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
