@@ -5,18 +5,17 @@ import PublishAndSettingBtns from "@components/Dashboard/PublishAndSettingBtns";
 import { getAuthSession } from "lib/auth";
 
 export const metadata = {
-    title: "forTech | Dashboard",
-    description: "This is dashboard page for the authors and admins"
+  title: "forTech | Dashboard",
+  description: "This is dashboard page for the authors and admins",
 };
 
-
 export default async function Home() {
-    const data = await getAuthersPostData('clo11vi7j0000uvj8ihnho7yi')
-    const session = await getAuthSession();
-    return (
-        <>
-            <PublishAndSettingBtns />
-            <ECommerce data={data} session={session}/>
-        </>
-    );
+  const session = await getAuthSession();
+  const data = await getAuthersPostData(session?.user?.id);
+  return (
+    <>
+      <PublishAndSettingBtns />
+      <ECommerce data={data} session={session} />
+    </>
+  );
 }

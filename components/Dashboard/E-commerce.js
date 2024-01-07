@@ -35,32 +35,32 @@ const ECommerce = ({ data, session }) => {
         <CardDataStats
           title="Total Posts"
           total={data.posts && data.posts.length}
-          rate="0.43%"
-          levelUp
+          // rate="0.43%"
+          // levelUp
         >
           <TfiLayoutListPost className="fill-primary" size={20} />
         </CardDataStats>
         <CardDataStats
           title="Total Views"
           total={totalComments}
-          rate="4.35%"
-          levelUp
+          // rate="4.35%"
+          // levelUp
         >
           <PiEyeBold className="fill-primary" size={20} />
         </CardDataStats>
         <CardDataStats
           title="Total Likes"
           total={totalLikes}
-          rate="2.59%"
-          levelUp
+          // rate="2.59%"
+          // levelUp
         >
           <AiOutlineLike className="text-primary" size={20} />
         </CardDataStats>
         <CardDataStats
           title="Total DisLikes"
           total={totalDislikes}
-          rate="0.95%"
-          levelDown
+          // rate="0.95%"
+          // levelDown
         >
           <AiOutlineDislike className="text-primary" size={20} />
         </CardDataStats>
