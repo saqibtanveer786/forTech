@@ -16,14 +16,13 @@ import DropDown from "./DropDown";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
-const Header = ({ session, fromDashboard }) => {
+const Header = ({ session }) => {
   const path = usePathname();
-  console.log(path === "/dashboard");
   return (
     <header
-      className={`z-999 flex w-full ${
-        path === "/dashboard" ? "bg-white drop-shadow-1" : ""
-      } max-w-7xl mx-auto`}
+      className={`z-999 bg-white flex w-full ${
+        path === "/dashboard" ? "drop-shadow-1" : ""
+      } max-w-7xl mx-auto `}
     >
       <div
         className={`flex flex-grow items-center justify-between py-4 pr-3 ${

@@ -33,8 +33,6 @@ import { redirect } from "next/navigation";
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
   const comments = await getComments(params.blogpost);
-  // console.log(blog)
-  // console.log(blog.authorId)
   const asideData = await getAuthorsData(blog?.authorId);
 
   const session = await getAuthSession();

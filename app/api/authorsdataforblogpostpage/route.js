@@ -32,9 +32,7 @@ export async function POST(request) {
         },
       },
     });
-    // if (!user.role === 'ADMIN' || !user.role === 'AUTHER') return NextResponse.json({ message: "Not Allowed", status: 'error' }, { status: 401 })
 
-    console.log("user is: ", user);
     if (!user)
       return NextResponse.json(
         { message: "Internal Server Error", status: "error" },
