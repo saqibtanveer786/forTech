@@ -1,25 +1,28 @@
 import dynamic from "next/dynamic";
-import { getAuthSession } from '../../../../lib/auth'
+import { getAuthSession } from "../../../../lib/auth";
 
-// uploadthing 
-const UserImgUpDropZone = dynamic(() => import('../../../../components/UserImgUpDropZone'), { ssr: false })
-import AutherRegistrationForm from '../../../../components/AutherRegistrationForm'
+// uploadthing
+const UserImgUpDropZone = dynamic(
+  () => import("../../../../components/UserImgUpDropZone"),
+  { ssr: false }
+);
+import AutherRegistrationForm from "../../../../components/Author/AutherRegistrationForm";
 
-import { BiEdit } from 'react-icons/bi'
+import { BiEdit } from "react-icons/bi";
 
 export const metadata = {
-    title: "Settings Page",
-    description: "This is Settings page for forTech",
-    // other metadata
+  title: "Settings Page",
+  description: "This is Settings page for forTech",
+  // other metadata
 };
 
 const page = async () => {
-    const session = await getAuthSession()
-    return (
-        <>
-            <AutherRegistrationForm userId={session.user?.id} />
-        </>
-    );
+  const session = await getAuthSession();
+  return (
+    <>
+      <AutherRegistrationForm userId={session.user?.id} />
+    </>
+  );
 };
 
 export default page;

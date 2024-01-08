@@ -13,12 +13,12 @@ export async function POST(request) {
       },
       select: {
         name: true,
-        email: true,
         image: true,
         autherProfile: {
           select: {
             socialLinks: true,
             bio: true,
+            followers: true,
           },
         },
         posts: {
@@ -28,6 +28,11 @@ export async function POST(request) {
             image: true,
             title: true,
             briefdescription: true,
+          },
+        },
+        following: {
+          select: {
+            followingId: true,
           },
         },
       },
