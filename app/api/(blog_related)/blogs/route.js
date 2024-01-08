@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import prisma from '../../../lib/prisma';
+import prisma from "lib/prisma";
 
 export async function POST() {
   try {
@@ -10,23 +10,22 @@ export async function POST() {
         id: true,
         title: true,
         briefdescription: true,
-        image: true
-      }
-    })
+        image: true,
+      },
+    });
 
     return NextResponse.json(
       posts ? { posts } : { message: "Error While Getting Posts" },
       { status: posts ? 200 : 404 }
     );
-
   } catch (error) {
     console.log(error);
     return NextResponse.json(
       {
         message: `An Unexpected Error Occured error is: ${error}`,
-        error: error.message
+        error: error.message,
       },
       { status: 500 }
-    )
+    );
   }
 }

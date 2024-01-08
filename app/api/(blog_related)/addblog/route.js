@@ -1,6 +1,6 @@
 const { NextRequest, NextResponse } = require("next/server");
 
-import prisma from "../../../lib/prisma";
+import prisma from "lib/prisma";
 
 async function POST(request) {
   try {

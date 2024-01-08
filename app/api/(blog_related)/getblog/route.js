@@ -1,21 +1,21 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import prisma from '../../../lib/prisma'
+import prisma from "lib/prisma";
 
 export async function GET(req) {
   try {
     // getting the blog id
     const url = new URL(req.url);
     const searchParams = new URLSearchParams(url.search);
-    const stringId = searchParams.get('id');
-    const id = stringId
+    const stringId = searchParams.get("id");
+    const id = stringId;
 
     // Adding post
     const addPost = await prisma.post.findUnique({
       where: {
-        id: id
+        id: id,
       },
-    })
+    });
 
     return NextResponse.json(
       addPost ? { post: addPost } : { message: "Error while getting blog" },
@@ -23,7 +23,7 @@ export async function GET(req) {
     );
   } catch (error) {
     return NextResponse.json(
-      { message: 'Internal Server Error' },
+      { message: "Internal Server Error" },
       { status: 500 }
     );
   }

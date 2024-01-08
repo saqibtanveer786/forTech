@@ -1,12 +1,12 @@
-const { NextRequest, NextResponse } = require('next/server');
+const { NextRequest, NextResponse } = require("next/server");
 
-import prisma from '../../../lib/prisma'
+import prisma from "lib/prisma";
 
 async function PUT(request) {
   try {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
-    const id = searchParams.get('id')
+    const id = searchParams.get("id");
 
     const { image, title, briefdescription, content } = await request.json();
     // const prisma = new PrismaClient()
@@ -14,7 +14,7 @@ async function PUT(request) {
     // Adding post
     const addPost = await prisma.post.update({
       where: {
-        id
+        id,
       },
       data: {
         title,
@@ -22,15 +22,20 @@ async function PUT(request) {
         briefdescription,
         image,
       },
-    })
+    });
 
     return NextResponse.json(
-      addPost ? { post: addPost, message: "Blog Updated Successfully", status: true } : { message: "Error While Adding", status: false },
+      addPost
+        ? { post: addPost, message: "Blog Updated Successfully", status: true }
+        : { message: "Error While Adding", status: false },
       { status: addPost ? 200 : 404 }
     );
   } catch (error) {
-    console.log('erroris', error);
-    return NextResponse.json({ message: `An Unexpected Error Occured error is: ${error}`, status: false });
+    console.log("erroris", error);
+    return NextResponse.json({
+      message: `An Unexpected Error Occured error is: ${error}`,
+      status: false,
+    });
   }
 }
 
