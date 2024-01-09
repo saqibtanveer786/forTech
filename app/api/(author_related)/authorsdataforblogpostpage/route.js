@@ -16,6 +16,7 @@ export async function POST(request) {
         image: true,
         autherProfile: {
           select: {
+            id: true,
             socialLinks: true,
             bio: true,
             followers: true,

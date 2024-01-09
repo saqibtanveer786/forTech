@@ -14,6 +14,8 @@ export default function AboutAuthor({
   socialLinks,
   followers,
   following,
+  authorId,
+  userId,
 }) {
   return (
     <div id="author-card" className="flex flex-col items-center xl:px-0">
@@ -38,7 +40,7 @@ export default function AboutAuthor({
         </p>
         <p className="my-1 text-center font-medium mb-4 text-gray-800">{bio}</p>
 
-        <FollowBtn />
+        <FollowBtn authorId={authorId} userId={userId} />
 
         <FollowersFollowing followers={followers} following={following} />
 

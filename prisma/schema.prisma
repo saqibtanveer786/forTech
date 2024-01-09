@@ -167,6 +167,7 @@ model Vote {
   @@id([userId, postId])
 }
 
+// follwerId is the id of author not of user(names not matching to their purpose)
 model Follows {
   followerId  String
   followers  AuthorProfile? @relation("followers", fields: [followerId], references: [id])

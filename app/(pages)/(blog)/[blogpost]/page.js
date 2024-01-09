@@ -66,7 +66,11 @@ export default async function page({ params }) {
                   blogId={params.blogpost}
                 />
               </div>
-              <Aside asideData={asideData} recentOpenedBlog={params.blogpost} />
+              <Aside
+                asideData={asideData}
+                recentOpenedBlog={params.blogpost}
+                session={session}
+              />
             </div>
           </main>
         </section>
