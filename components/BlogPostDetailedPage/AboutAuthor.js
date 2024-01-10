@@ -6,6 +6,7 @@ import { logos } from "../../lib/logos";
 import FollowBtn from "@components/Author/FollowBtn";
 import SocialMediaLinks from "@components/Author/SocialMediaLinks";
 import FollowersFollowing from "@components/Author/FollowersFollowing";
+import SeeMoreBtn from "@components/SeeMoreBtn";
 
 export default function AboutAuthor({
   name,
@@ -45,6 +46,8 @@ export default function AboutAuthor({
         <FollowersFollowing followers={followers} following={following} />
 
         <SocialMediaLinks socialLinks={socialLinks} />
+
+        <SeeMoreBtn link={`/authorprofile/${authorId}`} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 
 // Importing server actions
 import {
-  getAuthorsData,
+  getAuthorsDataForBlogPostPage,
   getBlog,
   getComments,
 } from "../../../../lib/serverAction";
@@ -33,7 +33,9 @@ import { redirect } from "next/navigation";
 export default async function page({ params }) {
   const blog = await getBlog(params.blogpost);
   const comments = await getComments(params.blogpost);
-  const asideData = await getAuthorsData(blog?.authorId);
+  const asideData = await getAuthorsDataForBlogPostPage(blog?.authorId);
+
+  console.log(asideData);
 
   const session = await getAuthSession();
   if (!session || session.length === 0) redirect("/signin", "push");

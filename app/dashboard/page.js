@@ -1,4 +1,4 @@
-import { getAuthersPostData } from "lib/serverAction";
+import { getAuthorsData } from "lib/serverAction";
 
 import ECommerce from "../../components/Dashboard/E-commerce";
 import PublishAndSettingBtns from "@components/Dashboard/PublishAndSettingBtns";
@@ -11,7 +11,7 @@ export const metadata = {
 
 export default async function Home() {
   const session = await getAuthSession();
-  const data = await getAuthersPostData(session?.user?.id);
+  const data = await getAuthorsData(session?.user?.id);
   return (
     <>
       <PublishAndSettingBtns />
