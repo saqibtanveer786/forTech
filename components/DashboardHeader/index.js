@@ -15,9 +15,23 @@ import DropDown from "./DropDown";
 
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { getAuthorIdFromUserId } from "lib/serverAction";
+import { useEffect, useState } from "react";
 
 const Header = ({ session }) => {
   const path = usePathname();
+
+  const [authorId, setAuthorId] = useState();
+
+  useEffect(() => {
+    async function toCall() {
+      const authorId = await getAuthorIdFromUserId(session?.user?.id);
+      if (authorId) setAuthorId(() => authorId);
+      console.log("author id from useEffect is: ", authorId);
+    }
+    toCall();
+  }, []);
+
   return (
     <header
       className={`z-999 bg-white flex w-full ${
@@ -66,12 +80,22 @@ const Header = ({ session }) => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/profile"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
-                >
-                  <AiOutlineUser size={20} className="fill-current" />
-                </Link>
+                {!authorId && (
+                  <Link
+                    href="profile"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                  >
+                    <AiOutlineUser size={20} className="fill-current" />
+                  </Link>
+                )}
+                {authorId && (
+                  <a
+                    href={`/authorprofile/${authorId.id}`}
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                  >
+                    <AiOutlineUser size={20} className="fill-current" />
+                  </a>
+                )}
               </li>
               <li>
                 <button

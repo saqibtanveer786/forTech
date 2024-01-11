@@ -8,27 +8,27 @@ export default function AuthorExperience({ experienceData }) {
       </div>
       <p className="">
         <span className="text-gray-500"> company: </span>
-        {experienceData.company}
+        {experienceData?.company}
       </p>
 
       <p className="">
         <span className="text-gray-500"> position: </span>
-        {experienceData.position}
+        {experienceData?.position}
       </p>
 
       <p className="">
         <span className="text-gray-500"> description: </span>
-        {experienceData.description}
+        {experienceData?.description}
       </p>
 
       <p className="">
         <span className="text-gray-500"> started At: </span>
-        {experienceData.startDate}
+        {experienceData?.startDate}
       </p>
 
       <p className="">
         <span className="text-gray-500"> Ended At: </span>
-        {experienceData.endDate}
+        {experienceData?.endDate}
       </p>
     </div>
   );

@@ -18,7 +18,7 @@ export default async function page({ params }) {
   const { user } = await getAuthSession();
   const data = await getAuthorsData(params?.id);
 
-  console.log(data);
+  console.log(data.autherProfile.experience);
 
   return (
     <div className="p-16">
