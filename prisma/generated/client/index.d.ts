@@ -8172,6 +8172,7 @@ export namespace Prisma {
     briefdescription: string | null
     image: string | null
     published: boolean | null
+    featured: boolean | null
     authorId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8183,6 +8184,7 @@ export namespace Prisma {
     briefdescription: string | null
     image: string | null
     published: boolean | null
+    featured: boolean | null
     authorId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8195,6 +8197,7 @@ export namespace Prisma {
     briefdescription: number
     image: number
     published: number
+    featured: number
     authorId: number
     createdAt: number
     updatedAt: number
@@ -8208,6 +8211,7 @@ export namespace Prisma {
     briefdescription?: true
     image?: true
     published?: true
+    featured?: true
     authorId?: true
     createdAt?: true
     updatedAt?: true
@@ -8219,6 +8223,7 @@ export namespace Prisma {
     briefdescription?: true
     image?: true
     published?: true
+    featured?: true
     authorId?: true
     createdAt?: true
     updatedAt?: true
@@ -8231,6 +8236,7 @@ export namespace Prisma {
     briefdescription?: true
     image?: true
     published?: true
+    featured?: true
     authorId?: true
     createdAt?: true
     updatedAt?: true
@@ -8316,6 +8322,7 @@ export namespace Prisma {
     briefdescription: string | null
     image: string
     published: boolean
+    featured: boolean
     authorId: string | null
     createdAt: Date
     updatedAt: Date
@@ -8345,6 +8352,7 @@ export namespace Prisma {
     briefdescription?: boolean
     image?: boolean
     published?: boolean
+    featured?: boolean
     authorId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8362,6 +8370,7 @@ export namespace Prisma {
     briefdescription?: boolean
     image?: boolean
     published?: boolean
+    featured?: boolean
     authorId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8391,6 +8400,7 @@ export namespace Prisma {
       briefdescription: string | null
       image: string
       published: boolean
+      featured: boolean
       authorId: string | null
       createdAt: Date
       updatedAt: Date
@@ -8801,6 +8811,7 @@ export namespace Prisma {
     readonly briefdescription: FieldRef<"Post", 'String'>
     readonly image: FieldRef<"Post", 'String'>
     readonly published: FieldRef<"Post", 'Boolean'>
+    readonly featured: FieldRef<"Post", 'Boolean'>
     readonly authorId: FieldRef<"Post", 'String'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
@@ -14772,6 +14783,7 @@ export namespace Prisma {
     briefdescription: 'briefdescription',
     image: 'image',
     published: 'published',
+    featured: 'featured',
     authorId: 'authorId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -15457,6 +15469,7 @@ export namespace Prisma {
     briefdescription?: StringNullableFilter<"Post"> | string | null
     image?: StringFilter<"Post"> | string
     published?: BoolFilter<"Post"> | boolean
+    featured?: BoolFilter<"Post"> | boolean
     authorId?: StringNullableFilter<"Post"> | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -15473,6 +15486,7 @@ export namespace Prisma {
     briefdescription?: SortOrderInput | SortOrder
     image?: SortOrder
     published?: SortOrder
+    featured?: SortOrder
     authorId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15492,6 +15506,7 @@ export namespace Prisma {
     briefdescription?: StringNullableFilter<"Post"> | string | null
     image?: StringFilter<"Post"> | string
     published?: BoolFilter<"Post"> | boolean
+    featured?: BoolFilter<"Post"> | boolean
     authorId?: StringNullableFilter<"Post"> | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -15508,6 +15523,7 @@ export namespace Prisma {
     briefdescription?: SortOrderInput | SortOrder
     image?: SortOrder
     published?: SortOrder
+    featured?: SortOrder
     authorId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15526,6 +15542,7 @@ export namespace Prisma {
     briefdescription?: StringNullableWithAggregatesFilter<"Post"> | string | null
     image?: StringWithAggregatesFilter<"Post"> | string
     published?: BoolWithAggregatesFilter<"Post"> | boolean
+    featured?: BoolWithAggregatesFilter<"Post"> | boolean
     authorId?: StringNullableWithAggregatesFilter<"Post"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
@@ -16353,6 +16370,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     author?: UserCreateNestedOneWithoutPostsInput
@@ -16368,6 +16386,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     authorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16383,6 +16402,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneWithoutPostsNestedInput
@@ -16398,6 +16418,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16413,6 +16434,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     authorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16425,6 +16447,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16436,6 +16459,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17309,6 +17333,7 @@ export namespace Prisma {
     briefdescription?: SortOrder
     image?: SortOrder
     published?: SortOrder
+    featured?: SortOrder
     authorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17320,6 +17345,7 @@ export namespace Prisma {
     briefdescription?: SortOrder
     image?: SortOrder
     published?: SortOrder
+    featured?: SortOrder
     authorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17331,6 +17357,7 @@ export namespace Prisma {
     briefdescription?: SortOrder
     image?: SortOrder
     published?: SortOrder
+    featured?: SortOrder
     authorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18783,6 +18810,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: CategoryCreateNestedManyWithoutPostsInput
@@ -18797,6 +18825,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: CategoryUncheckedCreateNestedManyWithoutPostsInput
@@ -19039,6 +19068,7 @@ export namespace Prisma {
     briefdescription?: StringNullableFilter<"Post"> | string | null
     image?: StringFilter<"Post"> | string
     published?: BoolFilter<"Post"> | boolean
+    featured?: BoolFilter<"Post"> | boolean
     authorId?: StringNullableFilter<"Post"> | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -19588,6 +19618,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     author?: UserCreateNestedOneWithoutPostsInput
@@ -19602,6 +19633,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     authorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20019,6 +20051,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     author?: UserCreateNestedOneWithoutPostsInput
@@ -20033,6 +20066,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     authorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20104,6 +20138,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneWithoutPostsNestedInput
@@ -20118,6 +20153,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20179,6 +20215,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     author?: UserCreateNestedOneWithoutPostsInput
@@ -20193,6 +20230,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     authorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20264,6 +20302,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneWithoutPostsNestedInput
@@ -20278,6 +20317,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20511,6 +20551,7 @@ export namespace Prisma {
     briefdescription?: string | null
     image: string
     published?: boolean
+    featured?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20575,6 +20616,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateManyWithoutPostsNestedInput
@@ -20589,6 +20631,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUncheckedUpdateManyWithoutPostsNestedInput
@@ -20603,6 +20646,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20825,6 +20869,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     author?: UserUpdateOneWithoutPostsNestedInput
@@ -20839,6 +20884,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20853,6 +20899,7 @@ export namespace Prisma {
     briefdescription?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
+    featured?: BoolFieldUpdateOperationsInput | boolean
     authorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

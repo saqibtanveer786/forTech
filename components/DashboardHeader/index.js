@@ -55,14 +55,17 @@ const Header = ({ session }) => {
           <div className="flex gap-4">
             {/* Menu List */}
             <ul className="hidden md:flex ">
-              <li>
-                <Link
-                  href="/dashboard"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
-                >
-                  <RxDashboard size={20} className="fill-current" />
-                </Link>
-              </li>
+              {(session?.user?.role === "ADMIN" ||
+                session?.user?.role === "AUTHER") && (
+                <li>
+                  <Link
+                    href="/dashboard"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-graydark duration-300 ease-in-out hover:bg-graydark hover:text-white`}
+                  >
+                    <RxDashboard size={20} className="fill-current" />
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   href="/blogs"

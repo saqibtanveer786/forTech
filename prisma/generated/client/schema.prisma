@@ -107,6 +107,7 @@ model Post {
   briefdescription String?
   image String
   published Boolean @default(false)
+  featured  Boolean @default(false)
   authorId String?
 
   author User? @relation(fields: [authorId], references: [id])
@@ -167,6 +168,7 @@ model Vote {
   @@id([userId, postId])
 }
 
+// follwerId is the id of author not of user(names not matching to their purpose)
 model Follows {
   followerId  String
   followers  AuthorProfile? @relation("followers", fields: [followerId], references: [id])

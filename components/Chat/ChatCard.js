@@ -8,7 +8,7 @@ const ChatCard = async ({ comments, name }) => {
       <h4 className="mb-6 px-7.5 text-xl font-semibold text-black">
         New Comments
       </h4>
-      {(comments.length === 0 || !comments) && (
+      {(comments?.length === 0 || !comments) && (
         <p className="text-3xl text-center pt-[20%]">Nothing!</p>
       )}
 
@@ -22,7 +22,7 @@ const ChatCard = async ({ comments, name }) => {
             >
               <div className="relative h-14 w-14 rounded-full overflow-hidden">
                 <Image
-                  src={comment.user.image}
+                  src={comment?.user?.image}
                   alt="User"
                   width={57}
                   height={56}
@@ -36,11 +36,11 @@ const ChatCard = async ({ comments, name }) => {
               <div className="flex flex-1 items-center justify-between">
                 <div>
                   <h5 className="font-medium text-black">
-                    {comment.user.name === name ? "You" : comment.user.name}
+                    {comment?.user?.name === name ? "You" : comment?.user?.name}
                   </h5>
                   <p>
                     <span className="text-sm text-black">
-                      {comment.message}
+                      {comment?.message}
                     </span>
                     {/* <span className="text-xs"> . {chat.time} min</span> */}
                   </p>

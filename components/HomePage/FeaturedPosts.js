@@ -10,7 +10,8 @@ import { authOptions } from "../../lib/auth";
 import Link from "next/link";
 
 export default async function FeaturedPosts() {
-  const blogs = await getBlogs();
+  const blogs = await getBlogs("featureposts", 3, 0);
+  console.log(blogs);
   const session = await getServerSession(authOptions);
   return (
     <section className="max-w-7xl mx-auto">

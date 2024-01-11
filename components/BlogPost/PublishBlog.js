@@ -23,8 +23,11 @@ import { uploadFiles } from "../../lib/uploadthings";
 
 // nextjs specific
 import Image from "next/image";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 export default function PublishBlog({ authorId }) {
+  const router = useRouter();
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -153,6 +156,7 @@ export default function PublishBlog({ authorId }) {
         setAlertStatus("success");
         setAlertMessage(response.message);
         resetInputFields();
+        router.push("/");
       }
       if (!response.status) {
         //Incase of error
