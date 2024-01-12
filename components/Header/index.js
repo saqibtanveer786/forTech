@@ -44,7 +44,7 @@ const Header = ({ session }) => {
         } `}
       >
         {/* left col */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="">
           <Link className="block flex-shrink-0 -mt-4" href="/">
             {logos.siteLogo}
           </Link>
@@ -52,9 +52,9 @@ const Header = ({ session }) => {
 
         {/* right col */}
         {session && (
-          <div className="flex gap-4">
+          <div className="">
             {/* Menu List */}
-            <ul className="hidden md:flex ">
+            <ul className="hidden md:flex items-center">
               {(session?.user?.role === "ADMIN" ||
                 session?.user?.role === "AUTHER") && (
                 <li>

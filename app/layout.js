@@ -1,5 +1,5 @@
 //Importing  CSS File
-import Header from "@components/DashboardHeader";
+import Header from "@components/Header";
 import "./globals.css";
 import "@uploadthing/react/styles.css";
 import { getAuthSession } from "lib/auth";
