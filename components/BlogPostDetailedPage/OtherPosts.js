@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function RelatedPost({ relatedPosts, recentOpenedBlog }) {
+export default function OtherPosts({ relatedPosts, recentOpenedBlog }) {
   console.log("related posts: ", relatedPosts);
   return (
     <div id="related-posts" className="grid gap-2">
       <p className="text-xl font-semibold border-l-4 my-8 border-gray-800 pl-2 text-gray-700">
-        Related Posts
+        Other Posts
       </p>
       <div className="flex flex-wrap gap-6">
         {relatedPosts &&

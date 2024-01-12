@@ -35,8 +35,6 @@ export default async function page({ params }) {
   const comments = await getComments(params.blogpost);
   const asideData = await getAuthorsDataForBlogPostPage(blog?.authorId);
 
-  console.log(asideData);
-
   const session = await getAuthSession();
   if (!session || session.length === 0) redirect("/signin", "push");
   // const immage = Buffer.from(blog?.image.data).toString('base64')

@@ -1,9 +1,8 @@
 import React from "react";
 
 // components
-import PostCategories from "../BlogPost/PostCategories";
 import AboutAuthor from "./AboutAuthor";
-import RelatedPost from "./RelatedPost";
+import OtherPosts from "./OtherPosts";
 
 export default function Aside({ asideData, recentOpenedBlog, session }) {
   return (
@@ -21,7 +20,7 @@ export default function Aside({ asideData, recentOpenedBlog, session }) {
       />
 
       {/* Related Posts */}
-      <RelatedPost
+      <OtherPosts
         relatedPosts={asideData.posts}
         recentOpenedBlog={recentOpenedBlog}
       />
