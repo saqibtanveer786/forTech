@@ -252,10 +252,115 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.AccountOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  token_type: 'token_type',
+  scope: 'scope',
+  id_token: 'id_token',
+  session_state: 'session_state'
+};
+
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  username: 'username',
+  image: 'image'
+};
+
 exports.Prisma.JsonNullValueFilter = {
   DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.AuthorProfileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  bio: 'bio',
+  idcard: 'idcard',
+  phone: 'phone',
+  website: 'website',
+  location: 'location',
+  birthDate: 'birthDate',
+  specialization: 'specialization',
+  skills: 'skills',
+  userId: 'userId'
+};
+
+exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
+  id: 'id',
+  position: 'position',
+  company: 'company',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  authorProfileId: 'authorProfileId'
+};
+
+exports.Prisma.EducationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  institution: 'institution',
+  degree: 'degree',
+  field: 'field',
+  startYear: 'startYear',
+  endYear: 'endYear',
+  authorProfileId: 'authorProfileId'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+};
+
+exports.Prisma.PostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  briefdescription: 'briefdescription',
+  image: 'image',
+  authorId: 'authorId'
+};
+
+exports.Prisma.PeopleMessagesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  message: 'message',
+  userId: 'userId'
+};
+
+exports.Prisma.SessionOrderByRelevanceFieldEnum = {
+  id: 'id',
+  sessionToken: 'sessionToken',
+  userId: 'userId'
+};
+
+exports.Prisma.VerificationTokenOrderByRelevanceFieldEnum = {
+  identifier: 'identifier',
+  token: 'token'
+};
+
+exports.Prisma.CommentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  message: 'message',
+  postId: 'postId',
+  userId: 'userId'
+};
+
+exports.Prisma.VoteOrderByRelevanceFieldEnum = {
+  userId: 'userId',
+  postId: 'postId'
+};
+
+exports.Prisma.FollowsOrderByRelevanceFieldEnum = {
+  followerId: 'followerId',
+  followingId: 'followingId'
 };
 exports.Role = exports.$Enums.Role = {
   USER: 'USER',

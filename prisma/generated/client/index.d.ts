@@ -2236,7 +2236,7 @@ export namespace Prisma {
      * 
      * Determine the order of Accounts to fetch.
      */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    orderBy?: AccountOrderByWithRelationAndSearchRelevanceInput | AccountOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2871,7 +2871,7 @@ export namespace Prisma {
      * 
      * Determine the order of Accounts to fetch.
      */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    orderBy?: AccountOrderByWithRelationAndSearchRelevanceInput | AccountOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2920,7 +2920,7 @@ export namespace Prisma {
      * 
      * Determine the order of Accounts to fetch.
      */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    orderBy?: AccountOrderByWithRelationAndSearchRelevanceInput | AccountOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2969,7 +2969,7 @@ export namespace Prisma {
      * 
      * Determine the order of Accounts to fetch.
      */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    orderBy?: AccountOrderByWithRelationAndSearchRelevanceInput | AccountOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3223,7 +3223,7 @@ export namespace Prisma {
      * 
      * Determine the order of Users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: UserOrderByWithRelationAndSearchRelevanceInput | UserOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3859,7 +3859,7 @@ export namespace Prisma {
      * 
      * Determine the order of Users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: UserOrderByWithRelationAndSearchRelevanceInput | UserOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3908,7 +3908,7 @@ export namespace Prisma {
      * 
      * Determine the order of Users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: UserOrderByWithRelationAndSearchRelevanceInput | UserOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -3957,7 +3957,7 @@ export namespace Prisma {
      * 
      * Determine the order of Users to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: UserOrderByWithRelationAndSearchRelevanceInput | UserOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -4119,7 +4119,7 @@ export namespace Prisma {
      */
     include?: FollowsInclude<ExtArgs> | null
     where?: FollowsWhereInput
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: FollowsWhereUniqueInput
     take?: number
     skip?: number
@@ -4156,7 +4156,7 @@ export namespace Prisma {
      */
     include?: PostInclude<ExtArgs> | null
     where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
@@ -4177,7 +4177,7 @@ export namespace Prisma {
      */
     include?: PeopleMessagesInclude<ExtArgs> | null
     where?: PeopleMessagesWhereInput
-    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    orderBy?: PeopleMessagesOrderByWithRelationAndSearchRelevanceInput | PeopleMessagesOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: PeopleMessagesWhereUniqueInput
     take?: number
     skip?: number
@@ -4198,7 +4198,7 @@ export namespace Prisma {
      */
     include?: CommentInclude<ExtArgs> | null
     where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: CommentWhereUniqueInput
     take?: number
     skip?: number
@@ -4219,7 +4219,7 @@ export namespace Prisma {
      */
     include?: VoteInclude<ExtArgs> | null
     where?: VoteWhereInput
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: VoteWhereUniqueInput
     take?: number
     skip?: number
@@ -4240,7 +4240,7 @@ export namespace Prisma {
      */
     include?: AccountInclude<ExtArgs> | null
     where?: AccountWhereInput
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    orderBy?: AccountOrderByWithRelationAndSearchRelevanceInput | AccountOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: AccountWhereUniqueInput
     take?: number
     skip?: number
@@ -4261,7 +4261,7 @@ export namespace Prisma {
      */
     include?: SessionInclude<ExtArgs> | null
     where?: SessionWhereInput
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationAndSearchRelevanceInput | SessionOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: SessionWhereUniqueInput
     take?: number
     skip?: number
@@ -4384,7 +4384,7 @@ export namespace Prisma {
      * 
      * Determine the order of AuthorProfiles to fetch.
      */
-    orderBy?: AuthorProfileOrderByWithRelationInput | AuthorProfileOrderByWithRelationInput[]
+    orderBy?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput | AuthorProfileOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5015,7 +5015,7 @@ export namespace Prisma {
      * 
      * Determine the order of AuthorProfiles to fetch.
      */
-    orderBy?: AuthorProfileOrderByWithRelationInput | AuthorProfileOrderByWithRelationInput[]
+    orderBy?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput | AuthorProfileOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5064,7 +5064,7 @@ export namespace Prisma {
      * 
      * Determine the order of AuthorProfiles to fetch.
      */
-    orderBy?: AuthorProfileOrderByWithRelationInput | AuthorProfileOrderByWithRelationInput[]
+    orderBy?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput | AuthorProfileOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5113,7 +5113,7 @@ export namespace Prisma {
      * 
      * Determine the order of AuthorProfiles to fetch.
      */
-    orderBy?: AuthorProfileOrderByWithRelationInput | AuthorProfileOrderByWithRelationInput[]
+    orderBy?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput | AuthorProfileOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -5275,7 +5275,7 @@ export namespace Prisma {
      */
     include?: FollowsInclude<ExtArgs> | null
     where?: FollowsWhereInput
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: FollowsWhereUniqueInput
     take?: number
     skip?: number
@@ -5296,7 +5296,7 @@ export namespace Prisma {
      */
     include?: EducationInclude<ExtArgs> | null
     where?: EducationWhereInput
-    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    orderBy?: EducationOrderByWithRelationAndSearchRelevanceInput | EducationOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: EducationWhereUniqueInput
     take?: number
     skip?: number
@@ -5317,7 +5317,7 @@ export namespace Prisma {
      */
     include?: ExperienceInclude<ExtArgs> | null
     where?: ExperienceWhereInput
-    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    orderBy?: ExperienceOrderByWithRelationAndSearchRelevanceInput | ExperienceOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: ExperienceWhereUniqueInput
     take?: number
     skip?: number
@@ -5440,7 +5440,7 @@ export namespace Prisma {
      * 
      * Determine the order of Experiences to fetch.
      */
-    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    orderBy?: ExperienceOrderByWithRelationAndSearchRelevanceInput | ExperienceOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6034,7 +6034,7 @@ export namespace Prisma {
      * 
      * Determine the order of Experiences to fetch.
      */
-    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    orderBy?: ExperienceOrderByWithRelationAndSearchRelevanceInput | ExperienceOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6083,7 +6083,7 @@ export namespace Prisma {
      * 
      * Determine the order of Experiences to fetch.
      */
-    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    orderBy?: ExperienceOrderByWithRelationAndSearchRelevanceInput | ExperienceOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6132,7 +6132,7 @@ export namespace Prisma {
      * 
      * Determine the order of Experiences to fetch.
      */
-    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    orderBy?: ExperienceOrderByWithRelationAndSearchRelevanceInput | ExperienceOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6380,7 +6380,7 @@ export namespace Prisma {
      * 
      * Determine the order of Educations to fetch.
      */
-    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    orderBy?: EducationOrderByWithRelationAndSearchRelevanceInput | EducationOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -6974,7 +6974,7 @@ export namespace Prisma {
      * 
      * Determine the order of Educations to fetch.
      */
-    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    orderBy?: EducationOrderByWithRelationAndSearchRelevanceInput | EducationOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7023,7 +7023,7 @@ export namespace Prisma {
      * 
      * Determine the order of Educations to fetch.
      */
-    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    orderBy?: EducationOrderByWithRelationAndSearchRelevanceInput | EducationOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7072,7 +7072,7 @@ export namespace Prisma {
      * 
      * Determine the order of Educations to fetch.
      */
-    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    orderBy?: EducationOrderByWithRelationAndSearchRelevanceInput | EducationOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7296,7 +7296,7 @@ export namespace Prisma {
      * 
      * Determine the order of Categories to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: CategoryOrderByWithRelationAndSearchRelevanceInput | CategoryOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7872,7 +7872,7 @@ export namespace Prisma {
      * 
      * Determine the order of Categories to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: CategoryOrderByWithRelationAndSearchRelevanceInput | CategoryOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7921,7 +7921,7 @@ export namespace Prisma {
      * 
      * Determine the order of Categories to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: CategoryOrderByWithRelationAndSearchRelevanceInput | CategoryOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -7970,7 +7970,7 @@ export namespace Prisma {
      * 
      * Determine the order of Categories to fetch.
      */
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: CategoryOrderByWithRelationAndSearchRelevanceInput | CategoryOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8132,7 +8132,7 @@ export namespace Prisma {
      */
     include?: PostInclude<ExtArgs> | null
     where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
@@ -8253,7 +8253,7 @@ export namespace Prisma {
      * 
      * Determine the order of Posts to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8879,7 +8879,7 @@ export namespace Prisma {
      * 
      * Determine the order of Posts to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8928,7 +8928,7 @@ export namespace Prisma {
      * 
      * Determine the order of Posts to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -8977,7 +8977,7 @@ export namespace Prisma {
      * 
      * Determine the order of Posts to fetch.
      */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationAndSearchRelevanceInput | PostOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9155,7 +9155,7 @@ export namespace Prisma {
      */
     include?: CategoryInclude<ExtArgs> | null
     where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    orderBy?: CategoryOrderByWithRelationAndSearchRelevanceInput | CategoryOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: CategoryWhereUniqueInput
     take?: number
     skip?: number
@@ -9176,7 +9176,7 @@ export namespace Prisma {
      */
     include?: CommentInclude<ExtArgs> | null
     where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: CommentWhereUniqueInput
     take?: number
     skip?: number
@@ -9197,7 +9197,7 @@ export namespace Prisma {
      */
     include?: VoteInclude<ExtArgs> | null
     where?: VoteWhereInput
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     cursor?: VoteWhereUniqueInput
     take?: number
     skip?: number
@@ -9304,7 +9304,7 @@ export namespace Prisma {
      * 
      * Determine the order of PeopleMessages to fetch.
      */
-    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    orderBy?: PeopleMessagesOrderByWithRelationAndSearchRelevanceInput | PeopleMessagesOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9898,7 +9898,7 @@ export namespace Prisma {
      * 
      * Determine the order of PeopleMessages to fetch.
      */
-    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    orderBy?: PeopleMessagesOrderByWithRelationAndSearchRelevanceInput | PeopleMessagesOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9947,7 +9947,7 @@ export namespace Prisma {
      * 
      * Determine the order of PeopleMessages to fetch.
      */
-    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    orderBy?: PeopleMessagesOrderByWithRelationAndSearchRelevanceInput | PeopleMessagesOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -9996,7 +9996,7 @@ export namespace Prisma {
      * 
      * Determine the order of PeopleMessages to fetch.
      */
-    orderBy?: PeopleMessagesOrderByWithRelationInput | PeopleMessagesOrderByWithRelationInput[]
+    orderBy?: PeopleMessagesOrderByWithRelationAndSearchRelevanceInput | PeopleMessagesOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10242,7 +10242,7 @@ export namespace Prisma {
      * 
      * Determine the order of Sessions to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationAndSearchRelevanceInput | SessionOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10821,7 +10821,7 @@ export namespace Prisma {
      * 
      * Determine the order of Sessions to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationAndSearchRelevanceInput | SessionOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10870,7 +10870,7 @@ export namespace Prisma {
      * 
      * Determine the order of Sessions to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationAndSearchRelevanceInput | SessionOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -10919,7 +10919,7 @@ export namespace Prisma {
      * 
      * Determine the order of Sessions to fetch.
      */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationAndSearchRelevanceInput | SessionOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11143,7 +11143,7 @@ export namespace Prisma {
      * 
      * Determine the order of VerificationTokens to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: VerificationTokenOrderByWithRelationAndSearchRelevanceInput | VerificationTokenOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11697,7 +11697,7 @@ export namespace Prisma {
      * 
      * Determine the order of VerificationTokens to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: VerificationTokenOrderByWithRelationAndSearchRelevanceInput | VerificationTokenOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11742,7 +11742,7 @@ export namespace Prisma {
      * 
      * Determine the order of VerificationTokens to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: VerificationTokenOrderByWithRelationAndSearchRelevanceInput | VerificationTokenOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -11787,7 +11787,7 @@ export namespace Prisma {
      * 
      * Determine the order of VerificationTokens to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: VerificationTokenOrderByWithRelationAndSearchRelevanceInput | VerificationTokenOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12003,7 +12003,7 @@ export namespace Prisma {
      * 
      * Determine the order of Comments to fetch.
      */
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12592,7 +12592,7 @@ export namespace Prisma {
      * 
      * Determine the order of Comments to fetch.
      */
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12641,7 +12641,7 @@ export namespace Prisma {
      * 
      * Determine the order of Comments to fetch.
      */
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12690,7 +12690,7 @@ export namespace Prisma {
      * 
      * Determine the order of Comments to fetch.
      */
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    orderBy?: CommentOrderByWithRelationAndSearchRelevanceInput | CommentOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -12914,7 +12914,7 @@ export namespace Prisma {
      * 
      * Determine the order of Votes to fetch.
      */
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13493,7 +13493,7 @@ export namespace Prisma {
      * 
      * Determine the order of Votes to fetch.
      */
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13542,7 +13542,7 @@ export namespace Prisma {
      * 
      * Determine the order of Votes to fetch.
      */
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13591,7 +13591,7 @@ export namespace Prisma {
      * 
      * Determine the order of Votes to fetch.
      */
-    orderBy?: VoteOrderByWithRelationInput | VoteOrderByWithRelationInput[]
+    orderBy?: VoteOrderByWithRelationAndSearchRelevanceInput | VoteOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -13809,7 +13809,7 @@ export namespace Prisma {
      * 
      * Determine the order of Follows to fetch.
      */
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -14383,7 +14383,7 @@ export namespace Prisma {
      * 
      * Determine the order of Follows to fetch.
      */
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -14432,7 +14432,7 @@ export namespace Prisma {
      * 
      * Determine the order of Follows to fetch.
      */
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -14481,7 +14481,7 @@ export namespace Prisma {
      * 
      * Determine the order of Follows to fetch.
      */
-    orderBy?: FollowsOrderByWithRelationInput | FollowsOrderByWithRelationInput[]
+    orderBy?: FollowsOrderByWithRelationAndSearchRelevanceInput | FollowsOrderByWithRelationAndSearchRelevanceInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -14891,6 +14891,34 @@ export namespace Prisma {
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
+  export const AccountOrderByRelevanceFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    type: 'type',
+    provider: 'provider',
+    providerAccountId: 'providerAccountId',
+    refresh_token: 'refresh_token',
+    access_token: 'access_token',
+    token_type: 'token_type',
+    scope: 'scope',
+    id_token: 'id_token',
+    session_state: 'session_state'
+  };
+
+  export type AccountOrderByRelevanceFieldEnum = (typeof AccountOrderByRelevanceFieldEnum)[keyof typeof AccountOrderByRelevanceFieldEnum]
+
+
+  export const UserOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    username: 'username',
+    image: 'image'
+  };
+
+  export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
   export const JsonNullValueFilter: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull,
@@ -14898,6 +14926,122 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const AuthorProfileOrderByRelevanceFieldEnum: {
+    id: 'id',
+    bio: 'bio',
+    idcard: 'idcard',
+    phone: 'phone',
+    website: 'website',
+    location: 'location',
+    birthDate: 'birthDate',
+    specialization: 'specialization',
+    skills: 'skills',
+    userId: 'userId'
+  };
+
+  export type AuthorProfileOrderByRelevanceFieldEnum = (typeof AuthorProfileOrderByRelevanceFieldEnum)[keyof typeof AuthorProfileOrderByRelevanceFieldEnum]
+
+
+  export const ExperienceOrderByRelevanceFieldEnum: {
+    id: 'id',
+    position: 'position',
+    company: 'company',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    description: 'description',
+    authorProfileId: 'authorProfileId'
+  };
+
+  export type ExperienceOrderByRelevanceFieldEnum = (typeof ExperienceOrderByRelevanceFieldEnum)[keyof typeof ExperienceOrderByRelevanceFieldEnum]
+
+
+  export const EducationOrderByRelevanceFieldEnum: {
+    id: 'id',
+    institution: 'institution',
+    degree: 'degree',
+    field: 'field',
+    startYear: 'startYear',
+    endYear: 'endYear',
+    authorProfileId: 'authorProfileId'
+  };
+
+  export type EducationOrderByRelevanceFieldEnum = (typeof EducationOrderByRelevanceFieldEnum)[keyof typeof EducationOrderByRelevanceFieldEnum]
+
+
+  export const CategoryOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description'
+  };
+
+  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
+
+
+  export const PostOrderByRelevanceFieldEnum: {
+    id: 'id',
+    title: 'title',
+    briefdescription: 'briefdescription',
+    image: 'image',
+    authorId: 'authorId'
+  };
+
+  export type PostOrderByRelevanceFieldEnum = (typeof PostOrderByRelevanceFieldEnum)[keyof typeof PostOrderByRelevanceFieldEnum]
+
+
+  export const PeopleMessagesOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    message: 'message',
+    userId: 'userId'
+  };
+
+  export type PeopleMessagesOrderByRelevanceFieldEnum = (typeof PeopleMessagesOrderByRelevanceFieldEnum)[keyof typeof PeopleMessagesOrderByRelevanceFieldEnum]
+
+
+  export const SessionOrderByRelevanceFieldEnum: {
+    id: 'id',
+    sessionToken: 'sessionToken',
+    userId: 'userId'
+  };
+
+  export type SessionOrderByRelevanceFieldEnum = (typeof SessionOrderByRelevanceFieldEnum)[keyof typeof SessionOrderByRelevanceFieldEnum]
+
+
+  export const VerificationTokenOrderByRelevanceFieldEnum: {
+    identifier: 'identifier',
+    token: 'token'
+  };
+
+  export type VerificationTokenOrderByRelevanceFieldEnum = (typeof VerificationTokenOrderByRelevanceFieldEnum)[keyof typeof VerificationTokenOrderByRelevanceFieldEnum]
+
+
+  export const CommentOrderByRelevanceFieldEnum: {
+    id: 'id',
+    message: 'message',
+    postId: 'postId',
+    userId: 'userId'
+  };
+
+  export type CommentOrderByRelevanceFieldEnum = (typeof CommentOrderByRelevanceFieldEnum)[keyof typeof CommentOrderByRelevanceFieldEnum]
+
+
+  export const VoteOrderByRelevanceFieldEnum: {
+    userId: 'userId',
+    postId: 'postId'
+  };
+
+  export type VoteOrderByRelevanceFieldEnum = (typeof VoteOrderByRelevanceFieldEnum)[keyof typeof VoteOrderByRelevanceFieldEnum]
+
+
+  export const FollowsOrderByRelevanceFieldEnum: {
+    followerId: 'followerId',
+    followingId: 'followingId'
+  };
+
+  export type FollowsOrderByRelevanceFieldEnum = (typeof FollowsOrderByRelevanceFieldEnum)[keyof typeof FollowsOrderByRelevanceFieldEnum]
 
 
   /**
@@ -15025,7 +15169,7 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
-  export type AccountOrderByWithRelationInput = {
+  export type AccountOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
@@ -15038,7 +15182,8 @@ export namespace Prisma {
     scope?: SortOrderInput | SortOrder
     id_token?: SortOrderInput | SortOrder
     session_state?: SortOrderInput | SortOrder
-    user?: UserOrderByWithRelationInput
+    user?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: AccountOrderByRelevanceInput
   }
 
   export type AccountWhereUniqueInput = Prisma.AtLeast<{
@@ -15121,7 +15266,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
   }
 
-  export type UserOrderByWithRelationInput = {
+  export type UserOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
@@ -15131,13 +15276,14 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     following?: FollowsOrderByRelationAggregateInput
-    autherProfile?: AuthorProfileOrderByWithRelationInput
+    autherProfile?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput
     posts?: PostOrderByRelationAggregateInput
     messages?: PeopleMessagesOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
     votes?: VoteOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
+    _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -15211,7 +15357,7 @@ export namespace Prisma {
     user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
-  export type AuthorProfileOrderByWithRelationInput = {
+  export type AuthorProfileOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     bio?: SortOrder
     idcard?: SortOrderInput | SortOrder
@@ -15226,7 +15372,8 @@ export namespace Prisma {
     followers?: FollowsOrderByRelationAggregateInput
     education?: EducationOrderByRelationAggregateInput
     experience?: ExperienceOrderByRelationAggregateInput
-    user?: UserOrderByWithRelationInput
+    user?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: AuthorProfileOrderByRelevanceInput
   }
 
   export type AuthorProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -15298,7 +15445,7 @@ export namespace Prisma {
     authorProfile?: XOR<AuthorProfileRelationFilter, AuthorProfileWhereInput>
   }
 
-  export type ExperienceOrderByWithRelationInput = {
+  export type ExperienceOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     position?: SortOrder
     company?: SortOrder
@@ -15306,7 +15453,8 @@ export namespace Prisma {
     endDate?: SortOrderInput | SortOrder
     description?: SortOrder
     authorProfileId?: SortOrder
-    authorProfile?: AuthorProfileOrderByWithRelationInput
+    authorProfile?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: ExperienceOrderByRelevanceInput
   }
 
   export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
@@ -15363,7 +15511,7 @@ export namespace Prisma {
     authorProfile?: XOR<AuthorProfileRelationFilter, AuthorProfileWhereInput>
   }
 
-  export type EducationOrderByWithRelationInput = {
+  export type EducationOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     institution?: SortOrder
     degree?: SortOrder
@@ -15371,7 +15519,8 @@ export namespace Prisma {
     startYear?: SortOrder
     endYear?: SortOrderInput | SortOrder
     authorProfileId?: SortOrder
-    authorProfile?: AuthorProfileOrderByWithRelationInput
+    authorProfile?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: EducationOrderByRelevanceInput
   }
 
   export type EducationWhereUniqueInput = Prisma.AtLeast<{
@@ -15424,11 +15573,12 @@ export namespace Prisma {
     posts?: PostListRelationFilter
   }
 
-  export type CategoryOrderByWithRelationInput = {
+  export type CategoryOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     posts?: PostOrderByRelationAggregateInput
+    _relevance?: CategoryOrderByRelevanceInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -15479,7 +15629,7 @@ export namespace Prisma {
     votes?: VoteListRelationFilter
   }
 
-  export type PostOrderByWithRelationInput = {
+  export type PostOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -15490,10 +15640,11 @@ export namespace Prisma {
     authorId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    author?: UserOrderByWithRelationInput
+    author?: UserOrderByWithRelationAndSearchRelevanceInput
     category?: CategoryOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
     votes?: VoteOrderByRelationAggregateInput
+    _relevance?: PostOrderByRelevanceInput
   }
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -15562,7 +15713,7 @@ export namespace Prisma {
     userDetails?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
-  export type PeopleMessagesOrderByWithRelationInput = {
+  export type PeopleMessagesOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrderInput | SortOrder
@@ -15570,7 +15721,8 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    userDetails?: UserOrderByWithRelationInput
+    userDetails?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: PeopleMessagesOrderByRelevanceInput
   }
 
   export type PeopleMessagesWhereUniqueInput = Prisma.AtLeast<{
@@ -15624,12 +15776,13 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
-  export type SessionOrderByWithRelationInput = {
+  export type SessionOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     sessionToken?: SortOrder
     userId?: SortOrder
     expires?: SortOrder
-    user?: UserOrderByWithRelationInput
+    user?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: SessionOrderByRelevanceInput
   }
 
   export type SessionWhereUniqueInput = Prisma.AtLeast<{
@@ -15672,10 +15825,11 @@ export namespace Prisma {
     expires?: DateTimeFilter<"VerificationToken"> | Date | string
   }
 
-  export type VerificationTokenOrderByWithRelationInput = {
+  export type VerificationTokenOrderByWithRelationAndSearchRelevanceInput = {
     identifier?: SortOrder
     token?: SortOrder
     expires?: SortOrder
+    _relevance?: VerificationTokenOrderByRelevanceInput
   }
 
   export type VerificationTokenWhereUniqueInput = Prisma.AtLeast<{
@@ -15719,14 +15873,15 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
-  export type CommentOrderByWithRelationInput = {
+  export type CommentOrderByWithRelationAndSearchRelevanceInput = {
     id?: SortOrder
     message?: SortOrder
     postId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-    post?: PostOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
+    post?: PostOrderByWithRelationAndSearchRelevanceInput
+    user?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: CommentOrderByRelevanceInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -15775,12 +15930,13 @@ export namespace Prisma {
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
-  export type VoteOrderByWithRelationInput = {
+  export type VoteOrderByWithRelationAndSearchRelevanceInput = {
     userId?: SortOrder
     postId?: SortOrder
     type?: SortOrder
-    post?: PostOrderByWithRelationInput
-    user?: UserOrderByWithRelationInput
+    post?: PostOrderByWithRelationAndSearchRelevanceInput
+    user?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: VoteOrderByRelevanceInput
   }
 
   export type VoteWhereUniqueInput = Prisma.AtLeast<{
@@ -15823,11 +15979,12 @@ export namespace Prisma {
     following?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
-  export type FollowsOrderByWithRelationInput = {
+  export type FollowsOrderByWithRelationAndSearchRelevanceInput = {
     followerId?: SortOrder
     followingId?: SortOrder
-    followers?: AuthorProfileOrderByWithRelationInput
-    following?: UserOrderByWithRelationInput
+    followers?: AuthorProfileOrderByWithRelationAndSearchRelevanceInput
+    following?: UserOrderByWithRelationAndSearchRelevanceInput
+    _relevance?: FollowsOrderByRelevanceInput
   }
 
   export type FollowsWhereUniqueInput = Prisma.AtLeast<{
@@ -16763,6 +16920,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
@@ -16778,6 +16936,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
@@ -16801,6 +16960,12 @@ export namespace Prisma {
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type AccountOrderByRelevanceInput = {
+    fields: AccountOrderByRelevanceFieldEnum | AccountOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type AccountProviderProviderAccountIdCompoundUniqueInput = {
@@ -16872,6 +17037,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
@@ -16890,6 +17056,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
@@ -17015,6 +17182,12 @@ export namespace Prisma {
 
   export type SessionOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type UserOrderByRelevanceInput = {
+    fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -17143,6 +17316,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type AuthorProfileOrderByRelevanceInput = {
+    fields: AuthorProfileOrderByRelevanceFieldEnum | AuthorProfileOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type AuthorProfileCountOrderByAggregateInput = {
     id?: SortOrder
     bio?: SortOrder
@@ -17211,6 +17390,12 @@ export namespace Prisma {
     isNot?: AuthorProfileWhereInput
   }
 
+  export type ExperienceOrderByRelevanceInput = {
+    fields: ExperienceOrderByRelevanceFieldEnum | ExperienceOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type ExperienceCountOrderByAggregateInput = {
     id?: SortOrder
     position?: SortOrder
@@ -17241,6 +17426,12 @@ export namespace Prisma {
     authorProfileId?: SortOrder
   }
 
+  export type EducationOrderByRelevanceInput = {
+    fields: EducationOrderByRelevanceFieldEnum | EducationOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type EducationCountOrderByAggregateInput = {
     id?: SortOrder
     institution?: SortOrder
@@ -17269,6 +17460,12 @@ export namespace Prisma {
     startYear?: SortOrder
     endYear?: SortOrder
     authorProfileId?: SortOrder
+  }
+
+  export type CategoryOrderByRelevanceInput = {
+    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -17324,6 +17521,12 @@ export namespace Prisma {
 
   export type CategoryOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type PostOrderByRelevanceInput = {
+    fields: PostOrderByRelevanceFieldEnum | PostOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type PostCountOrderByAggregateInput = {
@@ -17396,6 +17599,12 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type PeopleMessagesOrderByRelevanceInput = {
+    fields: PeopleMessagesOrderByRelevanceFieldEnum | PeopleMessagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type PeopleMessagesCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -17426,6 +17635,12 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type SessionOrderByRelevanceInput = {
+    fields: SessionOrderByRelevanceFieldEnum | SessionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type SessionCountOrderByAggregateInput = {
     id?: SortOrder
     sessionToken?: SortOrder
@@ -17445,6 +17660,12 @@ export namespace Prisma {
     sessionToken?: SortOrder
     userId?: SortOrder
     expires?: SortOrder
+  }
+
+  export type VerificationTokenOrderByRelevanceInput = {
+    fields: VerificationTokenOrderByRelevanceFieldEnum | VerificationTokenOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type VerificationTokenIdentifierTokenCompoundUniqueInput = {
@@ -17473,6 +17694,12 @@ export namespace Prisma {
   export type PostRelationFilter = {
     is?: PostWhereInput
     isNot?: PostWhereInput
+  }
+
+  export type CommentOrderByRelevanceInput = {
+    fields: CommentOrderByRelevanceFieldEnum | CommentOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type CommentCountOrderByAggregateInput = {
@@ -17506,6 +17733,12 @@ export namespace Prisma {
     not?: NestedEnumVoteTypeFilter<$PrismaModel> | $Enums.VoteType
   }
 
+  export type VoteOrderByRelevanceInput = {
+    fields: VoteOrderByRelevanceFieldEnum | VoteOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type VoteUserIdPostIdCompoundUniqueInput = {
     userId: string
     postId: string
@@ -17537,6 +17770,12 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumVoteTypeFilter<$PrismaModel>
     _max?: NestedEnumVoteTypeFilter<$PrismaModel>
+  }
+
+  export type FollowsOrderByRelevanceInput = {
+    fields: FollowsOrderByRelevanceFieldEnum | FollowsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type FollowsFollowerIdFollowingIdCompoundUniqueInput = {
@@ -18419,6 +18658,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -18433,6 +18673,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
@@ -18458,6 +18699,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -18486,6 +18728,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
