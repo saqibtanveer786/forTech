@@ -38,7 +38,6 @@ export const metadata = {
 
 export default async function Page() {
   const blogs = await getBlogs(null, 3, 0);
-  console.log("blogs are: ", blogs);
   const session = await getAuthSession();
   return (
     <div className="flex flex-col justify-start max-w-7xl mx-auto -mt-6">
