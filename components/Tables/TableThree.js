@@ -96,7 +96,7 @@ const TableThree = () => {
           </tbody>
         </table>
 
-        {todos.length === 0 && <Nothing text={"Nothing!"} />}
+        {todos && todos.length === 0 && <Nothing text={"Nothing!"} />}
       </div>
     </div>
   );
