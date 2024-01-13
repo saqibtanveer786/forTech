@@ -1,48 +1,26 @@
-import { getAuthSession } from "lib/auth";
-import { getSearchResults } from "lib/serverAction";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import SearchBar from "@components/Search/SearchBar";
+const SearchedBlogs = dynamic(
+  () => import("@components/Search/SearchedBlogs"),
+  { ssr: false }
+);
 
-function Post({ blog }) {
-  return (
-    <div className="grid place-items-center border-gray-200 border-2 rounded-lg h-100 py-4 px-2 my-6 w-fit md:px-4">
-      {/* Image Col */}
-      <Image
-        src={blog.image}
-        alt="placeholder image"
-        width={300}
-        height={200}
-        priority
-      />
+import { getBlogsByCategory, getSearchResults } from "lib/serverAction";
+import dynamic from "next/dynamic";
 
-      <div className="w-[300px] text-center">
-        {/* Title Col */}
-        <Link href={`/${blog?.id}`}>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 cursor-pointer hover:underline">
-            {blog?.title.substr(0, 75)} .....
-          </h3>
-        </Link>
-        <p className="text-gray-700">
-          {blog?.briefdescription.substr(0, 50)} ......
-        </p>
-      </div>
-    </div>
-  );
+function Loader() {
+  return <p>Loading .....</p>;
 }
 
-export default async function page({ params }) {
-  // const session = await getAuthSession();
-  const blogs = await getSearchResults(params.category);
+export default async function SearchPage({ params }) {
+  let blogs = await getBlogsByCategory(params.category);
+  console.log("blogs on client are:", blogs);
   return (
     <section>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center">
-        {blogs &&
-          blogs.length !== 0 &&
-          blogs.map((blog) => {
-            return <Post key={blog.id} blog={blog} />;
-          })}
-      </div>
+      <SearchBar />
+      <Suspense fallback={<Loader />}>
+        <SearchedBlogs blogs={blogs} />
+      </Suspense>
     </section>
   );
 }
