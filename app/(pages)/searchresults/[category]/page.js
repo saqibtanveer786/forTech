@@ -5,7 +5,7 @@ const SearchedBlogs = dynamic(
   { ssr: false }
 );
 
-import { getBlogsByCategory, getSearchResults } from "lib/serverAction";
+import { getBlogsByCategory } from "lib/serverAction";
 import dynamic from "next/dynamic";
 
 function Loader() {

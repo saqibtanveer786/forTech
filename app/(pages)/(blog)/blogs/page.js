@@ -7,6 +7,7 @@ import PostCategories from "../../../../components/BlogPost/PostCategories";
 // Importing server actions
 import { getBlogs } from "../../../../lib/serverAction";
 import { getAuthSession } from "../../../../lib/auth";
+import SearchBar from "@components/Search/SearchBar";
 
 export const metadata = {
   title: "forTech-AllBlogsPage",
@@ -42,7 +43,8 @@ export default async function Page() {
   return (
     <div className="flex flex-col justify-start max-w-7xl mx-auto -mt-6">
       <PostCategories />
-      <div className="-mt-7 flex-1">
+      <SearchBar />
+      <div className="flex-1">
         {blogs &&
           blogs.map((blog) => {
             return <Post key={blog?.id} blog={blog} session={session} />;

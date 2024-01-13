@@ -4,7 +4,7 @@ import React from "react";
 
 export default function PostCategories({ className }) {
   return (
-    <div className="my-8 mx-2">
+    <div className="mt-8 mb-4 mx-2">
       <ul className="ml-3 text-lg font-semibold text-gray-700 flex flex-row flex-1 overflow-auto">
         {categories.map((category, i) => (
           <Link

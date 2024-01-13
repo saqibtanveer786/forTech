@@ -41,13 +41,21 @@ export default function SearchedBlogs({ blogs }) {
   }, []);
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center">
-      {searchedBlogs &&
-        searchedBlogs.length !== 0 &&
-        searchedBlogs?.status !== "error" &&
-        searchedBlogs?.map((blog) => {
-          return <Post key={blog.id} blog={blog} />;
-        })}
-    </div>
+    <>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center">
+        {searchedBlogs &&
+          searchedBlogs.length !== 0 &&
+          searchedBlogs?.status !== "error" &&
+          searchedBlogs?.map((blog) => {
+            return <Post key={blog.id} blog={blog} />;
+          })}
+      </div>
+
+      {searchedBlogs && searchedBlogs.length === 0 && (
+        <div className="h-screen w-full grid justify-items-center pt-32">
+          <h2 className="text-2xl text-gray-400">NO Result!</h2>
+        </div>
+      )}
+    </>
   );
 }
