@@ -7,6 +7,7 @@ import { MdDeleteOutline } from "react-icons/md";
 
 import { defaultTodos } from "constants/defaultTodos";
 import { deleteTodo, markDone } from "lib/todosFunctions";
+import Nothing from "@components/Nothing";
 
 const TableThree = () => {
   const [todos, setTodos] = useState();
@@ -94,6 +95,8 @@ const TableThree = () => {
               ))}
           </tbody>
         </table>
+
+        {todos.length === 0 && <Nothing text={"Nothing!"} />}
       </div>
     </div>
   );

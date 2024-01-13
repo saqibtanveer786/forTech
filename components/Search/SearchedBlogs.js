@@ -1,4 +1,5 @@
 "use client";
+import Nothing from "@components/Nothing";
 import { OtherStates } from "lib/context";
 import { getSearchResults } from "lib/serverAction";
 import Image from "next/image";
@@ -52,9 +53,7 @@ export default function SearchedBlogs({ blogs }) {
       </div>
 
       {searchedBlogs && searchedBlogs.length === 0 && (
-        <div className="h-screen w-full grid justify-items-center pt-32">
-          <h2 className="text-2xl text-gray-400">NO Result!</h2>
-        </div>
+        <Nothing text={"NO Result!"} />
       )}
     </>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAuthSession } from "lib/auth";
+import Nothing from "@components/Nothing";
 
 const ChatCard = async ({ comments, name }) => {
   return (
@@ -8,9 +9,7 @@ const ChatCard = async ({ comments, name }) => {
       <h4 className="mb-6 px-7.5 text-xl font-semibold text-black">
         New Comments
       </h4>
-      {(comments?.length === 0 || !comments) && (
-        <p className="text-3xl text-center pt-[20%]">Nothing!</p>
-      )}
+      {(comments?.length === 0 || !comments) && <Nothing text={"Nothing!"} />}
 
       <div>
         {comments &&

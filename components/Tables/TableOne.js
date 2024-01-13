@@ -1,3 +1,4 @@
+import Nothing from "@components/Nothing";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,8 +20,10 @@ function conDisLikes(votes) {
 
 const TableOne = ({ posts }) => {
   return (
-    <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 sm:pb-1 h-115 overflow-y-auto">
+    <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 sm:pb-1 h-[485px] overflow-y-auto">
       <h4 className="mb-6 text-xl font-semibold text-black">Top Posts</h4>
+
+      {(!posts || posts.length === 0) && <Nothing text={"NO Blog!"} />}
 
       <div className="h-16 w-full flex border-b-4">
         <div className="w-[15%] flex items-center justify-center">
