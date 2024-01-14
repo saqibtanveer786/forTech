@@ -14,7 +14,6 @@ function Loader() {
 
 export default async function SearchPage({ params }) {
   let blogs = await getBlogsByCategory(params.category);
-  console.log("blogs on client are:", blogs);
   return (
     <section>
       <SearchBar />

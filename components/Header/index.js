@@ -25,9 +25,11 @@ const Header = ({ session }) => {
 
   useEffect(() => {
     async function toCall() {
-      const authorId = await getAuthorIdFromUserId(session?.user?.id);
-      if (authorId) setAuthorId(() => authorId);
-      console.log("author id from useEffect is: ", authorId);
+      if (session) {
+        const authorId = await getAuthorIdFromUserId(session?.user?.id);
+        if (authorId) setAuthorId(() => authorId);
+        console.log("author id from useEffect is: ", authorId);
+      }
     }
     toCall();
   }, []);
