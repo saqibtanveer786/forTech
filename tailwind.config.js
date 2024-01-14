@@ -1,12 +1,12 @@
-
+const { withUt } = require("uploadthing/tw");
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withUt({
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
-    './app/pages/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
-    './app/dashboard/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './lib/**/*.{js,ts,jsx,tsx,mdx}',
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
+    "./app/pages/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
+    "./app/dashboard/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontFamily: {
@@ -51,7 +51,7 @@ module.exports = {
       },
       screens: {
         "2xsm": "375px",
-        "xsm": "425px",
+        xsm: "425px",
         "3xl": "2000px",
       },
       fontSize: {
@@ -253,5 +253,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+});
