@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { getAuthSession } from "lib/auth";
+import EditBlog from "@components/MakeBlog/EditBlog";
 
 const PublishBlog = dynamic(
   () => import("../../../../components/BlogPost/PublishBlog"),
@@ -10,5 +11,5 @@ const PublishBlog = dynamic(
 export default async function AddBlog() {
   const session = await getAuthSession();
 
-  return <PublishBlog authorId={session?.user?.id} />;
+  return <EditBlog authorId={session?.user?.id} />;
 }

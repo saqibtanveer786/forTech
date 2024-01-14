@@ -7248,19 +7248,16 @@ export namespace Prisma {
   }
 
   export type CategoryMinAggregateOutputType = {
-    id: string | null
     name: string | null
     description: string | null
   }
 
   export type CategoryMaxAggregateOutputType = {
-    id: string | null
     name: string | null
     description: string | null
   }
 
   export type CategoryCountAggregateOutputType = {
-    id: number
     name: number
     description: number
     _all: number
@@ -7268,19 +7265,16 @@ export namespace Prisma {
 
 
   export type CategoryMinAggregateInputType = {
-    id?: true
     name?: true
     description?: true
   }
 
   export type CategoryMaxAggregateInputType = {
-    id?: true
     name?: true
     description?: true
   }
 
   export type CategoryCountAggregateInputType = {
-    id?: true
     name?: true
     description?: true
     _all?: true
@@ -7359,7 +7353,6 @@ export namespace Prisma {
   }
 
   export type CategoryGroupByOutputType = {
-    id: string
     name: string
     description: string | null
     _count: CategoryCountAggregateOutputType | null
@@ -7382,7 +7375,6 @@ export namespace Prisma {
 
 
   export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     name?: boolean
     description?: boolean
     posts?: boolean | Category$postsArgs<ExtArgs>
@@ -7390,7 +7382,6 @@ export namespace Prisma {
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
-    id?: boolean
     name?: boolean
     description?: boolean
   }
@@ -7407,7 +7398,6 @@ export namespace Prisma {
       posts: Prisma.$PostPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
       name: string
       description: string | null
     }, ExtArgs["result"]["category"]>
@@ -7502,8 +7492,8 @@ export namespace Prisma {
      * // Get first 10 Categories
      * const categories = await prisma.category.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * // Only select the `name`
+     * const categoryWithNameOnly = await prisma.category.findMany({ select: { name: true } })
      * 
     **/
     findMany<T extends CategoryFindManyArgs<ExtArgs>>(
@@ -7805,7 +7795,6 @@ export namespace Prisma {
    * Fields of the Category model
    */ 
   interface CategoryFieldRefs {
-    readonly id: FieldRef<"Category", 'String'>
     readonly name: FieldRef<"Category", 'String'>
     readonly description: FieldRef<"Category", 'String'>
   }
@@ -14768,7 +14757,6 @@ export namespace Prisma {
 
 
   export const CategoryScalarFieldEnum: {
-    id: 'id',
     name: 'name',
     description: 'description'
   };
@@ -14971,7 +14959,6 @@ export namespace Prisma {
 
 
   export const CategoryOrderByRelevanceFieldEnum: {
-    id: 'id',
     name: 'name',
     description: 'description'
   };
@@ -15567,14 +15554,12 @@ export namespace Prisma {
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     posts?: PostListRelationFilter
   }
 
   export type CategoryOrderByWithRelationAndSearchRelevanceInput = {
-    id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     posts?: PostOrderByRelationAggregateInput
@@ -15582,17 +15567,15 @@ export namespace Prisma {
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    name?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     posts?: PostListRelationFilter
-  }, "id">
+  }, "name">
 
   export type CategoryOrderByWithAggregationInput = {
-    id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     _count?: CategoryCountOrderByAggregateInput
@@ -15604,7 +15587,6 @@ export namespace Prisma {
     AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
     OR?: CategoryScalarWhereWithAggregatesInput[]
     NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Category"> | string
     name?: StringWithAggregatesFilter<"Category"> | string
     description?: StringNullableWithAggregatesFilter<"Category"> | string | null
   }
@@ -16475,47 +16457,40 @@ export namespace Prisma {
   }
 
   export type CategoryCreateInput = {
-    id?: string
     name: string
     description?: string | null
     posts?: PostCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
-    id?: string
     name: string
     description?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
-    id?: string
     name: string
     description?: string | null
   }
 
   export type CategoryUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -17469,19 +17444,16 @@ export namespace Prisma {
   }
 
   export type CategoryCountOrderByAggregateInput = {
-    id?: SortOrder
     name?: SortOrder
     description?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
     name?: SortOrder
     description?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
-    id?: SortOrder
     name?: SortOrder
     description?: SortOrder
   }
@@ -19947,13 +19919,11 @@ export namespace Prisma {
   }
 
   export type CategoryCreateWithoutPostsInput = {
-    id?: string
     name: string
     description?: string | null
   }
 
   export type CategoryUncheckedCreateWithoutPostsInput = {
-    id?: string
     name: string
     description?: string | null
   }
@@ -20074,7 +20044,6 @@ export namespace Prisma {
     AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
     OR?: CategoryScalarWhereInput[]
     NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
   }
@@ -21161,19 +21130,16 @@ export namespace Prisma {
   }
 
   export type CategoryUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryUncheckedUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CategoryUncheckedUpdateManyWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
   }

@@ -1,14 +1,17 @@
 "use client";
 import React, { useState, useContext, useRef } from "react";
-import { useRouter } from "next/navigation";
-
-// Importing context
-import { AlertContext, LoadingContext } from "../../lib/context";
-
-// Importing serverActions
-import { updateBlog } from "../../lib/serverAction";
 
 // nextjs specific
+import { useRouter } from "next/navigation";
+
+//  context
+import { AlertContext, LoadingContext } from "../../lib/context";
+
+// serverActions
+import { pusblishBlog } from "../../lib/serverAction";
+import { updateBlog } from "../../lib/serverAction";
+
+// components
 import Title from "@components/MakeBlog/Title";
 import Description from "@components/MakeBlog/Description";
 import Editor from "@components/MakeBlog/Editor";
@@ -17,28 +20,33 @@ import SelectCategories from "@components/MakeBlog/SelectCategories";
 import FrontImage from "@components/MakeBlog/FrontImage";
 import ChangeImageBtn from "@components/MakeBlog/ChangeImageBtn";
 
-export default function UpdateBlog({
+export default function EditBlog({
   id,
   title,
   description,
   image,
   content,
   categories,
+  authorId,
 }) {
   const router = useRouter();
-  const [selectedCategories, setSelectedCategories] = useState(categories);
+
+  //states
+  const [selectedCategories, setSelectedCategories] = useState(
+    categories ? categories : []
+  );
   const [titleState, setTitleState] = useState(title);
   const [descriptionState, setDescriptionState] = useState(description);
   const [imageState, setImageState] = useState(image);
 
+  //refs
   const editorRef = useRef(false);
 
-  // consuming context
+  //context
   const { setShowAlert, setAlertMessage, setAlertStatus } =
     useContext(AlertContext);
   const { setIsLoading } = useContext(LoadingContext);
 
-  // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
   async function submitFormHandler(e) {
     e.preventDefault();
     if (!imageState) {
@@ -53,15 +61,15 @@ export default function UpdateBlog({
     data.content = await editorRef?.current.save();
     data.image = imageState;
     data.categories = selectedCategories;
+    data.authorId = authorId ? authorId : null;
     try {
       setIsLoading(true);
-      const response = await updateBlog(data, id);
+      const response = await (id ? updateBlog(data, id) : pusblishBlog(data));
       if (response.status) {
         //Incase of success
         setAlertStatus("success");
-        setAlertMessage(response.message);
         router.push("/");
-        router.refresh();
+        setAlertMessage(response.message);
       }
       if (!response.status) {
         //Incase of error
@@ -106,19 +114,22 @@ export default function UpdateBlog({
         <FrontImage imageState={imageState} setImageState={setImageState} />
 
         {/* Image change btn */}
-        <ChangeImageBtn setImageState={setImageState} />
+        {id && <ChangeImageBtn setImageState={setImageState} />}
 
         {/* Editor Js */}
-        <Editor editorRef={editorRef} blocks={content.blocks} />
+        <Editor editorRef={editorRef} blocks={content ? content.blocks : []} />
       </section>
+
       {/* Aside */}
       <aside className="max-w-3xl mx-auto col-span-10 lg:col-span-3 ">
         <SelectCategories
           handleCategoryChange={handleCategoryChange}
           selectedCategories={selectedCategories}
         />
-        {/* Submit Button */}
-        <SubmitBtn text="Update" submitFormHandler={submitFormHandler} />
+        <SubmitBtn
+          text={id ? "Update" : "Submit"}
+          submitFormHandler={submitFormHandler}
+        />
       </aside>
     </main>
   );

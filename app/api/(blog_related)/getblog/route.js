@@ -15,6 +15,13 @@ export async function GET(req) {
       where: {
         id: id,
       },
+      include: {
+        category: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
 
     return NextResponse.json(

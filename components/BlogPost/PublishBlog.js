@@ -1,15 +1,6 @@
 "use client";
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useRef,
-  useCallback,
-} from "react";
-
-import EditorJS from "@editorjs/editorjs"; //?
-
-import TextareaAutosize from "react-textarea-autosize";
+import React, { useState, useContext, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 // Importing context
 import { AlertContext, LoadingContext } from "../../lib/context";
@@ -17,19 +8,22 @@ import { AlertContext, LoadingContext } from "../../lib/context";
 // Importing serverActions
 import { pusblishBlog } from "../../lib/serverAction";
 
-// uploadthing
-import { UploadDropzone } from "@uploadthing/react";
-import { uploadFiles } from "../../lib/uploadthings";
-
 // nextjs specific
-import Image from "next/image";
-import { redirect } from "next/dist/server/api-utils";
-import { useRouter } from "next/navigation";
+import SelectCategories from "@components/MakeBlog/SelectCategories";
+import Title from "@components/MakeBlog/Title";
+import Description from "@components/MakeBlog/Description";
+import FrontImage from "@components/MakeBlog/FrontImage";
+import SubmitBtn from "@components/MakeBlog/SubmitBtn";
+import Editor from "@components/MakeBlog/Editor";
 
 export default function PublishBlog({ authorId }) {
   const router = useRouter();
+
   const [isImageUploaded, setIsImageUploaded] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [titleState, setTitleState] = useState();
+  const [descriptionState, setDescriptionState] = useState();
+  const [imageState, setImageState] = useState();
 
   // refs here
   const titleRef = useRef();
@@ -40,98 +34,6 @@ export default function PublishBlog({ authorId }) {
   const { setShowAlert, setAlertMessage, setAlertStatus } =
     useContext(AlertContext);
   const { setIsLoading } = useContext(LoadingContext);
-
-  // function to initialize editor
-  const initializeEditor = useCallback(async () => {
-    const EditorJS = (await import("@editorjs/editorjs")).default;
-    const Header = (await import("@editorjs/header")).default;
-    const ImageTool = (await import("@editorjs/image")).default;
-    const RawTool = (await import("@editorjs/raw")).default;
-    const Embed = (await import("@editorjs/embed")).default;
-    const Checklist = (await import("@editorjs/checklist")).default;
-    const List = (await import("@editorjs/list")).default;
-    const Quote = (await import("@editorjs/quote")).default;
-    const CodeTool = (await import("@editorjs/code")).default;
-    // initializing editorjs
-    if (!editorRef.current) {
-      let editor = new EditorJS({
-        holder: "editorjs",
-        onReady: () => {
-          editorRef.current = editor;
-        },
-        placeholder: "Tab here to start",
-        autofocus: true,
-        inlineToolbar: true,
-        data: { blocks: [] },
-        tools: {
-          header: {
-            class: Header,
-            config: {
-              placeholder: "Enter a header",
-              levels: [1, 2, 3, 4, 5, 6],
-              defaultLevel: 1,
-            },
-            inlineToolbar: true,
-          },
-          image: {
-            class: ImageTool,
-            config: {
-              uploader: {
-                async uploadByFile(file) {
-                  const [res] = await uploadFiles({
-                    files: [file],
-                    endpoint: "imageUploader",
-                  });
-                  return {
-                    success: 1,
-                    file: {
-                      url: res.url,
-                    },
-                  };
-                },
-              },
-            },
-          },
-          raw: {
-            class: RawTool,
-            inlineToolbar: true,
-          },
-          embed: {
-            class: Embed,
-            config: {
-              services: {
-                youtube: true,
-                coub: true,
-              },
-            },
-          },
-          checklist: {
-            class: Checklist,
-            inlineToolbar: true,
-          },
-          list: {
-            class: List,
-            inlineToolbar: true,
-            config: {
-              defaultStyle: "unordered",
-            },
-          },
-          quote: {
-            class: Quote,
-            inlineToolbar: true,
-            config: {
-              quotePlaceholder: "Enter a quote",
-              captionPlaceholder: "Quote's author",
-            },
-          },
-          code: {
-            class: CodeTool,
-            placeholder: "Code",
-          },
-        },
-      });
-    }
-  }, []);
 
   // main function to submit blogs( this function calls the server action and handle loading, alerts etc )
   async function submitFormHandler(e) {
@@ -148,6 +50,7 @@ export default function PublishBlog({ authorId }) {
     data.content = await editorRef?.current.save();
     data.image = imageRef.current;
     data.authorId = authorId;
+    data.categories = selectedCategories;
     try {
       setIsLoading(true);
       const response = await pusblishBlog(data);
@@ -173,92 +76,50 @@ export default function PublishBlog({ authorId }) {
     }
   }
 
-  // Function for resetting input fields
-  function resetInputFields() {}
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMounted(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      initializeEditor();
-
-      return () => {
-        editorRef.current?.destroy();
-        editorRef.current = undefined;
-      };
-    }
-  }, [isMounted, initializeEditor]);
-
-  if (!isMounted) {
-    return null;
-  }
+  const handleCategoryChange = (event) => {
+    const selectedOption = event.target.value;
+    setSelectedCategories((prevCategories) => {
+      if (prevCategories.includes(selectedOption)) {
+        return prevCategories.filter((category) => category !== selectedOption);
+      } else {
+        return [...prevCategories, selectedOption];
+      }
+    });
+    console.log(selectedCategories);
+  };
 
   return (
-    <>
-      <section className=" max-w-3xl mx-auto">
+    <main className="grid lg:grid-cols-10">
+      <section className=" max-w-3xl mx-auto flex-1 lg:col-span-7">
         {/* Title */}
-        <div className="prose prose-stone sm:px-9 px-2">
-          <TextareaAutosize
-            ref={(e) => {
-              titleRef.current = e;
-            }}
-            placeholder="Title"
-            className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none"
-          />
-        </div>
+        <Title titleState={titleState} setTitleState={setTitleState} />
 
         {/* Description */}
-        <div className="prose prose-stone sm:px-9 px-2">
-          <TextareaAutosize
-            ref={(e) => {
-              descriptionRef.current = e;
-            }}
-            placeholder="Meta Description"
-            className="w-full resize-none appearance-none overflow-hidden bg-transparent text-lg font-bold focus:outline-none"
-          />
-        </div>
+        <Description
+          descriptionState={descriptionState}
+          setDescriptionState={setDescriptionState}
+        />
 
         {/* Front Image */}
-        <div className="max-w-7xl grid place-items-center">
-          <UploadDropzone
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-              setIsImageUploaded(true);
-              imageRef.current = res[0].url;
-              console.log(imageRef.current);
-            }}
-            onUploadError={(error) => {
-              alert(`ERROR! ${error}`);
-            }}
-            className={`w-[700px] ${isImageUploaded ? "hidden" : ""}`}
-          />
-          <Image
-            src={imageRef.current || "/img/general.webp"}
-            alt="Image"
-            width={700}
-            height={700}
-            className={`mb-3 ${isImageUploaded ? "" : "hidden"}`}
-          />
-        </div>
+        <FrontImage
+          imageRef={imageRef}
+          setIsImageUploaded={setIsImageUploaded}
+          isImageUploaded={isImageUploaded}
+        />
 
         {/* Editor Js */}
-        <div id="editorjs" className="sm:w-[100%] w-[100%] mx-auto mb-2"></div>
-
-        {/* Submit Button */}
-        <div className="flex justify-end my-4">
-          <button
-            onClick={submitFormHandler}
-            type="submit"
-            className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center focus:outline-none `}
-          >
-            Publish
-          </button>
-        </div>
+        <Editor editorRef={editorRef} />
       </section>
-    </>
+
+      {/* Aside */}
+      <aside className="max-w-3xl mx-auto col-span-10 lg:col-span-3 ">
+        <SelectCategories
+          handleCategoryChange={handleCategoryChange}
+          selectedCategories={selectedCategories}
+        />
+        {/* Submit Button */}
+        <SubmitBtn text="Submit" submitFormHandler={submitFormHandler} />
+      </aside>
+    </main>
   );
 }

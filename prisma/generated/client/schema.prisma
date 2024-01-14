@@ -95,8 +95,7 @@ model Education {
 }
 
 model Category {
-  id String @id @default(cuid())
-  name String
+  name String @id
   description String?
   posts Post[]
 }

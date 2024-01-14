@@ -168,7 +168,6 @@ exports.Prisma.EducationScalarFieldEnum = {
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
   name: 'name',
   description: 'description'
 };
@@ -314,7 +313,6 @@ exports.Prisma.EducationOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
-  id: 'id',
   name: 'name',
   description: 'description'
 };

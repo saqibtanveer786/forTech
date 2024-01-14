@@ -8,7 +8,8 @@ async function PUT(request) {
     const searchParams = new URLSearchParams(url.search);
     const id = searchParams.get("id");
 
-    const { image, title, briefdescription, content } = await request.json();
+    const { image, title, briefdescription, content, categories } =
+      await request.json();
     // const prisma = new PrismaClient()
 
     // Adding post
@@ -21,6 +22,9 @@ async function PUT(request) {
         content,
         briefdescription,
         image,
+        category: {
+          connect: categories.map((category) => ({ name: category })),
+        },
       },
     });
 

@@ -1,25 +1,18 @@
 import { NextResponse } from "next/server";
 
 import prisma from "lib/prisma";
+import { comment } from "postcss";
 
 export async function POST(request) {
   try {
-    const authorId = await request.nextUrl.searchParams.get("authorid");
-
-    const userId = await prisma.AuthorProfile.findUnique({
-      where: {
-        id: authorId,
-      },
-      select: {
-        userId: true,
-      },
-    });
+    let allComments = [];
+    const userId = await request.nextUrl.searchParams.get("userid");
 
     if (!userId) throw new Error("Internal server error");
 
     const data = await prisma.user.findUnique({
       where: {
-        id: userId.userId,
+        id: userId,
       },
       include: {
         autherProfile: {
@@ -30,10 +23,41 @@ export async function POST(request) {
           },
         },
         following: true,
+        posts: {
+          select: {
+            id: true,
+            title: true,
+            briefdescription: true,
+            image: true,
+            votes: true,
+            comments: {
+              select: {
+                message: true,
+                createdAt: true,
+                user: {
+                  select: {
+                    name: true,
+                    image: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
 
+    console.log();
+
     if (!data) throw new Error("Internal server error");
+
+    data.posts.forEach((post) => {
+      post.comments.forEach((comment) => {
+        allComments.push(comment);
+      });
+    });
+
+    data.allComments = allComments;
 
     return NextResponse.json(data, { status: 200 });
   } catch (error) {

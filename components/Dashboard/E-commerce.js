@@ -16,8 +16,7 @@ import dynamic from "next/dynamic";
 
 const ECommerce = ({ data, session }) => {
   let totalLikes = 0,
-    totalDislikes = 0,
-    totalComments = 0;
+    totalDislikes = 0;
   if (data.posts !== undefined && data.posts !== null) {
     data.posts.forEach((item, i) => {
       item.votes.forEach((vote) => {
@@ -25,10 +24,8 @@ const ECommerce = ({ data, session }) => {
 
         if (vote.type === "DOWN") totalDislikes++;
       });
-      totalComments += item.comments.length;
     });
   }
-
   return (
     <>
       <div className="grid grid-cols-1 gap-4 xsm:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 max-w-7xl mx-auto">
@@ -41,8 +38,8 @@ const ECommerce = ({ data, session }) => {
           <TfiLayoutListPost className="fill-primary" size={20} />
         </CardDataStats>
         <CardDataStats
-          title="Total Views"
-          total={totalComments}
+          title="Total Comments"
+          total={data?.allComments.length}
           // rate="4.35%"
           // levelUp
         >
@@ -69,7 +66,7 @@ const ECommerce = ({ data, session }) => {
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5 max-w-7xl mx-auto">
         <ChartOne />
         <TableThree />
-        <ChatCard comments={data?.comments} name={session?.user?.name} />
+        <ChatCard comments={data?.allComments} name={session?.user?.name} />
         <div className="col-span-12 xl:col-span-8">
           <TableOne posts={data?.posts} />
         </div>

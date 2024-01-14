@@ -5,6 +5,7 @@ import AboutAuthor from "./AboutAuthor";
 import OtherPosts from "./OtherPosts";
 
 export default function Aside({ asideData, recentOpenedBlog, session }) {
+  console.log(asideData);
   return (
     <aside className="xl:w-80 ml-8 xl:border-l-4 xl:px-4 flex flex-col">
       {/* AboutAuthor */}

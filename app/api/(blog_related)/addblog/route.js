@@ -4,7 +4,7 @@ import prisma from "lib/prisma";
 
 async function POST(request) {
   try {
-    const { image, title, briefdescription, content, authorId } =
+    const { image, title, briefdescription, content, authorId, categories } =
       await request.json();
     // const prisma = new PrismaClient()
 
@@ -17,6 +17,9 @@ async function POST(request) {
         image,
         authorId,
         published: true,
+        category: {
+          connect: categories.map((category) => ({ name: category })),
+        },
       },
     });
 
