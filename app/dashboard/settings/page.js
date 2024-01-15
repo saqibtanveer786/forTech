@@ -1,9 +1,12 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { getAuthSession } from '../../../lib/auth'
+import { getAuthSession } from "../../../lib/auth";
 
-// uploadthing 
-const UserImgUpDropZone = dynamic(() => import('../../../components/UserImgUpDropZone'), { ssr: false })
+// uploadthing
+const UserImgUpDropZone = dynamic(
+  () => import("../../../components/User/UserImgUpDropZone"),
+  { ssr: false }
+);
 
 export const metadata = {
   title: "Settings Page",
@@ -12,19 +15,16 @@ export const metadata = {
 };
 
 const Settings = async () => {
-  const session = await getAuthSession()
+  const session = await getAuthSession();
   return (
     <>
       <div className="mx-auto max-w-7xl">
-
         <div className="grid grid-cols-5 gap-8">
           <div className="col-span-5 xl:col-span-3">
             <div className="rounded-sm border border-stroke bg-white shadow-default ">
               {/* Heading */}
               <div className="border-b border-stroke py-4 px-7">
-                <h3 className="font-medium text-black">
-                  Personal Information
-                </h3>
+                <h3 className="font-medium text-black">Personal Information</h3>
               </div>
               <div className="p-7">
                 {/* Info Form */}
@@ -209,9 +209,7 @@ const Settings = async () => {
 
                   {/* Buttons */}
                   <div className="flex justify-end gap-4.5">
-                    <button
-                      className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1"
-                    >
+                    <button className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1">
                       Cancel
                     </button>
                     <button
@@ -221,7 +219,6 @@ const Settings = async () => {
                       Save
                     </button>
                   </div>
-
                 </form>
               </div>
             </div>
@@ -230,34 +227,28 @@ const Settings = async () => {
           <div className="col-span-5 xl:col-span-2">
             <div className="rounded-sm border border-stroke bg-white shadow-default ">
               <div className="border-b border-stroke py-4 px-7">
-                <h3 className="font-medium text-black">
-                  Your Photo
-                </h3>
+                <h3 className="font-medium text-black">Your Photo</h3>
               </div>
               <div className="p-7">
                 <form action="#">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="h-14 w-14 rounded-full">
                       <Image
-                        src={session.user?.image || '/user-1.jpg'}
+                        src={session.user?.image || "/user-1.jpg"}
                         width={55}
                         height={55}
                         alt="User"
                       />
                     </div>
                     <div>
-                      <span className="mb-1.5 text-black">
-                        Edit your photo
-                      </span>
+                      <span className="mb-1.5 text-black">Edit your photo</span>
                     </div>
                   </div>
 
                   <UserImgUpDropZone />
 
                   <div className="flex justify-end gap-4.5">
-                    <button
-                      className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1"
-                    >
+                    <button className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1">
                       Cancel
                     </button>
                     <button

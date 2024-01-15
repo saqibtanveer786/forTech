@@ -10,6 +10,7 @@ import SeeMoreBtn from "@components/SeeMoreBtn";
 
 export default function AboutAuthor({
   name,
+  username,
   image,
   bio,
   socialLinks,
@@ -37,7 +38,7 @@ export default function AboutAuthor({
           id="author-name"
           className="text-2xl text-center font-medium my-4 text-gray-800"
         >
-          {name}
+          {username ? username : name}
         </p>
         <p className="my-1 text-center font-medium mb-4 text-gray-800">{bio}</p>
 

@@ -13,6 +13,7 @@ export async function POST(request) {
       },
       select: {
         name: true,
+        username: true,
         image: true,
         autherProfile: {
           select: {

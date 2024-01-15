@@ -8,6 +8,7 @@ export default function OtherStatesContextProvider({ children }) {
   const [currentCommentGettingUpdated, setCurrentCommentGettingUpdated] =
     useState("");
   const [searchedBlogs, setSearchedBlogs] = useState();
+  const [isEditProfileModalOpen, setEditProfileModalOpen] = useState(false);
   return (
     <OtherStates.Provider
       value={{
@@ -15,6 +16,8 @@ export default function OtherStatesContextProvider({ children }) {
         setCurrentCommentGettingUpdated,
         searchedBlogs,
         setSearchedBlogs,
+        isEditProfileModalOpen,
+        setEditProfileModalOpen,
       }}
     >
       {children}

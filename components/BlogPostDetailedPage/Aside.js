@@ -13,6 +13,7 @@ export default function Aside({ asideData, recentOpenedBlog, session }) {
         userId={session?.user?.id}
         authorId={asideData?.autherProfile?.id}
         name={asideData.name}
+        username={asideData.username}
         image={asideData?.image}
         bio={asideData?.autherProfile?.bio}
         socialLinks={asideData?.autherProfile?.socialLinks}

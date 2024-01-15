@@ -52,7 +52,9 @@ export default async function page({ params }) {
             <div className="border-b border-stroke py-4">
               <h3 className="font-medium text-black">Presonal Info</h3>
             </div>
-            <h1 className="text-4xl font-medium text-gray-700">{data.name}</h1>
+            <h1 className="text-4xl font-medium text-gray-700">
+              {data?.username ? data?.username : data?.name}
+            </h1>
             <p className="font-light text-gray-600 ">{data?.email}</p>
             <p className="font-light text-gray-600 my-4">
               {data?.autherProfile?.location}

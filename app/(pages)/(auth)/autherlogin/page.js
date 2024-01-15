@@ -3,7 +3,7 @@ import { getAuthSession } from "../../../../lib/auth";
 
 // uploadthing
 const UserImgUpDropZone = dynamic(
-  () => import("../../../../components/UserImgUpDropZone"),
+  () => import("../../../../components/User/UserImgUpDropZone"),
   { ssr: false }
 );
 import AutherRegistrationForm from "../../../../components/Author/AutherRegistrationForm";
