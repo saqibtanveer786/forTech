@@ -1,14 +1,18 @@
+import prisma from "lib/prisma";
 import { NextResponse } from "next/server";
-import { UTApi } from "uploadthing/server";
-
-export const utapi = new UTApi({ apiKey: process.env.UPLOADTHING_SECRET });
 
 export async function POST(request) {
   try {
-    const { key } = await request.json();
+    const { name, email, pass } = await request.json();
 
-    const image = await utapi.deleteFiles(key);
-    if (!image) throw new Error();
+    // adding user
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password: pass,
+      },
+    });
 
     return NextResponse.json(image);
   } catch (error) {

@@ -13,7 +13,7 @@ import SelectCategories from "@components/MakeBlog/SelectCategories";
 import Title from "@components/MakeBlog/Title";
 import Description from "@components/MakeBlog/Description";
 import FrontImage from "@components/MakeBlog/FrontImage";
-import SubmitBtn from "@components/MakeBlog/SubmitBtn";
+import SubmitBtn from "@components/SubmitBtn";
 import Editor from "@components/MakeBlog/Editor";
 
 export default function PublishBlog({ authorId }) {

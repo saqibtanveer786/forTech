@@ -2,7 +2,7 @@ import React from "react";
 import "@uploadthing/react/styles.css";
 
 import Providers from "../../contextproviders/Providers";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loaders/Loader";
 import Toast from "../../components/Toast";
 import FloatChat from "../../components/FloatChat";
 import CommentUpModal from "../../components/BlogPostDetailedPage/CommentUpModal";

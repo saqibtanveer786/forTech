@@ -40,8 +40,6 @@ export async function POST(request) {
 
     const { infoData, educationData, experienceData, socialLinks, skills } =
       await request.json();
-    console.log("info DAta: " + infoData);
-
     const addAuther = await prisma.AuthorProfile.create({
       data: {
         socialLinks: JSON.stringify(socialLinks),

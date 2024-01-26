@@ -37,6 +37,7 @@ model User {
   email     String?   @unique
   emailVerified DateTime? @map("email_verified")
   username  String?
+  password  String?
   following Follows[] @relation("following")
   image     String?
 

@@ -10,7 +10,12 @@ export default function UserImage({ id, image }) {
   return (
     <div className="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full p-1 sm:h-44 sm:max-w-44 sm:p-3">
       <div className="relative drop-shadow-2">
-        <Image src={imageState} width={160} height={160} alt="profile pic" />
+        <Image
+          src={imageState || "/user-1.jpg"}
+          width={160}
+          height={160}
+          alt="profile pic"
+        />
         <BiSolidCamera
           className="fill-white absolute right-[17px] bottom-[15px] z-9"
           size={20}

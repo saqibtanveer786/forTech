@@ -1,6 +1,5 @@
 "use client";
 import { logos } from "lib/logos";
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
 export default function FollowBtn({ authorId, userId }) {
@@ -19,6 +18,8 @@ export default function FollowBtn({ authorId, userId }) {
         body: JSON.stringify({ authorId, userId }),
       });
       const jsonResponse = await response.json();
+      console.log("is followign", jsonResponse);
+      setIsFollowing(() => jsonResponse);
     }
 
     funcToCall();
@@ -36,9 +37,7 @@ export default function FollowBtn({ authorId, userId }) {
     });
     setIsLoading((pre) => !pre);
     const jsonResponse = await response.json();
-    console.log("status is: ", jsonResponse.status);
     setIsFollowing(() => jsonResponse.status);
-    console.log("state is: ", isFollowing);
   }
 
   return (

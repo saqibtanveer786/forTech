@@ -1,20 +1,61 @@
 "use client";
 import React, { useState, useRef, useContext } from "react";
 import { BiEdit } from "react-icons/bi";
-import { registerAuther } from "../../lib/serverAction";
+import { registerAuther, updateAuthor } from "../../lib/serverAction";
 import { AlertContext, LoadingContext } from "../../lib/context";
 import { useRouter } from "next/navigation";
+import SubmitBtn from "@components/SubmitBtn";
 
-export default function AutherRegistrationForm({ userId }) {
+export default function AutherRegistrationForm({ userId, preInfoData }) {
   const router = useRouter();
-  const [skills, setSkills] = useState([]);
-  const [infoData, setInfoData] = useState({
-    id: userId,
-    birthDate: "2023-10-12T05:51",
-  });
-  const [socialLinks, setSocialLinks] = useState({});
-  const [educationData, setEducationData] = useState({});
-  const [experienceData, setExperienceData] = useState({});
+
+  const [skills, setSkills] = useState(preInfoData ? preInfoData?.skills : []);
+
+  const {
+    id,
+    bio,
+    idcard,
+    phone,
+    website,
+    location,
+    birthDate,
+    specialization,
+    userId,
+  } = preInfoData;
+
+  const [infoData, setInfoData] = useState(
+    preInfoData
+      ? {
+          id: userId,
+          birthDate: "2023-10-12T05:51",
+        }
+      : {
+          id,
+          bio,
+          idcard,
+          phone,
+          website,
+          location,
+          birthDate,
+          specialization,
+          userId,
+        }
+  );
+  const [socialLinks, setSocialLinks] = useState(
+    preInfoData
+      ? preInfoData?.socialLinks
+        ? JSON.parse(preInfoData?.socialLinks)
+        : {}
+      : {}
+  );
+
+  const [educationData, setEducationData] = useState(
+    preInfoData ? preInfoData?.education[0] : {}
+  );
+
+  const [experienceData, setExperienceData] = useState(
+    preInfoData ? preInfoData?.experience[0] : {}
+  );
 
   // consuming context
   const { isLoading, setIsLoading } = useContext(LoadingContext);
@@ -49,8 +90,9 @@ export default function AutherRegistrationForm({ userId }) {
   }
   async function submitHandler() {
     try {
+      console.log("working wrodd");
       let data = {};
-      if (!infoData || !educationData) return;
+      if (!infoData || !educationData || !experienceData) return;
       data.infoData = infoData;
       if (socialLinks) data.socialLinks = socialLinks;
       if (skills) data.skills = skills;
@@ -58,7 +100,9 @@ export default function AutherRegistrationForm({ userId }) {
       data.experienceData = experienceData;
 
       setIsLoading(true);
-      const response = await registerAuther(data, userId);
+      const response = await (preInfoData
+        ? updateAuthor(data, preInfoData.id)
+        : registerAuther(data, userId));
       if (response.status === "success") router.push("/");
 
       setAlertMessage(response.message);
@@ -97,6 +141,7 @@ export default function AutherRegistrationForm({ userId }) {
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                         type="number"
                         name="idcard"
+                        value={infoData?.idcard}
                         onChange={(e) => {
                           e.preventDefault();
                           infoChangeHandler(e.target);
@@ -117,6 +162,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="number"
                       name="phone"
+                      value={infoData?.phone}
                       onChange={(e) => {
                         e.preventDefault();
                         infoChangeHandler(e.target);
@@ -139,6 +185,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="email"
                       name="location"
+                      value={infoData?.location}
                       onChange={(e) => {
                         e.preventDefault();
                         infoChangeHandler(e.target);
@@ -160,6 +207,7 @@ export default function AutherRegistrationForm({ userId }) {
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                     type="number"
                     name="birthDate"
+                    value={infoData?.birthDate}
                     onChange={(e) => {
                       e.preventDefault();
                       infoChangeHandler(e.target);
@@ -180,6 +228,7 @@ export default function AutherRegistrationForm({ userId }) {
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                     type="url"
                     name="website"
+                    value={infoData?.website}
                     onChange={(e) => {
                       e.preventDefault();
                       infoChangeHandler(e.target);
@@ -263,6 +312,7 @@ export default function AutherRegistrationForm({ userId }) {
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none my-2"
                     type="text"
                     name="facebook"
+                    value={socialLinks?.facebook}
                     onChange={(e) => {
                       e.preventDefault();
                       socialLinksChangeHandler(e.target);
@@ -273,6 +323,7 @@ export default function AutherRegistrationForm({ userId }) {
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none my-2"
                     type="text"
                     name="twitter"
+                    value={socialLinks?.twitter}
                     onChange={(e) => {
                       e.preventDefault();
                       socialLinksChangeHandler(e.target);
@@ -283,6 +334,7 @@ export default function AutherRegistrationForm({ userId }) {
                     className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none my-2"
                     type="text"
                     name="linkdin"
+                    value={socialLinks?.linkdin}
                     onChange={(e) => {
                       e.preventDefault();
                       socialLinksChangeHandler(e.target);
@@ -308,6 +360,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 text-black focus:border-primary focus-visible:outline-none "
                       name="bio"
                       rows={6}
+                      value={infoData?.bio}
                       onChange={(e) => {
                         e.preventDefault();
                         infoChangeHandler(e.target);
@@ -320,6 +373,7 @@ export default function AutherRegistrationForm({ userId }) {
             </div>
           </div>
         </div>
+
         {/* Education and Experience Section */}
         <div className="col-span-5 xl:col-span-2">
           {/* Education Section */}
@@ -342,6 +396,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none"
                       type="text"
                       name="institution"
+                      value={educationData?.institution}
                       onChange={(e) => {
                         e.preventDefault();
                         eduChangeHandler(e.target);
@@ -364,6 +419,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="text"
                       name="field"
+                      value={educationData?.field}
                       onChange={(e) => {
                         e.preventDefault();
                         eduChangeHandler(e.target);
@@ -386,6 +442,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="text"
                       name="degree"
+                      value={educationData?.degree}
                       onChange={(e) => {
                         e.preventDefault();
                         eduChangeHandler(e.target);
@@ -409,6 +466,7 @@ export default function AutherRegistrationForm({ userId }) {
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                         type="number"
                         name="startYear"
+                        value={educationData?.startYear}
                         onChange={(e) => {
                           e.preventDefault();
                           eduChangeHandler(e.target);
@@ -429,6 +487,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="number"
                       name="endYear"
+                      value={educationData?.endYear}
                       onChange={(e) => {
                         e.preventDefault();
                         eduChangeHandler(e.target);
@@ -461,6 +520,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none"
                       type="text"
                       name="company"
+                      value={experienceData?.company}
                       onChange={(e) => {
                         e.preventDefault();
                         expChangeHandler(e.target);
@@ -483,6 +543,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="text"
                       name="position"
+                      value={experienceData?.position}
                       onChange={(e) => {
                         e.preventDefault();
                         expChangeHandler(e.target);
@@ -505,6 +566,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="text"
                       name="description"
+                      value={experienceData?.description}
                       onChange={(e) => {
                         e.preventDefault();
                         expChangeHandler(e.target);
@@ -528,6 +590,7 @@ export default function AutherRegistrationForm({ userId }) {
                         className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                         type="number"
                         name="startDate"
+                        value={experienceData?.startDate}
                         onChange={(e) => {
                           e.preventDefault();
                           expChangeHandler(e.target);
@@ -548,6 +611,7 @@ export default function AutherRegistrationForm({ userId }) {
                       className="w-full rounded border border-stroke bg-gray py-3 px-4.5 text-black focus:border-primary focus-visible:outline-none "
                       type="number"
                       name="endDate"
+                      value={experienceData?.endDate}
                       onChange={(e) => {
                         e.preventDefault();
                         expChangeHandler(e.target);
@@ -563,14 +627,7 @@ export default function AutherRegistrationForm({ userId }) {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-start gap-4.5 pb-8">
-        <button
-          className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-white hover:bg-opacity-95"
-          onClick={submitHandler}
-        >
-          Submit
-        </button>
-      </div>
+      <SubmitBtn submitFormHandler={submitHandler} text="Update" />
     </div>
   );
 }

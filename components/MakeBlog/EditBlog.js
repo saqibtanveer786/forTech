@@ -15,7 +15,7 @@ import { updateBlog } from "../../lib/serverAction";
 import Title from "@components/MakeBlog/Title";
 import Description from "@components/MakeBlog/Description";
 import Editor from "@components/MakeBlog/Editor";
-import SubmitBtn from "@components/MakeBlog/SubmitBtn";
+import SubmitBtn from "@components/SubmitBtn";
 import SelectCategories from "@components/MakeBlog/SelectCategories";
 import FrontImage from "@components/MakeBlog/FrontImage";
 import ChangeImageBtn from "@components/MakeBlog/ChangeImageBtn";
@@ -77,7 +77,6 @@ export default function EditBlog({
         setAlertMessage(response.message);
       }
     } catch (error) {
-      console.log(error);
       setAlertStatus("error");
       setAlertMessage("Something went wrong");
     } finally {
@@ -95,7 +94,6 @@ export default function EditBlog({
         return [...prevCategories, selectedOption];
       }
     });
-    console.log(selectedCategories);
   };
 
   return (

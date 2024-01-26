@@ -129,10 +129,10 @@ const Header = ({ session }) => {
               About Us
             </Link>
             <Link
-              href="/signin"
+              href="/auth/signup"
               className="block px-4 py-2 bg-graydark hover:bg-black rounded-md text-white ml-2"
             >
-              Sign In
+              Sign Up
             </Link>
           </div>
         )}
