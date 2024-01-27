@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { registerUser } from "lib/serverAction";
 
-export default function page({ params }) {
+export default function Page({ params }) {
   const [authSuccessful, setAuthSuccessful] = useState("default");
   const [loading, setLoading] = useState(false);
 
