@@ -93,7 +93,11 @@ export default function page({ params }) {
                 setLoading((previous) => !previous);
                 auth === "signup"
                   ? registerHandler()
-                  : signIn("credentials", { email, pass, callbackUrl: "/" });
+                  : signIn("credentials", {
+                      email,
+                      pass,
+                      callbackUrl: "/",
+                    });
               }}
             >
               {loading && logos.circleLoader()}
