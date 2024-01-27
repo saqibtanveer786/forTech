@@ -17,12 +17,8 @@ export const metadata = {
 };
 
 const page = async () => {
-  const session = await getAuthSession();
-  return (
-    <>
-      <AutherRegistrationForm userId={session.user?.id} />
-    </>
-  );
+  let session = await getAuthSession();
+  return <>{/* <AutherRegistrationForm userId={session.user?.id} /> */}</>;
 };
 
 export default page;
