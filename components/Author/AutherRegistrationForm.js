@@ -20,7 +20,7 @@ export default function AutherRegistrationForm({ userId, preInfoData }) {
     location,
     birthDate,
     specialization,
-    userId,
+    // userId,
   } = preInfoData;
 
   const [infoData, setInfoData] = useState(
