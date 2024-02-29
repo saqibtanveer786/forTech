@@ -59,7 +59,7 @@ export default function Page({ params }) {
                   }}
                   type="text"
                   required
-                  className="px-5 py-2 rounded-t-md border-b-blue-400 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
+                  className="px-5 py-2 rounded-t-md border-b-blue-500 text-gray-800 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
                   placeholder="Saqib Tanveer"
                 />
               )}
@@ -71,7 +71,7 @@ export default function Page({ params }) {
                 }}
                 type="email"
                 required
-                className="px-5 py-2 rounded-t-md border-b-blue-400 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
+                className="px-5 py-2 rounded-t-md border-b-blue-500 text-gray-800 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
                 placeholder="example@gmail.com"
               />
               <input
@@ -82,7 +82,7 @@ export default function Page({ params }) {
                 }}
                 type="password"
                 required
-                className="px-5 py-2 rounded-t-md border-b-blue-400 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
+                className="px-5 py-2 rounded-t-md border-b-blue-500 text-gray-800 border-b-4 w-full my-2 focus:border-b-blue-600 focus:outline-none"
                 placeholder="Your Password"
               />
             </div>
