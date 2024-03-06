@@ -1,0 +1,1 @@
+export const host = process.env.NODE_ENV==='production'? 'https://forin.vercel.app': 'http://localhost:3000'
